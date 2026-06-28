@@ -64,7 +64,7 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-logo {
-  width: clamp(260px, 36vw, 460px);
+  width: clamp(220px, 28vw, 360px);
   margin: clamp(-1.5rem, -2vw, -0.75rem) auto clamp(0.75rem, 2vw, 1.25rem);
   filter: drop-shadow(0 14px 26px rgba(35, 67, 45, 0.14));
   transform: translateY(-1rem);
@@ -263,7 +263,7 @@ p { margin-top: 0; }
 
 @media (max-width: 720px) {
   .hero-logo {
-    width: min(360px, 92%);
+    width: min(300px, 82%);
     margin-top: -0.75rem;
     transform: translateY(-0.5rem);
   }
