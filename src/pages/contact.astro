@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
 
 ---
 
@@ -11,15 +12,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   image="/assets/images/editorial/goat-portrait.webp"
 >
   <main id="main">
-<section class="page-hero page-hero-contact"><div class="container page-hero-grid">
-      <div class="page-hero-copy" data-reveal><p class="eyebrow">Come say hello</p><h1>A real farm. A real conversation.</h1><p class="lede">Orders, partnerships, farm visits and good questions are all welcome. We reply around the rhythms of the farm.</p></div>
-      <div class="page-hero-visual contact-stage" data-motion-scene data-reveal="right">
+<PageHero
+  eyebrow="Come say hello"
+  title="A real farm. A real conversation."
+  description="Orders, partnerships, farm visits and good questions are all welcome. We reply around the rhythms of the farm."
+  variant="contact"
+>
+      <div slot="visual" class="page-hero-visual contact-stage" data-motion-scene data-reveal="right">
         <div class="visual-frame" data-depth-layer="1"><img src="/assets/images/editorial/farm-morning.webp" alt="Hello Honey Bunny farm in the countryside near Pune" width="1586" height="992"></div>
         <span class="location-pin" data-depth-layer="4" aria-hidden="true"><span>Near<br>Pune</span></span>
         <span class="message-bubble" data-depth-layer="3">Hello 👋<small>Usually quickest on WhatsApp</small></span>
         <aside class="page-hero-note visual-note" data-depth-layer="2"><strong>The quickest route</strong>WhatsApp is best for current availability and local order questions.</aside>
       </div>
-    </div></section>
+</PageHero>
     <section class="section"><div class="container contact-grid">
       <div class="contact-cards" data-reveal="left">
         <article class="contact-card"><p class="eyebrow">WhatsApp</p><h3>Orders &amp; availability</h3><p><a href="https://wa.me/918208665234" target="_blank" rel="noopener">+91 8208 665 234</a><br>Best for quick batch and delivery questions.</p></article>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
 
 ---
 
@@ -11,15 +12,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   image="/assets/images/editorial/goat-portrait.webp"
 >
   <main id="main">
-<section class="page-hero page-hero-farm"><div class="container page-hero-grid">
-      <div class="page-hero-copy" data-reveal><p class="eyebrow">Our farm</p><h1>Care is the first ingredient.</h1><p class="lede">Hello Honey Bunny began with a simple conviction: serious farming can still feel personal. We are building a focused goat dairy near Pune where responsible care and clean craft set the pace.</p></div>
-      <div class="page-hero-visual photo-stage" data-motion-scene data-reveal="right">
+<PageHero
+  eyebrow="Our farm"
+  title="Care is the first ingredient."
+  description="Hello Honey Bunny began with a simple conviction: serious farming can still feel personal. We are building a focused goat dairy near Pune where responsible care and clean craft set the pace."
+  variant="farm"
+>
+      <div slot="visual" class="page-hero-visual photo-stage" data-motion-scene data-reveal="right">
         <div class="visual-frame" data-depth-layer="1"><img src="/assets/images/editorial/farm-morning.webp" alt="Goats beside their timber shelter in the soft Pune morning light" width="1586" height="992"></div>
         <span class="visual-orbit" aria-hidden="true"></span>
         <span class="visual-chip visual-chip-top" data-depth-layer="3">Near Pune · Est. 2026</span>
         <aside class="page-hero-note visual-note" data-depth-layer="2"><strong>One farm. One clear standard.</strong>Learning the land, establishing routines and growing deliberately.</aside>
       </div>
-    </div></section>
+</PageHero>
 
     <section class="section"><div class="container story-grid">
       <div class="story-media landscape" data-reveal="left"><img src="/assets/images/editorial/farm-morning.webp" alt="Goats beside a clean timber shelter in morning light near Pune" width="1586" height="992"></div>

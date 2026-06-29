@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
 
 const schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"What is Hello Honey Bunny?","acceptedAnswer":{"@type":"Answer","text":"Hello Honey Bunny is a small-batch goat dairy farm being built near Pune, Maharashtra, with a focus on responsible animal care, clean handling and local freshness."}},
@@ -22,16 +23,20 @@ const schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
   schema={schema}
 >
   <main id="main">
-<section class="page-hero page-hero-faq"><div class="container page-hero-grid">
-      <div class="page-hero-copy" data-reveal><p class="eyebrow">Questions, plainly answered</p><h1>Good to know.</h1><p class="lede">Where we are, what is available and how the first batches will work—without gloss or fine-print surprises.</p></div>
-      <div class="page-hero-visual question-stage" data-motion-scene data-reveal="right">
+<PageHero
+  eyebrow="Questions, plainly answered"
+  title="Good to know."
+  description="Where we are, what is available and how the first batches will work—without gloss or fine-print surprises."
+  variant="faq"
+>
+      <div slot="visual" class="page-hero-visual question-stage" data-motion-scene data-reveal="right">
         <div class="visual-frame portrait-frame" data-depth-layer="1"><img src="/assets/images/editorial/goat-portrait.webp" alt="Curious young goat looking through meadow grasses" width="1122" height="1402"></div>
         <span class="question-bubble bubble-one" data-depth-layer="4">Delivery?</span>
         <span class="question-bubble bubble-two" data-depth-layer="3">Storage?</span>
         <span class="question-bubble bubble-three" data-depth-layer="4">Farm visits?</span>
         <aside class="page-hero-note visual-note" data-depth-layer="2" aria-label="Contact note"><strong>Still curious?</strong>Send us a note on WhatsApp. A real person will reply around the farm day.</aside>
       </div>
-    </div></section>
+</PageHero>
     <section class="section"><div class="container faq-layout">
       <aside class="faq-intro" data-reveal="left" aria-label="Frequently asked questions introduction"><p class="eyebrow">The essentials</p><h2>Farm, food and ordering.</h2><p>These answers reflect our current founding season and will evolve as the farm settles into a regular release rhythm.</p><a class="button button-secondary" href="/contact.html">Ask us directly</a></aside>
       <div class="accordion" data-accordion data-reveal="right">

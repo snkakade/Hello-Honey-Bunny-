@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
 
 ---
 
@@ -11,16 +12,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   image="/assets/images/editorial/farm-morning.webp"
 >
   <main id="main">
-<section class="page-hero page-hero-gallery"><div class="container page-hero-grid">
-      <div class="page-hero-copy" data-reveal><p class="eyebrow">The farm in frames</p><h1>Morning light. Honest work.</h1><p class="lede">A growing visual journal of the animals, the process and the small moments that make a farm feel alive.</p></div>
-      <div class="page-hero-visual collage-stage" data-motion-scene data-reveal="right">
+<PageHero
+  eyebrow="The farm in frames"
+  title="Morning light. Honest work."
+  description="A growing visual journal of the animals, the process and the small moments that make a farm feel alive."
+  variant="gallery"
+>
+      <div slot="visual" class="page-hero-visual collage-stage" data-motion-scene data-reveal="right">
         <figure class="collage-card collage-one" data-depth-layer="1"><img src="/assets/images/editorial/farm-morning.webp" alt="Morning at the farm" width="1586" height="992"></figure>
         <figure class="collage-card collage-two" data-depth-layer="3"><img src="/assets/images/editorial/goat-portrait.webp" alt="Young goat in the meadow" width="1122" height="1402"></figure>
         <figure class="collage-card collage-three" data-depth-layer="2"><img src="/assets/images/editorial/dairy-still-life.webp" alt="Fresh dairy on the farm table" width="1448" height="1086"></figure>
         <span class="visual-chip visual-chip-top" data-depth-layer="4">A living visual journal</span>
         <aside class="page-hero-note visual-note" data-depth-layer="4"><strong>New frames, as the farm grows.</strong>Animals, process, products and the quiet work between them.</aside>
       </div>
-    </div></section>
+</PageHero>
     <section class="section"><div class="container">
       <div class="filter-list" role="group" aria-label="Filter gallery" data-reveal>
         <button class="filter-button active" type="button" data-gallery-filter="all" aria-pressed="true">All</button><button class="filter-button" type="button" data-gallery-filter="farm" aria-pressed="false">Farm</button><button class="filter-button" type="button" data-gallery-filter="animals" aria-pressed="false">Animals</button><button class="filter-button" type="button" data-gallery-filter="process" aria-pressed="false">Process</button><button class="filter-button" type="button" data-gallery-filter="products" aria-pressed="false">Products</button><button class="filter-button" type="button" data-gallery-filter="film" aria-pressed="false">Film</button>

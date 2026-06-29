@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
 
 const schema = {"@context":"https://schema.org","@graph":[
     {"@type":"Product","name":"Fresh Goat Milk","brand":{"@type":"Brand","name":"Hello Honey Bunny"},"description":"Small-batch fresh goat milk prepared near Pune.","image":"https://hellohoneybunny.com/assets/images/editorial/dairy-still-life.webp","offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","url":"https://hellohoneybunny.com/shop.html"}},
@@ -16,16 +17,20 @@ const schema = {"@context":"https://schema.org","@graph":[
   schema={schema}
 >
   <main id="main">
-<section class="page-hero page-hero-products"><div class="container page-hero-grid">
-      <div class="page-hero-copy" data-reveal><p class="eyebrow">Our products</p><h1>Farm staples, made with restraint.</h1><p class="lede">A considered collection of fresh goat dairy and seasonal farm goods. We release only what the farm can make well.</p></div>
-      <div class="page-hero-visual product-stage" data-motion-scene data-reveal="right">
+<PageHero
+  eyebrow="Our products"
+  title="Farm staples, made with restraint."
+  description="A considered collection of fresh goat dairy and seasonal farm goods. We release only what the farm can make well."
+  variant="products"
+>
+      <div slot="visual" class="page-hero-visual product-stage" data-motion-scene data-reveal="right">
         <span class="product-halo" aria-hidden="true"></span>
         <img class="hero-product-cutout" data-depth-layer="2" src="/assets/images/editorial/product-collection-cutout.webp" alt="Sculptural arrangement of a milk bottle, curd, paneer and artisanal cheese" width="1122" height="1402">
         <span class="visual-chip visual-chip-top" data-depth-layer="4">Fresh · Local · Limited</span>
         <span class="visual-chip visual-chip-side" data-depth-layer="3">Small batch</span>
         <aside class="page-hero-note visual-note" data-depth-layer="4"><strong>Availability follows the farm.</strong>Limited items can be requested now. New lines arrive when they are ready.</aside>
       </div>
-    </div></section>
+</PageHero>
     <section class="section"><div class="container">
       <div class="section-heading split" data-reveal><div><p class="eyebrow">The first collection</p><h2>Simple food. Clear character.</h2></div><p>Sizes are indicative while we prepare our first regular releases. We will confirm the exact pack, batch and delivery details before accepting an order.</p></div>
       <div class="product-grid stagger">
