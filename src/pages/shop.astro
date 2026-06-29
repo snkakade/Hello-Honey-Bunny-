@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+
+---
+
+<BaseLayout
+  title="Order Goat Milk on WhatsApp | Hello Honey Bunny Pune"
+  description="Build an order for fresh goat milk and small-batch dairy near Pune, then send it to Hello Honey Bunny for personal confirmation on WhatsApp."
+  canonicalPath="/shop.html"
+  activePage="shop"
+  image="/assets/images/editorial/dairy-still-life.webp"
+>
+  <main id="main">
+<PageHero
+  eyebrow="Shop the current release"
+  title="Choose here. Confirm with a human."
+  description="Add what you would like, share a few delivery details and we will open a ready-made message in WhatsApp."
+>
+  <aside slot="visual" class="page-hero-note" data-reveal="right" aria-label="Ordering note"><strong>No payment is taken online.</strong>Orders are currently confirmed manually on WhatsApp. Availability, delivery and final pricing are shared before you commit.</aside>
+</PageHero>
+
+    <section class="section"><div class="container shop-layout" data-shop>
+      <div>
+        <div class="section-heading" data-reveal><p class="eyebrow">Step one</p><h2>Build your order.</h2><p>Quantities are requests until we confirm the current batch. Choose up to 12 of any item.</p></div>
+        <div class="shop-products">
+          <article class="shop-product" data-product-id="milk-500" data-product-name="Fresh Goat Milk" data-product-size="500 ml">
+            <div class="shop-product-visual"><img class="crop-milk" src="/assets/images/editorial/dairy-still-life.webp" alt="" width="1448" height="1086"></div>
+            <div><span class="status status-limited">Limited</span><h3>Fresh Goat Milk</h3><p>500 ml · final price confirmed on WhatsApp</p></div>
+            <div class="shop-actions"><div class="quantity-control" role="group" aria-label="Fresh Goat Milk 500 ml quantity"><button type="button" data-quantity-action="decrease" aria-label="Remove one Fresh Goat Milk 500 ml">−</button><output aria-live="polite">0</output><button type="button" data-quantity-action="increase" aria-label="Add one Fresh Goat Milk 500 ml">+</button></div></div>
+          </article>
+          <article class="shop-product" data-product-id="milk-1l" data-product-name="Fresh Goat Milk" data-product-size="1 litre">
+            <div class="shop-product-visual"><img class="crop-milk" src="/assets/images/editorial/dairy-still-life.webp" alt="" loading="lazy" width="1448" height="1086"></div>
+            <div><span class="status status-limited">Limited</span><h3>Fresh Goat Milk</h3><p>1 litre · final price confirmed on WhatsApp</p></div>
+            <div class="shop-actions"><div class="quantity-control" role="group" aria-label="Fresh Goat Milk 1 litre quantity"><button type="button" data-quantity-action="decrease" aria-label="Remove one Fresh Goat Milk 1 litre">−</button><output aria-live="polite">0</output><button type="button" data-quantity-action="increase" aria-label="Add one Fresh Goat Milk 1 litre">+</button></div></div>
+          </article>
+          <article class="shop-product" data-product-id="paneer-200" data-product-name="Goat Milk Paneer" data-product-size="200 g">
+            <div class="shop-product-visual"><img class="crop-paneer" src="/assets/images/editorial/dairy-still-life.webp" alt="" loading="lazy" width="1448" height="1086"></div>
+            <div><span class="status status-limited">Enquire</span><h3>Goat Milk Paneer</h3><p>200 g · subject to batch availability</p></div>
+            <div class="shop-actions"><div class="quantity-control" role="group" aria-label="Goat Milk Paneer 200 g quantity"><button type="button" data-quantity-action="decrease" aria-label="Remove one Goat Milk Paneer 200 g">−</button><output aria-live="polite">0</output><button type="button" data-quantity-action="increase" aria-label="Add one Goat Milk Paneer 200 g">+</button></div></div>
+          </article>
+          <article class="shop-product" data-product-id="paneer-400" data-product-name="Goat Milk Paneer" data-product-size="400 g">
+            <div class="shop-product-visual"><img class="crop-paneer" src="/assets/images/editorial/dairy-still-life.webp" alt="" loading="lazy" width="1448" height="1086"></div>
+            <div><span class="status status-limited">Enquire</span><h3>Goat Milk Paneer</h3><p>400 g · subject to batch availability</p></div>
+            <div class="shop-actions"><div class="quantity-control" role="group" aria-label="Goat Milk Paneer 400 g quantity"><button type="button" data-quantity-action="decrease" aria-label="Remove one Goat Milk Paneer 400 g">−</button><output aria-live="polite">0</output><button type="button" data-quantity-action="increase" aria-label="Add one Goat Milk Paneer 400 g">+</button></div></div>
+          </article>
+        </div>
+      </div>
+
+      <aside class="order-panel" data-reveal="right" aria-label="Order summary and customer details">
+        <p class="eyebrow">Step two</p><h2>Your request</h2>
+        <div data-order-list class="order-list" aria-live="polite"></div>
+        <p data-order-empty class="order-empty">Your order is empty. Add a product to begin.</p>
+        <!-- Future backend: replace this submit handler in js/main.js with your checkout API. -->
+        <form id="order-form">
+          <div class="field-grid">
+            <div class="field"><label for="order-name">Name *</label><input id="order-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="order-location">Delivery location *</label><input id="order-location" name="location" type="text" autocomplete="address-line1" placeholder="Neighbourhood, Pune" required></div>
+            <div class="field"><label for="order-date">Preferred date</label><input id="order-date" name="date" type="date"></div>
+            <div class="field"><label for="order-notes">Notes</label><textarea id="order-notes" name="notes" placeholder="Delivery timing, dietary questions or anything useful"></textarea></div>
+          </div>
+          <button class="button button-primary" type="submit">Place order on WhatsApp</button>
+          <p id="order-status" class="form-status" role="status" aria-live="polite"></p>
+          <p class="fine-print">WhatsApp will open in a new tab or app. Your order is not confirmed until we reply with availability and delivery details.</p>
+        </form>
+      </aside>
+    </div></section>
+
+    <section class="section section-cream"><div class="container">
+      <div class="section-heading center" data-reveal><p class="eyebrow">What happens next</p><h2>Personal, for now.</h2></div>
+      <div class="steps stagger"><div class="step" data-reveal><span>01</span><h3>Choose</h3><p>Build the order that suits your home or kitchen.</p></div><div class="step" data-reveal><span>02</span><h3>Send</h3><p>WhatsApp opens with every detail already written.</p></div><div class="step" data-reveal><span>03</span><h3>Confirm</h3><p>We check the batch, location, date and final price.</p></div><div class="step" data-reveal><span>04</span><h3>Receive</h3><p>We arrange the available pickup or delivery option.</p></div></div>
+    </div></section>
+  </main>
+</BaseLayout>

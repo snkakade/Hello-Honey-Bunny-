@@ -1,0 +1,211 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LocalBusiness"],
+    "name": "Hello Honey Bunny",
+    "url": "https://hellohoneybunny.com/",
+    "logo": "https://hellohoneybunny.com/assets/images/logo.png",
+    "image": "https://hellohoneybunny.com/assets/images/editorial/farm-morning.webp",
+    "description": "A small-batch goat dairy farm near Pune creating fresh milk and artisanal farm products.",
+    "telephone": "+91-8208-665-234",
+    "email": "visit@hellohoneybunny.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kunjirwadi",
+      "addressRegion": "Maharashtra",
+      "postalCode": "412201",
+      "addressCountry": "IN"
+    },
+    "areaServed": "Pune, Maharashtra"
+  };
+---
+
+<BaseLayout
+  title="Hello Honey Bunny | Small-Batch Goat Dairy Near Pune"
+  description="Hello Honey Bunny is a small-batch goat dairy farm near Pune, creating fresh goat milk and thoughtful farm products with quiet care."
+  canonicalPath="/"
+  activePage=""
+  image="/assets/images/editorial/farm-morning.webp"
+  preloadImage="/assets/images/editorial/farm-morning.webp"
+  schema={schema}
+>
+  <main id="main">
+<section class="hero">
+      <div class="orb orb-one" aria-hidden="true"></div>
+      <div class="orb orb-two" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal="left">
+          <p class="eyebrow">A goat dairy near Pune</p>
+          <h1>Freshness, handled gently.</h1>
+          <p class="lede">Small-batch goat dairy shaped by clean routines, thoughtful care and the simple pleasure of food made close to home.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="/shop.html">Order on WhatsApp</a>
+            <a class="button button-secondary" href="/products.html">Explore our products</a>
+          </div>
+        </div>
+        <div class="hero-media" data-parallax data-reveal="right">
+          <img src="/assets/images/editorial/farm-morning.webp" alt="Goats in soft morning light at a small dairy farm near Pune" width="1586" height="992">
+          <div class="hero-card">
+            <strong>Our founding season</strong>
+            <span>Limited releases, confirmed personally on WhatsApp.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ul class="promise-strip">
+      <li class="promise-item"><strong>Small batches</strong>Prepared with attention, not at industrial scale.</li>
+      <li class="promise-item"><strong>Clean handling</strong>Clear routines from the farm to your table.</li>
+      <li class="promise-item"><strong>Responsible care</strong>Animal wellbeing sits at the heart of the farm.</li>
+      <li class="promise-item"><strong>Near Pune</strong>Local availability, so freshness travels less.</li>
+    </ul>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading split" data-reveal>
+          <div>
+            <p class="eyebrow">What we make</p>
+            <h2>A quieter kind of dairy ritual.</h2>
+          </div>
+          <p>Simple farm products, made in considered quantities. Our first releases will stay intentionally limited while the farm finds its rhythm.</p>
+        </div>
+        <div class="card-grid stagger">
+          <article class="card" data-reveal>
+            <div class="card-media">
+              <img src="/assets/images/editorial/dairy-still-life.webp" alt="Fresh goat milk in a clear glass bottle" loading="lazy" width="1448" height="1086">
+            </div>
+            <div class="card-body">
+              <div class="card-topline"><span class="status status-limited">Limited release</span><span>01</span></div>
+              <h3>Fresh Goat Milk</h3>
+              <p>Clean-tasting, carefully chilled and offered close to the day it is prepared.</p>
+              <a class="text-link" href="/shop.html">Check availability</a>
+            </div>
+          </article>
+          <article class="card" data-reveal>
+            <div class="card-media">
+              <img class="crop-paneer" src="/assets/images/editorial/dairy-still-life.webp" alt="Fresh goat milk paneer on parchment" loading="lazy" width="1448" height="1086">
+            </div>
+            <div class="card-body">
+              <div class="card-topline"><span class="status status-limited">Enquire</span><span>02</span></div>
+              <h3>Goat Milk Paneer</h3>
+              <p>Delicately set in small batches for a fresh, tender texture and a clean finish.</p>
+              <a class="text-link" href="/products.html">Meet the range</a>
+            </div>
+          </article>
+          <article class="card" data-reveal>
+            <div class="card-media">
+              <img class="crop-cheese" src="/assets/images/editorial/dairy-still-life.webp" alt="Artisanal goat cheese in a neutral morning still life" loading="lazy" width="1448" height="1086">
+            </div>
+            <div class="card-body">
+              <div class="card-topline"><span class="status status-soon">Launching soon</span><span>03</span></div>
+              <h3>Artisanal Cheese</h3>
+              <p>Patiently developed cheese with gentle character, made for everyday tables and curious kitchens.</p>
+              <a class="text-link" href="/products.html">See what is coming</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container story-grid">
+        <div class="story-media portrait care-media" data-motion-media data-reveal="left">
+          <img src="/assets/images/editorial/goat-portrait.webp" alt="A calm young goat among meadow grasses at the farm" loading="lazy" width="1122" height="1402">
+          <span class="media-sheen" aria-hidden="true"></span>
+          <span class="care-badge"><strong>Daily care</strong>Known, observed, never rushed.</span>
+        </div>
+        <div class="story-copy" data-reveal="right">
+          <p class="eyebrow">Built around care</p>
+          <h2>Good dairy begins long before the bottle.</h2>
+          <p class="large-copy">It starts in the shelter, the feed, the pace of the morning and the way every animal is known.</p>
+          <p>Hello Honey Bunny is being built as a focused, small farm—not a faceless supply chain. We are putting attentive husbandry, sensible hygiene and short local journeys at the centre of the work.</p>
+          <a class="button button-secondary" href="/about.html">Our farm philosophy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading center" data-reveal>
+          <p class="eyebrow">From farm to family</p>
+          <h2>Made slowly. Served fresh.</h2>
+          <p>Our process is intentionally uncomplicated: care well, handle cleanly, prepare in small batches and confirm every order personally.</p>
+        </div>
+        <div class="steps stagger">
+          <div class="step" data-reveal><span>01</span><h3>Care</h3><p>Calm routines and responsible attention to the herd, every day.</p></div>
+          <div class="step" data-reveal><span>02</span><h3>Prepare</h3><p>Thoughtful small-batch production with a clean, consistent process.</p></div>
+          <div class="step" data-reveal><span>03</span><h3>Chill</h3><p>Fresh handling and careful storage from preparation onward.</p></div>
+          <div class="step" data-reveal><span>04</span><h3>Share</h3><p>Local pickup and delivery plans that keep the journey considered.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-forest">
+      <div class="container">
+        <div class="section-heading split" data-reveal>
+          <div>
+            <p class="eyebrow">Quiet proof</p>
+            <h2>Clear choices, close to home.</h2>
+          </div>
+          <p class="text-on-dark">We would rather tell you exactly where we are than make promises the farm cannot yet prove.</p>
+        </div>
+        <div class="feature-grid stagger">
+          <article class="feature" data-reveal><span class="feature-number">01</span><h3>Limited by design</h3><p>Availability follows the farm, never the other way around.</p></article>
+          <article class="feature" data-reveal><span class="feature-number">02</span><h3>Locally focused</h3><p>We are starting with Pune and nearby neighbourhoods.</p></article>
+          <article class="feature" data-reveal><span class="feature-number">03</span><h3>Personally confirmed</h3><p>Every current order is checked and confirmed over WhatsApp.</p></article>
+          <article class="feature" data-reveal><span class="feature-number">04</span><h3>Always transparent</h3><p>Launching items are clearly marked—no invented stock or claims.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-heading split" data-reveal>
+          <div><p class="eyebrow">Morning notes</p><h2>A glimpse of farm life.</h2></div>
+          <a class="text-link" href="/gallery.html">Visit the gallery</a>
+        </div>
+        <div class="gallery-grid static-gallery">
+          <div class="gallery-item wide tall">
+            <img src="/assets/images/editorial/farm-morning.webp" alt="Morning at the Hello Honey Bunny farm" loading="lazy" width="1586" height="992">
+          </div>
+          <div class="gallery-item tall">
+            <img src="/assets/images/editorial/goat-portrait.webp" alt="A young goat in the field" loading="lazy" width="1122" height="1402">
+          </div>
+          <div class="gallery-item">
+            <img src="/assets/images/editorial/dairy-still-life.webp" alt="Small-batch dairy products" loading="lazy" width="1448" height="1086">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="narrow">
+        <div class="section-heading center" data-reveal>
+          <p class="eyebrow">Good to know</p>
+          <h2>A few honest answers.</h2>
+        </div>
+        <div class="accordion" data-accordion>
+          <article class="faq-item"><button class="faq-question" type="button">When can I place an order?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Our first products have limited availability. Build an order on the Shop page and we will confirm the current batch, delivery area and timing personally on WhatsApp.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button">Where do you deliver?</button><div class="faq-answer"><div class="faq-answer-inner"><p>We are beginning near Pune and will confirm your location before accepting an order. Pickup or delivery options may vary by batch.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button">Can cafés and retailers work with you?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Yes. We welcome early conversations with chefs, cafés and boutique stores that value seasonal, small-batch supply.</p></div></div></article>
+        </div>
+        <div class="button-row justify-center">
+          <a class="button button-secondary" href="/faq.html">Read all FAQs</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-sm">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <div class="cta-band-inner">
+            <div><p class="eyebrow">Limited first releases</p><h2>Bring a gentler dairy ritual home.</h2><p>Choose what you would like and send us a ready-made order on WhatsApp. We will confirm availability personally.</p></div>
+            <a class="button button-light" href="/shop.html">Build your order</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

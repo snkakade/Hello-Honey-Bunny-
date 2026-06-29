@@ -1,0 +1,27 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  href: string;
+  label: string;
+  cream?: boolean;
+}
+
+const { eyebrow, title, description, href, label, cream = false } = Astro.props;
+---
+
+<section class:list={["section", "section-sm", cream && "section-cream"]}>
+  <div class="container">
+    <div class="cta-band" data-reveal>
+      <div class="cta-band-inner">
+        <div>
+          <p class="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </div>
+        <a class="button button-light" href={href}>{label}</a>
+      </div>
+    </div>
+  </div>
+</section>

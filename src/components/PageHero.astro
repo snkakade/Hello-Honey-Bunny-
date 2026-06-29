@@ -1,0 +1,21 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  variant?: string;
+}
+
+const { eyebrow, title, description, variant = "" } = Astro.props;
+---
+
+<section class:list={["page-hero", variant && `page-hero-${variant}`]}>
+  <div class="container page-hero-grid">
+    <div class="page-hero-copy" data-reveal>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+    </div>
+    <slot name="visual" />
+  </div>
+</section>

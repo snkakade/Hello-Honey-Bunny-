@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const schema = {"@context":"https://schema.org","@graph":[
+    {"@type":"Product","name":"Fresh Goat Milk","brand":{"@type":"Brand","name":"Hello Honey Bunny"},"description":"Small-batch fresh goat milk prepared near Pune.","image":"https://hellohoneybunny.com/assets/images/editorial/dairy-still-life.webp","offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","url":"https://hellohoneybunny.com/shop.html"}},
+    {"@type":"Product","name":"Goat Milk Paneer","brand":{"@type":"Brand","name":"Hello Honey Bunny"},"description":"Fresh goat milk paneer prepared in small batches.","image":"https://hellohoneybunny.com/assets/images/editorial/dairy-still-life.webp","offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","url":"https://hellohoneybunny.com/shop.html"}}
+  ]};
+---
+
+<BaseLayout
+  title="Goat Milk & Farm Products Near Pune | Hello Honey Bunny"
+  description="Explore fresh goat milk, goat milk paneer, curd, artisanal cheese and seasonal small-batch farm products from Hello Honey Bunny near Pune."
+  canonicalPath="/products.html"
+  activePage="products"
+  image="/assets/images/editorial/dairy-still-life.webp"
+  schema={schema}
+>
+  <main id="main">
+<PageHero
+  eyebrow="Our products"
+  title="Farm staples, made with restraint."
+  description="A considered collection of fresh goat dairy and seasonal farm goods. We release only what the farm can make well."
+  variant="products"
+>
+      <div slot="visual" class="page-hero-visual product-stage" data-motion-scene data-reveal="right">
+        <span class="product-halo" aria-hidden="true"></span>
+        <img class="hero-product-cutout" data-depth-layer="2" src="/assets/images/editorial/product-collection-cutout.webp" alt="Sculptural arrangement of a milk bottle, curd, paneer and artisanal cheese" width="1122" height="1402">
+        <span class="visual-chip visual-chip-top" data-depth-layer="4">Fresh · Local · Limited</span>
+        <span class="visual-chip visual-chip-side" data-depth-layer="3">Small batch</span>
+        <aside class="page-hero-note visual-note" data-depth-layer="4"><strong>Availability follows the farm.</strong>Limited items can be requested now. New lines arrive when they are ready.</aside>
+      </div>
+</PageHero>
+    <section class="section"><div class="container">
+      <div class="section-heading split" data-reveal><div><p class="eyebrow">The first collection</p><h2>Simple food. Clear character.</h2></div><p>Sizes are indicative while we prepare our first regular releases. We will confirm the exact pack, batch and delivery details before accepting an order.</p></div>
+      <div class="product-grid stagger">
+        <article class="product-card" data-reveal><div class="product-visual"><img class="crop-milk" src="/assets/images/editorial/dairy-still-life.webp" alt="Clear glass bottle of fresh goat milk" width="1448" height="1086"></div><div class="product-content"><span class="status status-limited">Limited release</span><h3>Fresh Goat Milk</h3><p>Clean and mild when carefully handled, chilled promptly and enjoyed fresh.</p><div class="product-meta"><span>500 ml</span><span>1 litre</span><span>Keep refrigerated</span></div><a class="button button-primary" href="/shop.html">Request a batch</a></div></article>
+        <article class="product-card" data-reveal><div class="product-visual"><img class="crop-paneer" src="/assets/images/editorial/dairy-still-life.webp" alt="Fresh white goat milk paneer on parchment" width="1448" height="1086"></div><div class="product-content"><span class="status status-limited">Enquire</span><h3>Goat Milk Paneer</h3><p>Fresh-set paneer with a delicate texture for gentle curries, grills and simple plates.</p><div class="product-meta"><span>200 g</span><span>400 g</span><span>Small batch</span></div><a class="button button-primary" href="/shop.html">Request a batch</a></div></article>
+        <article class="product-card" data-reveal><div class="product-visual"><img class="crop-curd" src="/assets/images/editorial/dairy-still-life.webp" alt="Creamy goat milk curd in a handmade bowl" loading="lazy" width="1448" height="1086"></div><div class="product-content"><span class="status status-soon">Launching soon</span><h3>Goat Milk Curd</h3><p>A softly set everyday curd, designed for breakfast bowls, sides and quiet spoonfuls.</p><div class="product-meta"><span>Small tub</span><span>Family tub</span><span>In development</span></div><a class="button button-secondary" href="/contact.html">Join the interest list</a></div></article>
+        <article class="product-card" data-reveal><div class="product-visual"><img class="crop-cheese" src="/assets/images/editorial/dairy-still-life.webp" alt="Small wheel of artisanal goat cheese" loading="lazy" width="1448" height="1086"></div><div class="product-content"><span class="status status-soon">Launching soon</span><h3>Artisanal Cheese</h3><p>A slowly developed range for cheese boards, cafés and curious home kitchens.</p><div class="product-meta"><span>Fresh styles</span><span>Aged styles</span><span>Seasonal</span></div><a class="button button-secondary" href="/contact.html#partners">Register interest</a></div></article>
+        <article class="product-card" data-reveal><div class="product-visual"><div class="product-symbol" aria-hidden="true"></div></div><div class="product-content"><span class="status status-soon">Seasonal</span><h3>Farm Specials</h3><p>Short runs shaped by the season—from cultured experiments to simple pantry goods.</p><div class="product-meta"><span>Rotating</span><span>Limited</span><span>Ask us</span></div><a class="button button-secondary" href="/contact.html">Ask what is next</a></div></article>
+        <article class="product-card" data-reveal><div class="product-visual"><div class="product-symbol" aria-hidden="true"></div></div><div class="product-content"><span class="status status-soon">In planning</span><h3>Ritual Packs</h3><p>Flexible weekly sets and thoughtful farm gifts, built around what is genuinely available.</p><div class="product-meta"><span>Subscriptions</span><span>Gifting</span><span>Flexible</span></div><a class="button button-secondary" href="/contact.html">Tell us what you need</a></div></article>
+      </div>
+    </div></section>
+    <section class="section section-cream"><div class="container story-grid">
+      <div class="story-media landscape" data-reveal="left"><img src="/assets/images/editorial/dairy-still-life.webp" alt="Minimal still life of goat milk, curd, paneer and cheese" loading="lazy" width="1448" height="1086"></div>
+      <div class="story-copy" data-reveal="right"><p class="eyebrow">Handling matters</p><h2>Fresh is a practice.</h2><p class="large-copy">Prompt chilling, clean containers and a short journey matter just as much as the recipe.</p><p>Each confirmed order will include practical storage guidance. Refrigerate fresh dairy promptly, use clean utensils and follow the use-by guidance provided with your batch.</p><a class="text-link" href="/faq.html">Read storage FAQs</a></div>
+    </div></section>
+    <section class="section section-sm"><div class="container"><div class="cta-band" data-reveal><div class="cta-band-inner"><div><p class="eyebrow">Ready when the farm is</p><h2>Build an order in a few taps.</h2><p>No payment gateway yet—your selection opens in WhatsApp and we confirm every detail manually.</p></div><a class="button button-light" href="/shop.html">Start an order</a></div></div></div></section>
+  </main>
+</BaseLayout>
