@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaBand from "../components/CtaBand.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import { homeFaqs } from "../data/faqs.js";
 
 const schema = {
     "@context": "https://schema.org",
@@ -186,26 +189,13 @@ const schema = {
           <p class="eyebrow">Good to know</p>
           <h2>A few honest answers.</h2>
         </div>
-        <div class="accordion" data-accordion>
-          <article class="faq-item"><button class="faq-question" type="button">When can I place an order?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Our first products have limited availability. Build an order on the Shop page and we will confirm the current batch, delivery area and timing personally on WhatsApp.</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button">Where do you deliver?</button><div class="faq-answer"><div class="faq-answer-inner"><p>We are beginning near Pune and will confirm your location before accepting an order. Pickup or delivery options may vary by batch.</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button">Can cafés and retailers work with you?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Yes. We welcome early conversations with chefs, cafés and boutique stores that value seasonal, small-batch supply.</p></div></div></article>
-        </div>
+        <FaqAccordion items={homeFaqs} />
         <div class="button-row justify-center">
           <a class="button button-secondary" href="/faq.html">Read all FAQs</a>
         </div>
       </div>
     </section>
 
-    <section class="section section-sm">
-      <div class="container">
-        <div class="cta-band" data-reveal>
-          <div class="cta-band-inner">
-            <div><p class="eyebrow">Limited first releases</p><h2>Bring a gentler dairy ritual home.</h2><p>Choose what you would like and send us a ready-made order on WhatsApp. We will confirm availability personally.</p></div>
-            <a class="button button-light" href="/shop.html">Build your order</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <CtaBand eyebrow="Limited first releases" title="Bring a gentler dairy ritual home." description="Choose what you would like and send us a ready-made order on WhatsApp. We will confirm availability personally." href="/shop.html" label="Build your order" />
   </main>
 </BaseLayout>

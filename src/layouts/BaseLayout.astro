@@ -48,7 +48,7 @@ const socialImage = new URL(image, Astro.site);
     <link rel="icon" href="/assets/images/logo.png">
     <link rel="manifest" href="/site.webmanifest">
     {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp">}
-    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

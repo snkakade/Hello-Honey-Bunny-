@@ -1,17 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import { faqs } from "../data/faqs.js";
 
-const schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"What is Hello Honey Bunny?","acceptedAnswer":{"@type":"Answer","text":"Hello Honey Bunny is a small-batch goat dairy farm being built near Pune, Maharashtra, with a focus on responsible animal care, clean handling and local freshness."}},
-    {"@type":"Question","name":"What products are available?","acceptedAnswer":{"@type":"Answer","text":"Fresh goat milk and goat milk paneer may be requested in limited batches. Curd, artisanal cheese, seasonal specials and ritual packs are still in development."}},
-    {"@type":"Question","name":"When is the farm launching?","acceptedAnswer":{"@type":"Answer","text":"The farm is in its founding season. Limited early releases are confirmed individually while the broader range and regular schedule are developed."}},
-    {"@type":"Question","name":"How do I place an order?","acceptedAnswer":{"@type":"Answer","text":"Choose quantities on the Shop page and send the generated order to Hello Honey Bunny on WhatsApp. Availability and delivery are confirmed manually."}},
-    {"@type":"Question","name":"Do you deliver?","acceptedAnswer":{"@type":"Answer","text":"Local delivery and pickup options near Pune depend on the batch and location. These details are confirmed on WhatsApp before an order is accepted."}},
-    {"@type":"Question","name":"Where are you located?","acceptedAnswer":{"@type":"Answer","text":"Hello Honey Bunny is based in Kunjirwadi, Maharashtra, near Pune."}},
-    {"@type":"Question","name":"Can cafés or retailers partner with you?","acceptedAnswer":{"@type":"Answer","text":"Yes. Chefs, cafés and boutique retailers can contact Hello Honey Bunny to discuss future seasonal and small-batch supply."}},
-    {"@type":"Question","name":"Are farm visits available?","acceptedAnswer":{"@type":"Answer","text":"Farm visits are being planned but are not on a regular public schedule yet. Visitors can register interest through the Contact page."}}
-  ]};
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer }
+  }))
+};
 ---
 
 <BaseLayout
@@ -39,22 +41,8 @@ const schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 </PageHero>
     <section class="section"><div class="container faq-layout">
       <aside class="faq-intro" data-reveal="left" aria-label="Frequently asked questions introduction"><p class="eyebrow">The essentials</p><h2>Farm, food and ordering.</h2><p>These answers reflect our current founding season and will evolve as the farm settles into a regular release rhythm.</p><a class="button button-secondary" href="/contact.html">Ask us directly</a></aside>
-      <div class="accordion" data-accordion data-reveal="right">
-        <article class="faq-item"><button class="faq-question" type="button">What is Hello Honey Bunny?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Hello Honey Bunny is a small-batch goat dairy farm being built near Pune, Maharashtra. We are focused on responsible animal care, clean handling, local freshness and products made in considered quantities.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">What products are available?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Fresh goat milk and goat milk paneer can currently be requested in limited batches. Curd, artisanal cheese, seasonal specials and ritual packs are marked “launching soon” while they are developed.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">When is the farm launching?</button><div class="faq-answer"><div class="faq-answer-inner"><p>We are in our founding season. Rather than announce a fixed full launch before the farm is ready, we are beginning with limited releases and will expand the range and schedule responsibly.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">Is goat milk suitable for families?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Goat milk is used by many families, but it is still dairy and contains lactose and milk proteins. Individual needs differ. Anyone with a diagnosed milk allergy, intolerance or medical concern should speak with a qualified healthcare professional before trying it. Our website does not provide medical advice.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">How do I place an order?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Visit the Shop page, choose your preferred products and quantities, then add your name and delivery location. The site creates a ready-made WhatsApp message. We reply with current availability, the final price and delivery or pickup options.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">Do you deliver?</button><div class="faq-answer"><div class="faq-answer-inner"><p>We are beginning with local delivery and pickup near Pune. Availability depends on your location and the current batch, so we confirm the details personally before accepting the order.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">Where are you located?</button><div class="faq-answer"><div class="faq-answer-inner"><p>The farm is in Kunjirwadi, Maharashtra 412201, near Pune. Exact visit directions are shared once a farm visit has been confirmed.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">How fresh are the products?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Our goal is to prepare in small batches, chill promptly and keep the local journey short. Specific preparation, use-by and storage guidance will be shared with every confirmed batch.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">Are products made in small batches?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Small-batch preparation is central to the way we are building the farm. It means availability may be limited, but it also lets us stay close to handling and consistency.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">Can cafés or retailers partner with you?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Yes. We welcome early conversations with chefs, cafés, premium grocers and boutique retailers that understand seasonal supply. Use the partnership option on the Contact page.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">How should fresh dairy be stored?</button><div class="faq-answer"><div class="faq-answer-inner"><p>Keep it refrigerated, return it to the fridge promptly after use, use clean utensils and follow the batch-specific use-by guidance we provide. Do not use a product if storage has been interrupted or it seems spoiled.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">Do I need to subscribe?</button><div class="faq-answer"><div class="faq-answer-inner"><p>No. One-off requests are welcome. Flexible recurring packs are being considered for the future, but we will not require a subscription to enquire or order.</p></div></div></article>
-        <article class="faq-item"><button class="faq-question" type="button">Are farm visits available?</button><div class="faq-answer"><div class="faq-answer-inner"><p>We are planning occasional visits rather than keeping regular public hours. Register your interest on the Contact page and we will reach out when a suitable date is available. Please do not arrive without confirmation—the animals and farm routines come first.</p></div></div></article>
-      </div>
+      <FaqAccordion items={faqs} class="reveal-right" />
     </div></section>
-    <section class="section section-sm section-cream"><div class="container"><div class="cta-band" data-reveal><div class="cta-band-inner"><div><p class="eyebrow">Ready to try a batch?</p><h2>Build an order, then say hello.</h2><p>We will confirm exactly what is available before anything is final.</p></div><a class="button button-light" href="/shop.html">Order on WhatsApp</a></div></div></div></section>
+    <CtaBand eyebrow="Ready to try a batch?" title="Build an order, then say hello." description="We will confirm exactly what is available before anything is final." href="/shop.html" label="Order on WhatsApp" cream />
   </main>
 </BaseLayout>

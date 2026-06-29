@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
 
 ---
 
@@ -65,6 +66,6 @@ import PageHero from "../components/PageHero.astro";
       </div>
     </div></section>
 
-    <section class="section section-sm"><div class="container"><div class="cta-band" data-reveal><div class="cta-band-inner"><div><p class="eyebrow">Come closer</p><h2>Follow the farm as it takes shape.</h2><p>See the morning work, meet the herd and ask us about future farm visits.</p></div><a class="button button-light" href="/contact.html#visit">Visit the farm</a></div></div></div></section>
+    <CtaBand eyebrow="Come closer" title="Follow the farm as it takes shape." description="See the morning work, meet the herd and ask us about future farm visits." href="/contact.html#visit" label="Visit the farm" />
   </main>
 </BaseLayout>

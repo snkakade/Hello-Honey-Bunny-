@@ -12,7 +12,7 @@ interface Props {
 const { items, class: className = "" } = Astro.props;
 ---
 
-<div class:list={["accordion", className]} data-accordion>
+<div class:list={["accordion", className]} data-accordion data-reveal="right">
   {items.map((item) => (
     <article class="faq-item">
       <button class="faq-question" type="button">{item.question}</button>

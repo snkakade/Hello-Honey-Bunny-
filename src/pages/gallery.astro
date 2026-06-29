@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
 
 ---
 
@@ -42,6 +43,21 @@ import PageHero from "../components/PageHero.astro";
         <button class="gallery-item wide" type="button" data-category="film" data-video="true" data-reveal><img class="film-image-dark" src="/assets/images/editorial/dairy-still-life.webp" alt="Video placeholder showing the first small-batch dairy collection" loading="lazy" width="1448" height="1086"><span class="gallery-caption always-visible"><span><strong>From milk to table</strong><small>Film placeholder · Coming soon</small></span><span class="play-icon" aria-hidden="true"></span></span></button>
       </div>
     </div></section>
-    <section class="section section-sm section-cream"><div class="container"><div class="cta-band" data-reveal><div class="cta-band-inner"><div><p class="eyebrow">Behind the scenes</p><h2>Want to see the farm in person?</h2><p>Farm visits are still being planned. Tell us you are interested and we will share details when a suitable day is ready.</p></div><a class="button button-light" href="/contact.html#visit">Register your interest</a></div></div></div></section>
+    <CtaBand eyebrow="Behind the scenes" title="Want to see the farm in person?" description="Farm visits are still being planned. Tell us you are interested and we will share details when a suitable day is ready." href="/contact.html#visit" label="Register your interest" cream />
   </main>
+
+  <div
+    class="modal"
+    id="gallery-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="gallery-modal-title"
+    hidden
+  >
+    <div class="modal-content">
+      <h2 class="sr-only" id="gallery-modal-title">Gallery preview</h2>
+      <button class="modal-close" type="button" aria-label="Close gallery preview">×</button>
+      <div data-modal-body></div>
+    </div>
+  </div>
 </BaseLayout>

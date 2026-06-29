@@ -1,102 +1,110 @@
 # Hello Honey Bunny
 
-A premium, mobile-first static website for Hello Honey Bunny, a small-batch goat dairy near Pune.
+A premium, mobile-first website for Hello Honey Bunny, a small-batch goat dairy near Pune. It is built with Astro and outputs lightweight static HTML, CSS and JavaScript.
 
 ## Run locally
 
-No build step or package install is required.
+Requires Node.js 22 or newer.
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Open `http://localhost:8000`.
+Open the local URL printed by Astro (normally `http://localhost:4321`).
 
-## Structure
+Do not open an HTML file directly from the repository. The editable source lives in `src/`; Astro generates the deployable HTML in `dist/`.
 
-- `index.html` — home
-- `about.html` — farm story and values
-- `products.html` — product range and launch status
-- `shop.html` — WhatsApp order builder
-- `gallery.html` — filterable gallery and lightbox
-- `faq.html` — accessible FAQs and FAQ schema
-- `contact.html` — enquiries, partnerships and visits
-- `css/styles.css` — design system and responsive layouts
-- `js/main.js` — navigation, motion, accordions, gallery, cart and forms
-- `assets/images/logo.png` — original logo; keep this file unchanged
-- `assets/images/editorial/` — optimized original WebP photography
-- `sitemap.xml`, `robots.txt` — search discovery files
+## Commands
 
-## Update products
-
-Product storytelling lives in `products.html`. Orderable items live in `shop.html`.
-
-For each shop item:
-
-1. Duplicate or edit an element with `data-product-id`.
-2. Give it a unique `data-product-id`.
-3. Update `data-product-name` and `data-product-size`.
-4. Keep the quantity buttons and `output` element inside the card.
-
-Prices are intentionally confirmed manually because availability and pack details are not yet fixed. When pricing is stable, add it to both the card and generated message in `js/main.js`.
-
-## Update the WhatsApp number
-
-Change the constant at the top of `js/main.js`:
-
-```js
-const WHATSAPP_NUMBER = "918208665234";
+```bash
+npm run dev       # local development server with live updates
+npm run check     # Astro and TypeScript diagnostics
+npm run build     # validate and create the production site in dist/
+npm run preview   # preview the production build
+npm run test:e2e  # build and test all pages/interactions in Chromium
 ```
 
-Use the country code and number only—no `+`, spaces or punctuation. The footer and farm-visit links also contain the number. Search the project for `918208665234` and replace every occurrence.
+For the first browser-test run, install Chromium once:
+
+```bash
+npx playwright install chromium
+```
+
+## Project structure
+
+```text
+public/
+  assets/images/       Original logo and editorial WebP images
+  robots.txt           Search crawler rules
+  sitemap.xml          Public page URLs
+src/
+  components/          Shared header, footer, heroes, CTAs and FAQ UI
+  config/site.js       Phone, WhatsApp, email, address, socials and navigation
+  data/faqs.js         Shared FAQ content and schema source
+  layouts/             Shared metadata, structured data and page shell
+  pages/               The seven editable website pages
+  scripts/             Navigation, motion, gallery and commerce interactions
+  styles/              Design system and section-specific CSS modules
+tests/site.spec.js     Page, image, responsive and interaction checks
+```
+
+The original logo is `public/assets/images/logo.png`. Keep its artwork unchanged.
+
+## Update business details
+
+Edit `src/config/site.js` to change:
+
+- WhatsApp and display phone numbers
+- email address
+- farm location and structured address
+- social links
+- navigation labels
+
+Use only the country code and number in `whatsappNumber`—no `+`, spaces or punctuation.
+
+## Update products and ordering
+
+- Product storytelling: `src/pages/products.astro`
+- Orderable product cards: `src/pages/shop.astro`
+- Cart and WhatsApp message logic: `src/scripts/commerce.js`
+
+Each order card uses `data-product-id`, `data-product-name` and `data-product-size`. Keep those values unique and retain the quantity controls when adding an item.
+
+Orders are intentionally confirmed manually. When a backend is introduced, replace the submit flow in `src/scripts/commerce.js` with an API request, then add server-side validation, inventory, pricing, delivery and payment handling. Add a privacy policy before storing customer details.
+
+## Update FAQs
+
+Edit `src/data/faqs.js`. The full FAQ page, home-page preview and `FAQPage` structured data all use this single source, so answers stay consistent.
 
 ## Replace photos or videos
 
-Place optimized images in `assets/images/editorial/` and update the matching `src`, `width`, `height` and descriptive `alt` text.
+Put optimized images in `public/assets/images/editorial/`, then update the relevant `src`, intrinsic `width`/`height` and descriptive `alt` text in `src/pages/`.
 
 Recommended:
 
 - WebP or AVIF
-- 1600–2000 px wide for hero images
+- 1600–2000 px wide for heroes
 - 900–1400 px wide for cards
 - under 250 KB where practical
-- consistent warm, neutral color grading
+- consistent warm, neutral colour grading
 
-Gallery video cards currently use `data-video="true"` placeholders. To add real video, update the gallery modal code in `js/main.js` to insert a local `<video controls>` element or privacy-conscious hosted embed. Never autoplay with sound.
+Gallery film cards are marked with `data-video="true"`. Their current modal is an intentional placeholder. To add footage, update `src/scripts/gallery.js` to render a local `<video controls>` element or a privacy-conscious hosted embed. Never autoplay with sound.
 
-## SEO and business details
+## SEO and launch checklist
 
-Every page has a unique title, description, canonical URL and social metadata. Before launch:
+Each page defines its own title, description, canonical path and social image through `BaseLayout`. Business, product and FAQ structured data are generated alongside visible content.
 
-1. Confirm the production domain and update canonical, Open Graph and sitemap URLs if needed.
-2. Confirm the phone, email and postal address.
-3. Replace placeholder social links (`href="#"`).
-4. Add a dedicated 1200 × 630 social image if desired.
-5. Submit `sitemap.xml` in Google Search Console.
+Before launch:
 
-Structured data is included for the business, FAQs and available products. Keep it consistent with visible content.
-
-## Future backend or checkout
-
-The order and contact flows generate WhatsApp messages in the browser. No customer details are stored by this site.
-
-To add a backend:
-
-1. Replace the submit handlers marked in `js/main.js` with calls to your API.
-2. Validate all input again on the server.
-3. Add inventory, pricing, delivery and payment services.
-4. Show server-backed confirmation and error states.
-5. Add a privacy policy before storing personal data.
-
-The existing HTML forms and product data attributes can remain as the front-end interface or be migrated to framework components later.
+1. Confirm the production domain in `astro.config.mjs` and `src/config/site.js`.
+2. Update domain references in `public/sitemap.xml` and `public/robots.txt`.
+3. Confirm the phone, email and address.
+4. Replace `#` social placeholders.
+5. Add a dedicated 1200 × 630 social image if desired.
+6. Run `npm run test:e2e`.
+7. Submit the sitemap in Google Search Console.
 
 ## Accessibility and motion
 
-- Semantic landmarks and heading order
-- Keyboard-accessible navigation, accordions and gallery modal
-- Visible focus states
-- Live regions for form and cart feedback
-- `prefers-reduced-motion` support
-- Lazy-loaded below-the-fold imagery
-
-Test product changes with keyboard navigation and on a small mobile screen before publishing.
+The site includes semantic landmarks, keyboard-accessible navigation and controls, visible focus states, form feedback, responsive layouts and reduced-motion support. Test meaningful content changes with a keyboard and at a narrow mobile width before publishing.

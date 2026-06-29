@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
 
 const schema = {"@context":"https://schema.org","@graph":[
     {"@type":"Product","name":"Fresh Goat Milk","brand":{"@type":"Brand","name":"Hello Honey Bunny"},"description":"Small-batch fresh goat milk prepared near Pune.","image":"https://hellohoneybunny.com/assets/images/editorial/dairy-still-life.webp","offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability","url":"https://hellohoneybunny.com/shop.html"}},
@@ -46,6 +47,6 @@ const schema = {"@context":"https://schema.org","@graph":[
       <div class="story-media landscape" data-reveal="left"><img src="/assets/images/editorial/dairy-still-life.webp" alt="Minimal still life of goat milk, curd, paneer and cheese" loading="lazy" width="1448" height="1086"></div>
       <div class="story-copy" data-reveal="right"><p class="eyebrow">Handling matters</p><h2>Fresh is a practice.</h2><p class="large-copy">Prompt chilling, clean containers and a short journey matter just as much as the recipe.</p><p>Each confirmed order will include practical storage guidance. Refrigerate fresh dairy promptly, use clean utensils and follow the use-by guidance provided with your batch.</p><a class="text-link" href="/faq.html">Read storage FAQs</a></div>
     </div></section>
-    <section class="section section-sm"><div class="container"><div class="cta-band" data-reveal><div class="cta-band-inner"><div><p class="eyebrow">Ready when the farm is</p><h2>Build an order in a few taps.</h2><p>No payment gateway yet—your selection opens in WhatsApp and we confirm every detail manually.</p></div><a class="button button-light" href="/shop.html">Start an order</a></div></div></div></section>
+    <CtaBand eyebrow="Ready when the farm is" title="Build an order in a few taps." description="No payment gateway yet—your selection opens in WhatsApp and we confirm every detail manually." href="/shop.html" label="Start an order" />
   </main>
 </BaseLayout>
