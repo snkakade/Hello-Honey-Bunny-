@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PageHero from "../components/PageHero.astro";
 
 ---
 
@@ -12,13 +11,10 @@ import PageHero from "../components/PageHero.astro";
   image="/assets/images/editorial/dairy-still-life.webp"
 >
   <main id="main">
-<PageHero
-  eyebrow="Shop the current release"
-  title="Choose here. Confirm with a human."
-  description="Add what you would like, share a few delivery details and we will open a ready-made message in WhatsApp."
->
-  <aside slot="visual" class="page-hero-note" data-reveal="right" aria-label="Ordering note"><strong>No payment is taken online.</strong>Orders are currently confirmed manually on WhatsApp. Availability, delivery and final pricing are shared before you commit.</aside>
-</PageHero>
+<section class="page-hero"><div class="container page-hero-grid">
+      <div data-reveal><p class="eyebrow">Shop the current release</p><h1>Choose here. Confirm with a human.</h1><p class="lede">Add what you would like, share a few delivery details and we will open a ready-made message in WhatsApp.</p></div>
+      <aside class="page-hero-note" data-reveal="right" aria-label="Ordering note"><strong>No payment is taken online.</strong>Orders are currently confirmed manually on WhatsApp. Availability, delivery and final pricing are shared before you commit.</aside>
+    </div></section>
 
     <section class="section"><div class="container shop-layout" data-shop>
       <div>
