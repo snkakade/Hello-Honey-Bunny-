@@ -82,3 +82,30 @@
 }
 
 .footer-bottom p { margin-bottom: 0; }
+
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.55rem 0.85rem;
+  color: #18251e;
+  background: var(--honey);
+  border-radius: 999px;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.footer-credit strong { font-weight: 750; }
+
+.footer-credit:hover {
+  color: #18251e;
+  background: var(--milk);
+  transform: translateY(-2px);
+}
+
+.footer-credit:focus-visible {
+  outline: 2px solid var(--milk);
+  outline-offset: 3px;
+}
