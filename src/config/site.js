@@ -14,7 +14,8 @@ export const site = {
   },
   social: {
     instagram: "#",
-    facebook: "#"
+    facebook: "#",
+    linkedin: "https://www.linkedin.com/company/hellohoneybunny"
   }
 };
 
