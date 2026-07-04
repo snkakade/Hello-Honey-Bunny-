@@ -23,8 +23,8 @@ const {
   preloadImage
 } = Astro.props;
 
-const canonical = new URL(canonicalPath, Astro.site);
-const socialImage = new URL(image, Astro.site);
+const canonical = new URL(canonicalPath.replace(/^\//, ""), Astro.site);
+const socialImage = new URL(image.replace(/^\//, ""), Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -45,8 +45,8 @@ const socialImage = new URL(image, Astro.site);
     <meta name="twitter:description" content={description}>
     <meta name="twitter:image" content={socialImage}>
     <meta name="theme-color" content="#f7f1e6">
-    <link rel="icon" href="/assets/images/logo.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="assets/images/logo.png">
+    <link rel="manifest" href="site.webmanifest">
     {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp">}
     {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>

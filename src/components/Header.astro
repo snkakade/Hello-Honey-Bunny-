@@ -10,8 +10,8 @@ const { activePage = "" } = Astro.props;
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Hello Honey Bunny home">
-      <img src="/assets/images/logo.png" alt="" width="88" height="72">
+    <a class="brand" href="./" aria-label="Hello Honey Bunny home">
+      <img src="assets/images/logo.png" alt="" width="88" height="72">
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
       <span></span>
@@ -20,7 +20,7 @@ const { activePage = "" } = Astro.props;
       {navItems.map((item) => (
         <a href={item.href} aria-current={activePage === item.page ? "page" : undefined}>{item.label}</a>
       ))}
-      <a class="button button-primary" href="/shop.html" aria-current={activePage === "shop" ? "page" : undefined}>
+      <a class="button button-primary" href="shop.html" aria-current={activePage === "shop" ? "page" : undefined}>
         Order on WhatsApp
       </a>
     </nav>

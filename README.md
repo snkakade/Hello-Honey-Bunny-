@@ -25,6 +25,17 @@ npm run preview   # preview the production build
 npm run test:e2e  # build and test all pages/interactions in Chromium
 ```
 
+## Deployment
+
+Pushes to `hhb-revamped-june2026` deploy automatically:
+
+- Cloudflare continues to build the custom-domain site at `https://hellohoneybunny.com`.
+- GitHub Actions builds a separate GitHub Pages copy at
+  `https://snkakade.github.io/Hello-Honey-Bunny-/`.
+
+The GitHub Pages build sets `GITHUB_PAGES=true` so Astro adds the repository
+subpath. Normal local and Cloudflare builds keep using the custom domain.
+
 For the first browser-test run, install Chromium once:
 
 ```bash
