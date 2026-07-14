@@ -65,3 +65,9 @@ Automated responsive checks use Playwright Chromium at 360 by 800, 390 by 844, 7
 - `npm audit --omit=dev`: zero findings.
 
 The approved in-app browser remained unavailable, so final screenshots and Lighthouse output could not be captured in this session. The draft pull request records this limitation rather than presenting substitute evidence. The final branch commit SHA is recorded in the pull request and deployment handoff.
+
+## Visual redesign iteration
+
+The follow-up design pass adds an editorial forest, honey, clay and cream system; a more expressive system-serif typography stack; two original illustrative assets; layered responsive layouts; and GSAP 3.15 motion with ScrollTrigger. The illustrations are intentionally non-documentary and do not represent live inventory or verified farm scenes.
+
+Motion remains progressive enhancement. Reduced-motion users receive the static layout, essential content is visible without JavaScript, and the mobile navigation remains usable if scripts fail. The complete SEO, content-safety, accessibility and five-viewport test suite passes after the redesign. The in-app browser remained unavailable for a manual rendered visual review, so that preview task remains explicitly open rather than being represented as complete.
