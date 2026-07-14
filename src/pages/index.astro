@@ -10,7 +10,10 @@ import { Picture } from "astro:assets";
 import landscapeArt from "../assets/images/illustrated-landscape-v2.webp";
 import stillLifeArt from "../assets/images/illustrated-still-life-v2.webp";
 import farmImage from "../assets/images/farm-morning.webp";
+import milkWideArt from "../assets/images/illustrated-milk-wide-v4.png";
+import paneerWideArt from "../assets/images/illustrated-paneer-wide-v4.png";
 const whatsapp = whatsappUrl(availabilityMessage);
+const productCardImages = [milkWideArt, paneerWideArt];
 ---
 <BaseLayout title="Small-Batch Goat Dairy Near Pune | Hello Honey Bunny" description="Fresh goat milk and goat milk paneer can be requested from Hello Honey Bunny in Kunjirwadi, near Pune. Confirm the current batch personally on WhatsApp." canonicalPath="/" schema={homeSchema()}>
   <main id="main">
@@ -53,7 +56,7 @@ const whatsapp = whatsappUrl(availabilityMessage);
           <h2>Two products. <em>One clear answer.</em></h2>
           <p>Small-batch availability changes. The website keeps the choice simple, and we confirm the detail with you directly.</p>
         </div>
-        <div class="product-grid product-grid-editorial">{requestableProducts.map((product, index) => <div class="product-wrap" data-reveal data-product-index={`0${index + 1}`}><ProductCard product={product} /></div>)}</div>
+        <div class="product-grid product-grid-editorial">{requestableProducts.map((product, index) => <div class="product-wrap" data-reveal data-product-index={`0${index + 1}`}><ProductCard product={product} image={productCardImages[index]} /></div>)}</div>
       </div>
     </section>
 
