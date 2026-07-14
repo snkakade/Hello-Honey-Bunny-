@@ -4,7 +4,7 @@ const links = [["Fresh Goat Milk", "/fresh-goat-milk"], ["Goat Milk Paneer", "/g
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><a class="footer-logo" href={withBase("/")} aria-label="Hello Honey Bunny home"><img src={withBase("/assets/brand/logo.svg")} width="640" height="160" alt="" loading="lazy" /></a><p>{site.description}</p><p>{site.location}</p><a href={`https://wa.me/${site.whatsappNumber}`} target="_blank" rel="noopener">WhatsApp {site.phoneDisplay}</a></div>
+    <div><a class="footer-logo" href={withBase("/")} aria-label="Hello Honey Bunny home"><img src={withBase("/assets/brand/official-full-logo.svg")} width="720" height="720" alt="" loading="lazy" /></a><p>{site.description}</p><p>{site.location}</p><a href={`https://wa.me/${site.whatsappNumber}`} target="_blank" rel="noopener">WhatsApp {site.phoneDisplay}</a></div>
     <nav aria-label="Footer navigation">{links.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}</nav>
     <div><h2>Elsewhere</h2><a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
   </div>

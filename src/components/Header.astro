@@ -5,7 +5,7 @@ const { activePage = "" } = Astro.props;
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="wordmark" href={withBase("/")} aria-label="Hello Honey Bunny home"><img src={withBase("/assets/brand/logo.svg")} width="640" height="160" alt="" /></a>
+    <a class="wordmark" href={withBase("/")} aria-label="Hello Honey Bunny home"><img src={withBase("/assets/brand/official-logo-mark.png")} width="3000" height="3000" alt="" /></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span>Open menu</span></button>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       {navItems.map((item) => <a href={withBase(item.href)} aria-current={activePage === item.page ? "page" : undefined}>{item.label}</a>)}

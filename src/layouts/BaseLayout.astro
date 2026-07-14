@@ -14,7 +14,7 @@ interface Props {
   noindex?: boolean;
   schema?: Record<string, unknown> | (Record<string, unknown> | undefined)[];
 }
-const { title, description, canonicalPath, activePage = "", image = "/assets/brand/social-card.png", imageAlt = "Hello Honey Bunny, small-batch goat dairy near Pune", noindex = false, schema } = Astro.props;
+const { title, description, canonicalPath, activePage = "", image = "/assets/brand/official-full-logo.png", imageAlt = "Hello Honey Bunny official logo", noindex = false, schema } = Astro.props;
 const canonical = new URL(canonicalPath, `${site.url}/`).href;
 const socialImage = new URL(image, `${site.url}/`).href;
 const schemas = (Array.isArray(schema) ? schema : [schema]).filter(Boolean);
@@ -30,10 +30,10 @@ const schemas = (Array.isArray(schema) ? schema : [schema]).filter(Boolean);
     <link rel="canonical" href={canonical}>
     <meta property="og:type" content="website"><meta property="og:site_name" content={site.name}><meta property="og:locale" content="en_IN">
     <meta property="og:title" content={title}><meta property="og:description" content={description}><meta property="og:url" content={canonical}>
-    <meta property="og:image" content={socialImage}><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content={imageAlt}>
+    <meta property="og:image" content={socialImage}><meta property="og:image:alt" content={imageAlt}>
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content={title}><meta name="twitter:description" content={description}><meta name="twitter:image" content={socialImage}>
     <meta name="theme-color" content="#f6f0e3">
-    <link rel="icon" type="image/svg+xml" href={withBase("/assets/brand/favicon.svg")}><link rel="icon" type="image/png" sizes="32x32" href={withBase("/assets/brand/favicon-32.png")}><link rel="icon" type="image/png" sizes="48x48" href={withBase("/assets/brand/favicon-48.png")}><link rel="apple-touch-icon" sizes="180x180" href={withBase("/assets/brand/apple-touch-icon.png")}>
+    <link rel="icon" type="image/png" href={withBase("/assets/brand/official-white-favicon.png")}><link rel="apple-touch-icon" href={withBase("/assets/brand/official-logo-mark.png")}>
     {schemas.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
   </head>
   <body>

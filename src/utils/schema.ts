@@ -7,8 +7,8 @@ export function homeSchema() {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, url: `${site.url}/`, logo: absolute("/assets/brand/logo.svg"), image: absolute("/assets/brand/social-card.png"), telephone: site.phoneDisplay, email: site.email },
-      { "@type": "LocalBusiness", "@id": `${site.url}/#business`, name: site.name, url: `${site.url}/`, image: absolute("/assets/brand/social-card.png"), telephone: site.phoneDisplay, email: site.email, address: { "@type": "PostalAddress", addressLocality: site.address.locality, addressRegion: site.address.region, postalCode: site.address.postalCode, addressCountry: site.address.country }, parentOrganization: { "@id": `${site.url}/#organization` } },
+      { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, url: `${site.url}/`, logo: absolute("/assets/brand/official-full-logo.svg"), image: absolute("/assets/brand/official-full-logo.png"), telephone: site.phoneDisplay, email: site.email },
+      { "@type": "LocalBusiness", "@id": `${site.url}/#business`, name: site.name, url: `${site.url}/`, image: absolute("/assets/brand/official-full-logo.png"), telephone: site.phoneDisplay, email: site.email, address: { "@type": "PostalAddress", addressLocality: site.address.locality, addressRegion: site.address.region, postalCode: site.address.postalCode, addressCountry: site.address.country }, parentOrganization: { "@id": `${site.url}/#organization` } },
       { "@type": "WebSite", "@id": `${site.url}/#website`, name: site.name, url: `${site.url}/`, publisher: { "@id": `${site.url}/#organization` } }
     ]
   };

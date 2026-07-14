@@ -99,8 +99,9 @@ h1 em, h2 em { color: var(--honey-dark); font-weight: 400; }
 .breadcrumbs { padding-top: 1.25rem; }
 .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; list-style: none; font-size: 0.86rem; }
 .breadcrumbs li + li::before { margin-right: 0.45rem; color: var(--muted); content: "/"; }
-.page-intro { position: relative; padding-block: clamp(4rem, 8vw, 8rem); overflow: hidden; }
+.page-intro { position: relative; padding-block: clamp(3rem, 5vw, 5rem); overflow: hidden; }
 .page-intro::after { position: absolute; z-index: -1; top: 12%; right: -8%; width: 34vw; height: 34vw; background: var(--honey); border-radius: 42% 58% 66% 34% / 48% 38% 62% 52%; opacity: 0.12; content: ""; }
+.page-intro h1 { max-width: 820px; margin-bottom: 1.25rem; font-size: clamp(3.25rem, 5.25vw, 5.25rem); line-height: 1.02; }
 .page-intro p { max-width: 760px; }
 .notice { padding: 1.1rem 1.2rem; background: var(--cream); border-left: 4px solid var(--honey-dark); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 
@@ -109,6 +110,8 @@ h1 em, h2 em { color: var(--honey-dark); font-weight: 400; }
   .section { padding-block: 4.6rem; }
   h1 { font-size: clamp(3.2rem, 15.5vw, 5.2rem); }
   h2 { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .page-intro { padding-block: 3.25rem 4rem; }
+  .page-intro h1 { font-size: clamp(2.85rem, 12vw, 4rem); line-height: 1; }
   .button-row .button { width: 100%; }
   .section-heading-display > p:last-child { margin-left: 0; }
 }
