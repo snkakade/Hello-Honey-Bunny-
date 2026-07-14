@@ -72,5 +72,5 @@ test("pages have no serious or critical accessibility violations", async ({ page
 });
 
 test("site remains readable without JavaScript and 404 is noindex", async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage(); await page.goto("/"); await expect(page.locator("h1")).toBeVisible(); await expect(page.locator("main")).toContainText("Small-batch goat milk near Pune"); await page.goto("/404"); await expect(page.locator("h1")).toContainText("could not find"); await expect(page.locator("meta[name='robots']")).toHaveAttribute("content", "noindex, follow"); await context.close();
+  const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage(); await page.goto("/"); await expect(page.locator("h1")).toBeVisible(); await expect(page.locator("main")).toContainText("Fresh goat milk and paneer"); await page.goto("/404"); await expect(page.locator("h1")).toContainText("could not find"); await expect(page.locator("meta[name='robots']")).toHaveAttribute("content", "noindex, follow"); await context.close();
 });
