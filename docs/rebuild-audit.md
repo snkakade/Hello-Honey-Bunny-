@@ -68,6 +68,6 @@ The approved in-app browser remained unavailable, so final screenshots and Light
 
 ## Visual redesign iteration
 
-The follow-up design pass adds an editorial forest, honey, clay and cream system; a more expressive system-serif typography stack; two original illustrative assets; layered responsive layouts; and GSAP 3.15 motion with ScrollTrigger. The illustrations are intentionally non-documentary and do not represent live inventory or verified farm scenes.
+The follow-up design passes add an editorial forest, honey, clay and cream system; a more expressive system-serif typography stack; four original illustrative assets; layered responsive layouts; Lenis 1.3 smooth scrolling; and GSAP 3.15 motion with ScrollTrigger. The illustrations are intentionally non-documentary and do not represent live inventory or verified farm scenes.
 
 Motion remains progressive enhancement. Reduced-motion users receive the static layout, essential content is visible without JavaScript, and the mobile navigation remains usable if scripts fail. The complete SEO, content-safety, accessibility and five-viewport test suite passes after the redesign. The in-app browser remained unavailable for a manual rendered visual review, so that preview task remains explicitly open rather than being represented as complete.

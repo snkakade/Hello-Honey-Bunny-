@@ -43,6 +43,7 @@
 .product-card > picture { display: block; overflow: hidden; }
 .product-card > picture img { width: 100%; height: clamp(320px, 42vw, 520px); object-fit: cover; transition: transform 800ms var(--ease); }
 .product-card:hover > picture img { transform: scale(1.045); }
+.product-art-label { position: absolute; top: clamp(280px, 38vw, 470px); right: 1rem; z-index: 2; padding: .65rem .8rem; color: var(--milk); background: var(--forest); border-radius: 8px 8px 2px 8px; box-shadow: 0 10px 28px rgba(13,40,28,.18); font-size: .64rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; transform: rotate(2deg); }
 .product-card-body { padding: clamp(1.4rem, 3vw, 2.3rem); }
 .product-card-body h3 { font-size: clamp(2rem, 4vw, 3.6rem); }
 .product-card-body .card-actions { align-items: center; justify-content: space-between; margin-top: 1.5rem; }
@@ -137,6 +138,7 @@
   .product-grid, .feature-grid, .hero-grid, .split-grid, .story-grid, .photo-grid, .location-card { grid-template-columns: 1fr; }
   .product-wrap:nth-child(even) { margin-top: 0; }
   .product-card > picture img { height: 360px; }
+  .product-art-label { top: 322px; }
   .hero-art-frame { border-width: 5px; border-radius: 38% 38% 16px 16px / 18% 18% 16px 16px; }
   .hero-art-frame picture, .hero-art-frame img { height: 500px; }
   .hero-stamp { top: -1rem; width: 108px; height: 108px; }

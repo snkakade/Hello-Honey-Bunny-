@@ -10,6 +10,7 @@ function closeMenu({ returnFocus = false } = {}) {
   toggle.setAttribute("aria-expanded", "false");
   toggle.querySelector("span").textContent = "Open menu";
   document.body.classList.remove("menu-open");
+  window.dispatchEvent(new CustomEvent("hhb:menu", { detail: { open: false } }));
   if (returnFocus) (lastFocused || toggle).focus();
 }
 function openMenu() {
@@ -19,6 +20,7 @@ function openMenu() {
   toggle.setAttribute("aria-expanded", "true");
   toggle.querySelector("span").textContent = "Close menu";
   document.body.classList.add("menu-open");
+  window.dispatchEvent(new CustomEvent("hhb:menu", { detail: { open: true } }));
   focusableItems()[0]?.focus();
 }
 

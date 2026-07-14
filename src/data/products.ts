@@ -1,3 +1,7 @@
+import type { ImageMetadata } from "astro";
+import dairyImage from "../assets/images/illustrated-milk-v3.webp";
+import paneerImage from "../assets/images/illustrated-paneer-v3.webp";
+
 export type ProductStatus =
   | "available-by-request"
   | "in-development"
@@ -39,9 +43,9 @@ export const products: Product[] = [
     indicativePackSizes: ["500 ml", "1 litre"],
     storageSummary: "Keep refrigerated and follow the storage and use-by guidance supplied with the confirmed batch.",
     image: dairyImage,
-    imageAlt: "Glass bottle and glass of milk on a light table",
-    imageWidth: 1448,
-    imageHeight: 1086,
+    imageAlt: "Illustrated milk bottle and cup among abstract fields",
+    imageWidth: 1122,
+    imageHeight: 1402,
     seoTitle: "Fresh Goat Milk Near Pune | Hello Honey Bunny",
     seoDescription: "Request fresh goat milk in indicative 500 ml and 1 litre sizes from Hello Honey Bunny in Kunjirwadi, near Pune. Confirm the current batch on WhatsApp.",
     primaryKeyword: "fresh goat milk near Pune",
@@ -60,7 +64,7 @@ export const products: Product[] = [
     indicativePackSizes: ["200 g", "400 g"],
     storageSummary: "Keep refrigerated and follow the storage and use-by guidance supplied with the confirmed batch.",
     image: paneerImage,
-    imageAlt: "Dairy products arranged on a light surface",
+    imageAlt: "Illustrated serving idea with paneer cubes in a patterned landscape",
     imageWidth: 1122,
     imageHeight: 1402,
     seoTitle: "Goat Milk Paneer Near Pune | Hello Honey Bunny",
@@ -110,6 +114,3 @@ export function getProduct(id: string) {
   if (!product) throw new Error(`Unknown product: ${id}`);
   return product;
 }
-import type { ImageMetadata } from "astro";
-import dairyImage from "../assets/images/dairy-still-life.webp";
-import paneerImage from "../assets/images/product-collection-cutout.webp";

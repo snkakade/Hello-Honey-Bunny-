@@ -2,7 +2,7 @@
 
 Astro 7 static website for a small-batch goat dairy in Kunjirwadi, Maharashtra 412201, near Pune. The site is focused on current batch availability for fresh goat milk and goat milk paneer.
 
-The visual system combines responsive Astro imagery with GSAP and ScrollTrigger motion. Animations are progressive enhancement only: content remains visible and navigation remains usable when JavaScript is unavailable, and motion is disabled when the user requests reduced motion.
+The visual system combines responsive Astro imagery with Lenis, GSAP and ScrollTrigger motion. Motion is progressive enhancement only: content remains visible and navigation remains usable when JavaScript is unavailable, and enhanced scrolling and animation are disabled when the user requests reduced motion.
 
 ## Local development
 
@@ -66,11 +66,11 @@ The retired public logo is archived at `docs/archive/legacy-logo.png`. Current o
 3. Add intrinsic dimensions and factual alt text.
 4. Do not imply an unverified farm practice, breed, process or availability state.
 
-The generated editorial illustrations live in `src/assets/images/illustrated-landscape-v2.webp` and `src/assets/images/illustrated-still-life-v2.webp`. They are intentionally illustrative and must not be described as documentary farm photography.
+The generated editorial illustrations live in `src/assets/images/illustrated-landscape-v2.webp`, `src/assets/images/illustrated-still-life-v2.webp`, `src/assets/images/illustrated-milk-v3.webp` and `src/assets/images/illustrated-paneer-v3.webp`. They are intentionally illustrative and must not be described as documentary farm photography.
 
 ## Motion system
 
-`src/scripts/motion.js` imports GSAP and ScrollTrigger from the local `gsap` package. It controls the hero entrance, scroll reveals, image depth, section ornaments and fine-pointer button movement. Keep all essential information visible before the script runs, avoid animating layout-critical dimensions and test every change with reduced motion enabled.
+`src/scripts/motion.js` imports Lenis, GSAP and ScrollTrigger from local packages. Lenis provides native-scroll-based smoothing and feeds ScrollTrigger through the GSAP ticker. The same module controls the hero entrance, scroll reveals, image depth, section ornaments and fine-pointer button movement. Keep all essential information visible before the script runs, avoid animating layout-critical dimensions and test every change with reduced motion enabled.
 
 ## Verification
 

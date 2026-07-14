@@ -1,5 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -7,6 +9,19 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 
 if (!reduceMotion) {
   document.documentElement.classList.add("motion-ready");
+
+  const lenis = new Lenis({
+    duration: 1.05,
+    smoothWheel: true,
+    syncTouch: false,
+    anchors: { offset: -84 },
+    prevent: (node) => Boolean(node.closest("textarea, select, [data-lenis-prevent]"))
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  window.addEventListener("hhb:menu", (event) => event.detail?.open ? lenis.stop() : lenis.start());
 
   gsap.from(".site-header", { yPercent: -110, duration: 0.85, ease: "power3.out" });
 
