@@ -1,10 +1,9 @@
 .site-header { position: sticky; z-index: 200; top: 0; min-height: var(--header); background: rgba(255, 250, 240, 0.88); border-bottom: 1px solid rgba(24, 61, 43, 0.12); backdrop-filter: blur(16px); }
 .site-header::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--honey), transparent); opacity: 0.4; content: ""; }
 .header-inner { display: flex; min-height: var(--header); align-items: center; justify-content: space-between; gap: 1.25rem; }
-.wordmark { display: flex; align-items: center; gap: 0.75rem; color: var(--forest); text-decoration: none; }
-.wordmark span { display: grid; width: 44px; height: 44px; place-items: center; color: var(--forest); background: var(--honey); border-radius: 50% 50% 46% 54%; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.06em; transform: rotate(-7deg); transition: transform 450ms var(--ease), border-radius 450ms var(--ease); }
-.wordmark:hover span { border-radius: 35% 65% 58% 42%; transform: rotate(5deg); }
-.wordmark strong { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; letter-spacing: -0.03em; }
+.wordmark { display: block; flex: 0 0 auto; text-decoration: none; }
+.wordmark img { display: block; width: clamp(190px, 18vw, 250px); height: auto; border-radius: 8px; transition: transform 350ms var(--ease), filter 350ms ease; }
+.wordmark:hover img { filter: drop-shadow(0 7px 12px rgba(24,61,43,.12)); transform: translateY(-2px); }
 .site-nav { display: flex; align-items: center; gap: clamp(0.8rem, 1.6vw, 1.35rem); }
 .site-nav > a { position: relative; font-size: 0.79rem; font-weight: 700; text-decoration: none; }
 .site-nav > a:not(.button)::after { position: absolute; right: 0; bottom: -0.45rem; left: 0; height: 2px; background: var(--honey-dark); content: ""; transform: scaleX(0); transform-origin: right; transition: transform 260ms var(--ease); }
@@ -32,4 +31,4 @@
 
 @keyframes nav-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-@media (max-width: 520px) { .wordmark strong { font-size: 1.05rem; } .wordmark span { width: 40px; height: 40px; } }
+@media (max-width: 520px) { .wordmark img { width: 176px; } }
