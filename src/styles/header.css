@@ -15,7 +15,7 @@
   .header-inner { align-items: flex-start; flex-wrap: wrap; padding-block: 1rem; }
   .site-nav { display: grid; width: 100%; align-content: start; align-items: stretch; }
   .js .nav-toggle { display: block; }
-  .js .site-nav { position: fixed; top: var(--header); right: 0; bottom: 0; left: 0; display: none; width: auto; padding: 2rem max(1rem, calc((100vw - var(--container)) / 2)); background: var(--cream); }
+  .js .site-nav { position: absolute; top: 100%; right: 0; left: 0; display: none; width: auto; height: calc(100svh - var(--header)); padding: 2rem max(1rem, calc((100vw - var(--container)) / 2)); overflow-y: auto; background: var(--cream); }
   .js .site-nav::before { position: absolute; right: -15vw; bottom: -15vw; width: 60vw; height: 60vw; background: var(--honey); border-radius: 50%; opacity: 0.14; content: ""; }
   .js .site-nav.open { display: grid; }
   .js .site-nav.open > a { animation: nav-in .5s both var(--ease); }

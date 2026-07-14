@@ -34,4 +34,4 @@ document.addEventListener("keydown", (event) => {
   if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
   else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
 });
-matchMedia("(min-width: 901px)").addEventListener("change", (event) => { if (event.matches) closeMenu(); });
+matchMedia("(min-width: 981px)").addEventListener("change", (event) => { if (event.matches) closeMenu(); });

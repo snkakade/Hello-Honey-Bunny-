@@ -53,7 +53,8 @@ test("batch request validates fields and creates the approved WhatsApp message w
 });
 
 test("mobile menu supports keyboard, Escape and focus return", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 }); await page.goto("/"); const toggle = page.locator(".nav-toggle"); await toggle.focus(); await page.keyboard.press("Enter"); await expect(toggle).toHaveAttribute("aria-expanded", "true"); await expect(toggle).toContainText("Close menu"); await page.keyboard.press("Escape"); await expect(toggle).toHaveAttribute("aria-expanded", "false"); await expect(toggle).toBeFocused(); await expect(toggle).toContainText("Open menu");
+  await page.setViewportSize({ width: 390, height: 844 }); await page.goto("/"); const toggle = page.locator(".nav-toggle"); await toggle.focus(); await page.keyboard.press("Enter"); await expect(toggle).toHaveAttribute("aria-expanded", "true"); await expect(toggle).toContainText("Close menu"); await expect(page.locator("#site-nav")).toBeVisible(); await expect(page.locator("#site-nav a").last()).toBeVisible(); await page.keyboard.press("Escape"); await expect(toggle).toHaveAttribute("aria-expanded", "false"); await expect(toggle).toBeFocused(); await expect(toggle).toContainText("Open menu");
+  await page.setViewportSize({ width: 950, height: 800 }); await toggle.click(); await expect(page.locator("body")).toHaveClass(/menu-open/); await page.setViewportSize({ width: 1000, height: 800 }); await expect(toggle).toHaveAttribute("aria-expanded", "false"); await expect(page.locator("body")).not.toHaveClass(/menu-open/);
 });
 
 test("all required viewports avoid horizontal overflow and browser errors", async ({ page }) => {
