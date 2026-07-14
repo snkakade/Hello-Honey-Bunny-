@@ -1,0 +1,12 @@
+---
+import type { Product } from "../data/products";
+import { Picture } from "astro:assets";
+import { statusLabels } from "../data/products";
+import { withBase } from "../config/site";
+interface Props { product: Product }
+const { product } = Astro.props;
+---
+<article class="product-card">
+  {product.image && <Picture src={product.image} formats={["avif"]} fallbackFormat="webp" widths={[360, 560, 760]} sizes="(max-width: 750px) 100vw, 50vw" alt={product.imageAlt!} loading="lazy" decoding="async" />}
+  <div class="product-card-body"><p class="status">{statusLabels[product.status]}</p><h3>{product.name}</h3><p>{product.shortDescription}</p><p><strong>Indicative sizes:</strong> {product.indicativePackSizes.join(" and ")}</p><div class="card-actions"><a class="text-link" href={withBase(product.slug)}>View {product.name.toLowerCase()}</a><a class="button button-secondary" href={withBase(`/request-a-batch?product=${product.id}`)}>Request this batch</a></div></div>
+</article>

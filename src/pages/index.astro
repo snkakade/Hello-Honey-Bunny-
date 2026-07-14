@@ -1,201 +1,35 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CtaBand from "../components/CtaBand.astro";
+import ProductCard from "../components/ProductCard.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
-import { homeFaqs } from "../data/faqs.js";
-
-const schema = {
-    "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
-    "name": "Hello Honey Bunny",
-    "url": "https://hellohoneybunny.com/",
-    "logo": "https://hellohoneybunny.com/assets/images/logo.png",
-    "image": "https://hellohoneybunny.com/assets/images/editorial/farm-morning.webp",
-    "description": "A small-batch goat dairy farm near Pune creating fresh milk and artisanal farm products.",
-    "telephone": "+91-8208-665-234",
-    "email": "visit@hellohoneybunny.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Kunjirwadi",
-      "addressRegion": "Maharashtra",
-      "postalCode": "412201",
-      "addressCountry": "IN"
-    },
-    "areaServed": "Pune, Maharashtra"
-  };
+import { requestableProducts } from "../data/products";
+import { homeFaqs } from "../data/faqs";
+import { availabilityMessage, whatsappUrl, withBase } from "../config/site";
+import { homeSchema } from "../utils/schema";
+import { Picture } from "astro:assets";
+import dairyImage from "../assets/images/dairy-still-life.webp";
+const whatsapp = whatsappUrl(availabilityMessage);
 ---
-
-<BaseLayout
-  title="Hello Honey Bunny | Small-Batch Goat Dairy Near Pune"
-  description="Hello Honey Bunny is a small-batch goat dairy farm near Pune, creating fresh goat milk and thoughtful farm products with quiet care."
-  canonicalPath="/"
-  activePage=""
-  image="/assets/images/editorial/farm-morning.webp"
-  preloadImage="/assets/images/editorial/farm-morning.webp"
-  schema={schema}
->
+<BaseLayout title="Small-Batch Goat Dairy Near Pune | Hello Honey Bunny" description="Fresh goat milk and goat milk paneer can be requested from Hello Honey Bunny in Kunjirwadi, near Pune. Confirm the current batch personally on WhatsApp." canonicalPath="/" schema={homeSchema()}>
   <main id="main">
-<section class="hero">
-      <div class="orb orb-one" aria-hidden="true"></div>
-      <div class="orb orb-two" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy" data-reveal="left">
-          <p class="eyebrow">A goat dairy near Pune</p>
-          <h1>Freshness, handled gently.</h1>
-          <p class="lede">Small-batch goat dairy shaped by clean routines, thoughtful care and the simple pleasure of food made close to home.</p>
-          <div class="button-row">
-            <a class="button button-primary" href="shop.html">Order on WhatsApp</a>
-            <a class="button button-secondary" href="products.html">Explore our products</a>
-          </div>
-        </div>
-        <div class="hero-media" data-parallax data-reveal="right">
-          <img src="assets/images/editorial/farm-morning.webp" alt="Goats in soft morning light at a small dairy farm near Pune" width="1586" height="992">
-          <div class="hero-card">
-            <strong>Our founding season</strong>
-            <span>Limited releases, confirmed personally on WhatsApp.</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="hero"><div class="container hero-grid">
+      <div class="hero-copy"><p class="eyebrow">Kunjirwadi, near Pune</p><h1>Small-batch goat milk near Pune</h1><p class="lede">Fresh goat milk and goat milk paneer can currently be requested in limited batches. Availability, final pricing, pickup and delivery options are confirmed personally on WhatsApp.</p><div class="button-row"><a class="button button-primary" href={whatsapp} target="_blank" rel="noopener">Check current batch on WhatsApp</a><a class="button button-secondary" href={withBase("/products")}>View milk and paneer</a></div></div>
+      <div class="hero-media"><Picture src={dairyImage} formats={["avif"]} fallbackFormat="webp" widths={[480, 768, 1100]} sizes="(max-width: 750px) 100vw, 48vw" alt="Milk bottle and glass arranged on a light table" fetchpriority="high" loading="eager" decoding="async" /></div>
+    </div></section>
 
-    <ul class="promise-strip">
-      <li class="promise-item"><strong>Small batches</strong>Prepared with attention, not at industrial scale.</li>
-      <li class="promise-item"><strong>Clean handling</strong>Clear routines from the farm to your table.</li>
-      <li class="promise-item"><strong>Responsible care</strong>Animal wellbeing sits at the heart of the farm.</li>
-      <li class="promise-item"><strong>Near Pune</strong>Local availability, so freshness travels less.</li>
-    </ul>
+    <section class="section section-cream"><div class="container"><div class="section-heading"><p class="eyebrow">Current products</p><h2>Milk and paneer available by request</h2><p>Pack sizes are indicative. Current options are confirmed with each batch.</p></div><div class="product-grid">{requestableProducts.map((product) => <ProductCard product={product} />)}</div></div></section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-heading split" data-reveal>
-          <div>
-            <p class="eyebrow">What we make</p>
-            <h2>A quieter kind of dairy ritual.</h2>
-          </div>
-          <p>Simple farm products, made in considered quantities. Our first releases will stay intentionally limited while the farm finds its rhythm.</p>
-        </div>
-        <div class="card-grid stagger">
-          <article class="card" data-reveal>
-            <div class="card-media">
-              <img src="assets/images/editorial/dairy-still-life.webp" alt="Fresh goat milk in a clear glass bottle" loading="lazy" width="1448" height="1086">
-            </div>
-            <div class="card-body">
-              <div class="card-topline"><span class="status status-limited">Limited release</span><span>01</span></div>
-              <h3>Fresh Goat Milk</h3>
-              <p>Clean-tasting, carefully chilled and offered close to the day it is prepared.</p>
-              <a class="text-link" href="shop.html">Check availability</a>
-            </div>
-          </article>
-          <article class="card" data-reveal>
-            <div class="card-media">
-              <img class="crop-paneer" src="assets/images/editorial/dairy-still-life.webp" alt="Fresh goat milk paneer on parchment" loading="lazy" width="1448" height="1086">
-            </div>
-            <div class="card-body">
-              <div class="card-topline"><span class="status status-limited">Enquire</span><span>02</span></div>
-              <h3>Goat Milk Paneer</h3>
-              <p>Delicately set in small batches for a fresh, tender texture and a clean finish.</p>
-              <a class="text-link" href="products.html">Meet the range</a>
-            </div>
-          </article>
-          <article class="card" data-reveal>
-            <div class="card-media">
-              <img class="crop-cheese" src="assets/images/editorial/dairy-still-life.webp" alt="Artisanal goat cheese in a neutral morning still life" loading="lazy" width="1448" height="1086">
-            </div>
-            <div class="card-body">
-              <div class="card-topline"><span class="status status-soon">Launching soon</span><span>03</span></div>
-              <h3>Artisanal Cheese</h3>
-              <p>Patiently developed cheese with gentle character, made for everyday tables and curious kitchens.</p>
-              <a class="text-link" href="products.html">See what is coming</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">How requests work</p><h2>A request becomes an arrangement after confirmation</h2></div><div class="steps">{[
+      ["01", "Choose", "Choose a product and indicative pack size"], ["02", "Send", "Send the request through WhatsApp"], ["03", "Check", "Receive confirmation of current availability and final pricing"], ["04", "Confirm", "Confirm the available pickup or delivery arrangement"]
+    ].map(([number, title, copy]) => <article class="step"><span class="step-number">{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section>
 
-    <section class="section section-cream">
-      <div class="container story-grid">
-        <div class="story-media portrait care-media" data-motion-media data-reveal="left">
-          <img src="assets/images/editorial/goat-portrait.webp" alt="A calm young goat among meadow grasses at the farm" loading="lazy" width="1122" height="1402">
-          <span class="media-sheen" aria-hidden="true"></span>
-          <span class="care-badge"><strong>Daily care</strong>Known, observed, never rushed.</span>
-        </div>
-        <div class="story-copy" data-reveal="right">
-          <p class="eyebrow">Built around care</p>
-          <h2>Good dairy begins long before the bottle.</h2>
-          <p class="large-copy">It starts in the shelter, the feed, the pace of the morning and the way every animal is known.</p>
-          <p>Hello Honey Bunny is being built as a focused, small farm—not a faceless supply chain. We are putting attentive husbandry, sensible hygiene and short local journeys at the centre of the work.</p>
-          <a class="button button-secondary" href="about.html">Our farm philosophy</a>
-        </div>
-      </div>
-    </section>
+    <section class="section section-forest"><div class="container split-grid"><div><p class="eyebrow">Small-batch availability</p><h2>The website does not show live inventory</h2></div><div><p>Availability follows the current farm batch. Products are prepared in considered quantities, so current options, final pricing and fulfilment details are confirmed personally for every request.</p></div></div></section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-heading center" data-reveal>
-          <p class="eyebrow">From farm to family</p>
-          <h2>Made slowly. Served fresh.</h2>
-          <p>Our process is intentionally uncomplicated: care well, handle cleanly, prepare in small batches and confirm every order personally.</p>
-        </div>
-        <div class="steps stagger">
-          <div class="step" data-reveal><span>01</span><h3>Care</h3><p>Calm routines and responsible attention to the herd, every day.</p></div>
-          <div class="step" data-reveal><span>02</span><h3>Prepare</h3><p>Thoughtful small-batch production with a clean, consistent process.</p></div>
-          <div class="step" data-reveal><span>03</span><h3>Chill</h3><p>Fresh handling and careful storage from preparation onward.</p></div>
-          <div class="step" data-reveal><span>04</span><h3>Share</h3><p>Local pickup and delivery plans that keep the journey considered.</p></div>
-        </div>
-      </div>
-    </section>
+    <section class="section"><div class="container feature-grid"><article class="feature"><p class="eyebrow">Handling and storage</p><h2>Keep chilled and follow the batch guidance</h2><p>Products are carefully chilled. Keep them refrigerated, use clean utensils and follow the storage and use-by guidance supplied with your confirmed batch.</p></article><article class="feature"><p class="eyebrow">Farm and location</p><h2>Kunjirwadi, Maharashtra 412201</h2><p>Our small goat dairy is near Pune. Farm visits require prior confirmation, and private directions are not published on the website.</p><a class="text-link" href={withBase("/our-farm")}>Learn about our farm</a></article></div></section>
 
-    <section class="section section-forest">
-      <div class="container">
-        <div class="section-heading split" data-reveal>
-          <div>
-            <p class="eyebrow">Quiet proof</p>
-            <h2>Clear choices, close to home.</h2>
-          </div>
-          <p class="text-on-dark">We would rather tell you exactly where we are than make promises the farm cannot yet prove.</p>
-        </div>
-        <div class="feature-grid stagger">
-          <article class="feature" data-reveal><span class="feature-number">01</span><h3>Limited by design</h3><p>Availability follows the farm, never the other way around.</p></article>
-          <article class="feature" data-reveal><span class="feature-number">02</span><h3>Locally focused</h3><p>We are starting with Pune and nearby neighbourhoods.</p></article>
-          <article class="feature" data-reveal><span class="feature-number">03</span><h3>Personally confirmed</h3><p>Every current order is checked and confirmed over WhatsApp.</p></article>
-          <article class="feature" data-reveal><span class="feature-number">04</span><h3>Always transparent</h3><p>Launching items are clearly marked—no invented stock or claims.</p></article>
-        </div>
-      </div>
-    </section>
+    <section class="section section-cream"><div class="container split-grid"><div><p class="eyebrow">For food businesses</p><h2>Planning thoughtful supply with Pune food businesses</h2></div><div><p>Chefs, cafés, restaurants and specialist retailers may start a conversation about current or future small-batch supply. An enquiry is not a promise of immediate availability.</p><a class="button button-secondary" href={withBase("/for-chefs-and-retailers")}>Start a food business enquiry</a></div></div></section>
 
-    <section class="section section-cream">
-      <div class="container">
-        <div class="section-heading split" data-reveal>
-          <div><p class="eyebrow">Morning notes</p><h2>A glimpse of farm life.</h2></div>
-          <a class="text-link" href="gallery.html">Visit the gallery</a>
-        </div>
-        <div class="gallery-grid static-gallery">
-          <div class="gallery-item wide tall">
-            <img src="assets/images/editorial/farm-morning.webp" alt="Morning at the Hello Honey Bunny farm" loading="lazy" width="1586" height="992">
-          </div>
-          <div class="gallery-item tall">
-            <img src="assets/images/editorial/goat-portrait.webp" alt="A young goat in the field" loading="lazy" width="1122" height="1402">
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/editorial/dairy-still-life.webp" alt="Small-batch dairy products" loading="lazy" width="1448" height="1086">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="narrow">
-        <div class="section-heading center" data-reveal>
-          <p class="eyebrow">Good to know</p>
-          <h2>A few honest answers.</h2>
-        </div>
-        <FaqAccordion items={homeFaqs} />
-        <div class="button-row justify-center">
-          <a class="button button-secondary" href="faq.html">Read all FAQs</a>
-        </div>
-      </div>
-    </section>
-
-    <CtaBand eyebrow="Limited first releases" title="Bring a gentler dairy ritual home." description="Choose what you would like and send us a ready-made order on WhatsApp. We will confirm availability personally." href="shop.html" label="Build your order" />
+    <section class="section"><div class="narrow"><div class="section-heading center"><p class="eyebrow">Essential questions</p><h2>What to know before requesting</h2></div><FaqAccordion items={homeFaqs} /><p><a class="text-link" href={withBase("/faqs")}>Read all goat milk and farm FAQs</a></p></div></section>
+    <section class="section section-cream"><div class="container cta-band"><div><p class="eyebrow">Current availability</p><h2>Ask about the current batch</h2><p>Send a short WhatsApp message and receive the details personally.</p></div><a class="button button-light" href={whatsapp} target="_blank" rel="noopener">Check current batch on WhatsApp</a></div></section>
   </main>
 </BaseLayout>

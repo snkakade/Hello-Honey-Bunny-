@@ -1,0 +1,8 @@
+---
+import { withBase } from "../config/site";
+interface Props { items: { name: string; path?: string }[] }
+const { items } = Astro.props;
+---
+<nav class="breadcrumbs container" aria-label="Breadcrumb">
+  <ol>{items.map((item, index) => <li>{item.path && index < items.length - 1 ? <a href={withBase(item.path)}>{item.name}</a> : <span aria-current="page">{item.name}</span>}</li>)}</ol>
+</nav>
