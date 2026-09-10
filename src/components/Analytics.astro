@@ -1,0 +1,24 @@
+---
+import { withBase } from "../config/site";
+const measurementId = (import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-FG3ZSPHSCJ").trim();
+const enabled = /^G-[A-Z0-9]+$/i.test(measurementId || "");
+---
+{enabled && (
+  <>
+    <script is:inline define:vars={{ measurementId }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+      window.hhbAnalytics = { measurementId, pending: [] };
+    </script>
+    <script>import "../scripts/analytics.js";</script>
+    <div class="analytics-consent" data-analytics-consent hidden role="region" aria-label="Analytics preferences">
+      <p>May we use Google Analytics to understand visits and WhatsApp enquiry clicks? We do not send your form entries to Google.</p>
+      <div>
+        <button class="button button-primary" type="button" data-analytics-accept>Allow analytics</button>
+        <button class="button button-secondary" type="button" data-analytics-decline>No thanks</button>
+      </div>
+      <a href={withBase("/privacy")}>Privacy information</a>
+    </div>
+    <button class="analytics-settings" type="button" data-analytics-settings hidden>Analytics preferences</button>
+  </>
+)}

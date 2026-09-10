@@ -55,6 +55,14 @@ For Cloudflare Pages use:
 - Output directory: `dist`
 - Node.js: 22
 
+## Google Analytics 4
+
+The production GA4 web stream uses Measurement ID `G-FG3ZSPHSCJ`. `PUBLIC_GA_MEASUREMENT_ID` can override it for a different deployment; the Google tag is omitted entirely if the resulting value is invalid.
+
+Analytics loads only after the visitor allows it. In addition to standard GA4 page and acquisition data, the site records `whatsapp_click` for direct WhatsApp links and the recommended `generate_lead` event when a valid batch or business enquiry is handed off. Event parameters contain only interaction context; form values and message contents are never sent to Analytics.
+
+After the first `generate_lead` arrives, mark it as a key event in GA4. For reporting on `lead_type`, `contact_method`, and `link_location`, register those event parameters as event-scoped custom dimensions in GA4.
+
 The GitHub Pages workflow sets `GITHUB_PAGES=true`; Astro then applies `/Hello-Honey-Bunny-/` as the base path for preview assets and internal links. Canonical tags continue to target the production domain.
 
 ## Images and brand assets

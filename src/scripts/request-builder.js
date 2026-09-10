@@ -71,6 +71,7 @@ if (root) {
     const message = ["Hello, I would like to check availability for the following:", "", ...lines, "", `Name: ${String(data.get("name")).trim()}`, `Area or postcode: ${String(data.get("area")).trim()}`, `Preferred arrangement: ${data.get("arrangement")}`, `Preferred date: ${data.get("date") || "Flexible"}`, `Notes: ${String(data.get("notes") || "").trim() || "None"}`, "", "Please confirm current batch availability, final pricing and the available pickup or delivery option."].join("\n");
     requestText.textContent = message;
     fallback.hidden = false;
+    window.hhbTrack?.("generate_lead", { lead_type: "batch_request", contact_method: "whatsapp" });
     const opened = window.open(`https://wa.me/${root.dataset.whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     status.textContent = opened ? "WhatsApp has been opened. Please review and send the message there." : "WhatsApp could not be opened automatically. Copy the formatted request below and send it to the displayed number.";
     status.className = opened ? "form-status" : "form-status error";
