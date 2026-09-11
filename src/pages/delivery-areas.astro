@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { site, withBase } from "../config/site";
+import { breadcrumbSchema } from "../utils/schema";
+
+const crumbs = [{ name: "Home", path: "/" }, { name: "Delivery Areas", path: "/delivery-areas" }];
+---
+<BaseLayout title="Goat Milk Delivery in Pune & Nearby PCMC | Hello Honey Bunny" description="See where Hello Honey Bunny currently considers fresh goat milk and goat milk paneer delivery requests across Pune, nearby PCMC and local areas." canonicalPath="/delivery-areas" schema={breadcrumbSchema(crumbs)}>
+  <main id="main">
+    <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Delivery Areas" }]} />
+    <section class="page-intro">
+      <div class="container">
+        <p class="eyebrow">Current delivery coverage</p>
+        <h1>Goat milk delivery requests across Pune and nearby PCMC</h1>
+        <p class="lede">Hello Honey Bunny is based in Kunjirwadi near Pune. We consider delivery requests for fresh goat milk and goat milk paneer across the areas below, subject to the current batch and practical route availability.</p>
+        <div class="button-row"><a class="button button-primary" href={withBase("/request-a-batch")}>Request the current batch</a><a class="button button-secondary" href={withBase("/products")}>View current products</a></div>
+      </div>
+    </section>
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Areas currently listed</p>
+          <h2>Pune city, nearby PCMC and local areas around our Kunjirwadi base</h2>
+          <p>A listed area means we can consider your request. It does not guarantee a delivery slot, minimum quantity, timing or route for every batch.</p>
+        </div>
+        <ul class="area-list" aria-label="Current delivery areas">
+          {site.deliveryAreas.map((area) => <li>{area}</li>)}
+        </ul>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container feature-grid">
+        <article class="feature"><h2>How delivery is confirmed</h2><p>Send your area or postcode with the product and indicative quantity you want. We will confirm the current batch, final pricing and whether a practical delivery or pickup arrangement is available.</p></article>
+        <article class="feature"><h2>Outside the listed areas?</h2><p>You can still ask on WhatsApp. We may not be able to serve every location, but your message helps us understand genuine demand without promising coverage before a route is confirmed.</p></article>
+      </div>
+    </section>
+    <section class="section section-forest">
+      <div class="narrow"><h2>Ready to check your area?</h2><p>Use the request builder to include your location from the start.</p><a class="button button-light" href={withBase("/request-a-batch")}>Build a batch request</a></div>
+    </section>
+  </main>
+</BaseLayout>

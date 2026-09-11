@@ -47,7 +47,7 @@ export const products: Product[] = [
     imageWidth: 1122,
     imageHeight: 1402,
     seoTitle: "Fresh Goat Milk Near Pune | Hello Honey Bunny",
-    seoDescription: "Request fresh goat milk in indicative 500 ml and 1 litre sizes from Hello Honey Bunny in Kunjirwadi, near Pune. Confirm the current batch on WhatsApp.",
+    seoDescription: "Request fresh goat milk from Hello Honey Bunny in Kunjirwadi near Pune. Delivery may be available across Pune, nearby PCMC and listed local areas.",
     primaryKeyword: "fresh goat milk near Pune",
     secondaryKeywords: ["goat milk in Pune", "fresh goat milk"],
     schemaEnabled: true
@@ -68,7 +68,7 @@ export const products: Product[] = [
     imageWidth: 1122,
     imageHeight: 1402,
     seoTitle: "Goat Milk Paneer Near Pune | Hello Honey Bunny",
-    seoDescription: "Request goat milk paneer in indicative 200 g and 400 g sizes from Hello Honey Bunny near Pune. Confirm availability and final pricing on WhatsApp.",
+    seoDescription: "Request goat milk paneer from Hello Honey Bunny near Pune. Delivery may be available across Pune, nearby PCMC and listed local areas.",
     primaryKeyword: "goat milk paneer",
     secondaryKeywords: ["goat paneer", "paneer made from goat milk"],
     schemaEnabled: true

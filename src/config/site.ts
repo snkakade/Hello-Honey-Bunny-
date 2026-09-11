@@ -6,6 +6,15 @@ export const site = {
   whatsappNumber: "918208665234",
   email: "visit@hellohoneybunny.com",
   location: "Kunjirwadi, Maharashtra 412201, near Pune",
+  deliveryAreas: [
+    "Pune",
+    "Pimpri-Chinchwad",
+    "Katraj",
+    "Hadapsar",
+    "Loni Kalbhor",
+    "Kunjirwadi",
+    "Uruli Kanchan"
+  ],
   address: {
     locality: "Kunjirwadi",
     region: "Maharashtra",
@@ -36,4 +45,4 @@ export function whatsappUrl(message: string) {
 }
 
 export const availabilityMessage =
-  "Hello, I would like to check current availability for fresh goat milk and goat milk paneer. Please share the available batch options, final pricing and the available pickup or delivery arrangement.";
+  "Hello, I would like to check current availability for fresh goat milk and goat milk paneer. Please share the available batch options, final pricing and the available pickup or delivery arrangement for my area.";

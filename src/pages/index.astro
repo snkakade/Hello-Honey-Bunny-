@@ -15,7 +15,7 @@ import paneerWideArt from "../assets/images/illustrated-paneer-wide-v4.png";
 const whatsapp = whatsappUrl(availabilityMessage);
 const productCardImages = [milkWideArt, paneerWideArt];
 ---
-<BaseLayout title="Small-Batch Goat Dairy Near Pune | Hello Honey Bunny" description="Fresh goat milk and goat milk paneer can be requested from Hello Honey Bunny in Kunjirwadi, near Pune. Confirm the current batch personally on WhatsApp." canonicalPath="/" schema={homeSchema()}>
+<BaseLayout title="Small-Batch Goat Dairy Near Pune | Hello Honey Bunny" description="Fresh goat milk and goat milk paneer from Kunjirwadi near Pune, with delivery requests across Pune, nearby PCMC and listed local areas." canonicalPath="/" schema={homeSchema()}>
   <main id="main">
     <section class="hero hero-editorial" data-hero>
       <div class="hero-sun" aria-hidden="true"></div>
@@ -40,7 +40,7 @@ const productCardImages = [milkWideArt, paneerWideArt];
     </section>
 
     <div class="ticker" aria-label="Hello Honey Bunny service summary"><div class="ticker-track">
-      {["Fresh goat milk", "Goat milk paneer", "Current batch availability", "Kunjirwadi near Pune", "Confirmed personally on WhatsApp", "Fresh goat milk", "Goat milk paneer"].map((item) => <span>{item}<b aria-hidden="true">✦</b></span>)}
+      {["Fresh goat milk", "Goat milk paneer", "Delivery requests across Pune", "Nearby PCMC areas", "Kunjirwadi near Pune", "Confirmed personally on WhatsApp", "Fresh goat milk", "Goat milk paneer"].map((item) => <span>{item}<b aria-hidden="true">✦</b></span>)}
     </div></div>
 
     <section class="section products-showcase" id="current-products">
@@ -79,7 +79,7 @@ const productCardImages = [milkWideArt, paneerWideArt];
     <section class="section location-section">
       <div class="container location-card" data-reveal>
         <div class="location-photo"><Picture src={farmImage} formats={["avif"]} fallbackFormat="webp" widths={[640, 960, 1440]} sizes="(max-width: 760px) 100vw, 52vw" alt="Goats standing near a timber farm shelter" loading="lazy" decoding="async" /></div>
-        <div class="location-copy"><p class="eyebrow">Find the farm</p><h2>Kunjirwadi, Maharashtra 412201</h2><p>Our small goat dairy is near Pune. Farm visits require prior confirmation, and private directions are not published on the website.</p><a class="button button-light" href={withBase("/our-farm")}>Step inside our farm story</a></div>
+        <div class="location-copy"><p class="eyebrow">Farm base and delivery areas</p><h2>Kunjirwadi, serving Pune and nearby PCMC</h2><p>We currently consider delivery requests across Pune, Pimpri-Chinchwad, Katraj, Hadapsar, Loni Kalbhor, Kunjirwadi and Uruli Kanchan. Every route is subject to the current batch and practical delivery availability.</p><a class="button button-light" href={withBase("/delivery-areas")}>View delivery areas</a></div>
       </div>
     </section>
 

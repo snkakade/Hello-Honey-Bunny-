@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 
-const canonicalRoutes = ["/", "/fresh-goat-milk", "/goat-milk-paneer", "/products", "/request-a-batch", "/our-farm", "/for-chefs-and-retailers", "/faqs", "/contact", "/privacy"];
+const canonicalRoutes = ["/", "/fresh-goat-milk", "/goat-milk-paneer", "/products", "/delivery-areas", "/request-a-batch", "/our-farm", "/for-chefs-and-retailers", "/faqs", "/contact", "/privacy"];
 const indexableRoutes = canonicalRoutes;
 const viewports = [[360,800],[390,844],[768,1024],[1024,768],[1440,900]];
 
