@@ -8,11 +8,22 @@ const enabled = /^G-[A-Z0-9]+$/i.test(measurementId || "");
     <script is:inline define:vars={{ measurementId }}>
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-      window.hhbAnalytics = { measurementId, pending: [] };
+      const preferenceKey = "hhb_analytics_consent";
+      let savedPreference = null;
+      try { savedPreference = localStorage.getItem(preferenceKey); } catch { /* Use denied consent without storage. */ }
+      window.gtag("consent", "default", {
+        analytics_storage: savedPreference === "granted" ? "granted" : "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        wait_for_update: 500
+      });
+      window.gtag("set", "ads_data_redaction", true);
+      window.hhbAnalytics = { measurementId, preferenceKey };
     </script>
     <script>import "../scripts/analytics.js";</script>
     <div class="analytics-consent" data-analytics-consent hidden role="region" aria-label="Analytics preferences">
-      <p>May we use Google Analytics to understand visits and WhatsApp enquiry clicks? We do not send your form entries to Google.</p>
+      <p>May we allow Google Analytics cookies to understand visits and enquiry journeys? Without consent, only cookieless measurement signals are sent. We never send your form entries to Google.</p>
       <div>
         <button class="button button-primary" type="button" data-analytics-accept>Allow analytics</button>
         <button class="button button-secondary" type="button" data-analytics-decline>No thanks</button>

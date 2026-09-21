@@ -52,6 +52,24 @@ test("batch request validates fields and creates the approved WhatsApp message w
   await page.locator("#request-date").fill(""); await page.locator("#batch-form button[type='submit']").click(); await expect(page.locator("[data-fallback]")).toBeVisible(); const message = await page.locator("[data-request-text]").innerText(); expect(message).toContain("Fresh Goat Milk (500 ml) x 1"); expect(message).toContain("Please confirm current batch availability, final pricing"); expect(message).not.toContain("Hello Hello Honey Bunny"); await page.locator("[data-copy-request]").click(); expect(await page.evaluate(() => window.__copied)).toContain("Fresh Goat Milk (500 ml) x 1");
 });
 
+test("Google tag uses consent mode and records every WhatsApp handoff as a lead", async ({ page }) => {
+  await page.route(/google(tagmanager|analytics)\.com/, (route) => route.abort());
+  await page.goto("/");
+  const initialCommands = await page.evaluate(() => window.dataLayer.map((entry) => Array.from(entry)));
+  expect(initialCommands).toEqual(expect.arrayContaining([
+    expect.arrayContaining(["consent", "default", expect.objectContaining({ analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" })]),
+    expect.arrayContaining(["config", "G-FG3ZSPHSCJ", expect.objectContaining({ send_page_view: true })])
+  ]));
+  const whatsapp = page.locator("a[href*='wa.me/']").first();
+  await whatsapp.evaluate((link) => link.addEventListener("click", (event) => event.preventDefault(), { once: true }));
+  await whatsapp.click();
+  const eventCommands = await page.evaluate(() => window.dataLayer.map((entry) => Array.from(entry)).filter((entry) => entry[0] === "event"));
+  expect(eventCommands).toEqual(expect.arrayContaining([
+    expect.arrayContaining(["event", "whatsapp_click", expect.objectContaining({ contact_method: "whatsapp", link_location: "content" })]),
+    expect.arrayContaining(["event", "generate_lead", expect.objectContaining({ lead_type: "whatsapp_handoff", contact_method: "whatsapp" })])
+  ]));
+});
+
 test("mobile menu supports keyboard, Escape and focus return", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 }); await page.goto("/"); const toggle = page.locator(".nav-toggle"); await toggle.focus(); await page.keyboard.press("Enter"); await expect(toggle).toHaveAttribute("aria-expanded", "true"); await expect(toggle).toContainText("Close menu"); await expect(page.locator("#site-nav")).toBeVisible(); await expect(page.locator("#site-nav a").last()).toBeVisible(); await page.keyboard.press("Escape"); await expect(toggle).toHaveAttribute("aria-expanded", "false"); await expect(toggle).toBeFocused(); await expect(toggle).toContainText("Open menu");
   await page.setViewportSize({ width: 950, height: 800 }); await toggle.click(); await expect(page.locator("body")).toHaveClass(/menu-open/); await page.setViewportSize({ width: 1000, height: 800 }); await expect(toggle).toHaveAttribute("aria-expanded", "false"); await expect(page.locator("body")).not.toHaveClass(/menu-open/);

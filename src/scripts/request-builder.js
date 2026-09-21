@@ -20,11 +20,13 @@ if (root) {
 
   root.querySelectorAll("[data-action]").forEach((button) => button.addEventListener("click", () => {
     const control = button.closest("[data-size]");
+    const product = control.closest("[data-product-id]");
     const key = keyFor(control);
     const change = button.dataset.action === "increase" ? 1 : -1;
     const value = Math.max(0, Math.min(maxQuantity, (quantities.get(key) || 0) + change));
     quantities.set(key, value);
     control.querySelector("output").textContent = String(value);
+    window.hhbTrack?.("request_item_change", { form_name: "batch_request", product_id: product.dataset.productId, pack_size: control.dataset.size, change_type: button.dataset.action, quantity: value });
   }));
 
   const requestedProduct = new URLSearchParams(window.location.search).get("product");
@@ -56,12 +58,14 @@ if (root) {
     const data = new FormData(form);
     const products = chosen();
     if (!products.length) {
+      window.hhbTrack?.("form_validation_error", { form_name: "batch_request", error_type: "no_product" });
       status.textContent = "Choose at least one product and pack size.";
       status.className = "form-status error";
       root.querySelector("[data-action='increase']")?.focus();
       return;
     }
     if (!validate(data)) {
+      window.hhbTrack?.("form_validation_error", { form_name: "batch_request", error_type: "required_or_date" });
       status.textContent = "Please correct the highlighted fields.";
       status.className = "form-status error";
       root.querySelector("[aria-invalid='true']")?.focus();
@@ -71,7 +75,7 @@ if (root) {
     const message = ["Hello, I would like to check availability for the following:", "", ...lines, "", `Name: ${String(data.get("name")).trim()}`, `Area or postcode: ${String(data.get("area")).trim()}`, `Preferred arrangement: ${data.get("arrangement")}`, `Preferred date: ${data.get("date") || "Flexible"}`, `Notes: ${String(data.get("notes") || "").trim() || "None"}`, "", "Please confirm current batch availability, final pricing and the available pickup or delivery option."].join("\n");
     requestText.textContent = message;
     fallback.hidden = false;
-    window.hhbTrack?.("generate_lead", { lead_type: "batch_request", contact_method: "whatsapp" });
+    window.hhbTrackLead?.({ lead_type: "batch_request", contact_method: "whatsapp", form_name: "batch_request", product_count: products.length, total_quantity: products.reduce((sum, product) => sum + product.quantity, 0), preferred_arrangement: String(data.get("arrangement")) });
     const opened = window.open(`https://wa.me/${root.dataset.whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     status.textContent = opened ? "WhatsApp has been opened. Please review and send the message there." : "WhatsApp could not be opened automatically. Copy the formatted request below and send it to the displayed number.";
     status.className = opened ? "form-status" : "form-status error";
@@ -79,7 +83,7 @@ if (root) {
 
   root.querySelector("[data-copy-request]").addEventListener("click", async () => {
     const copyStatus = root.querySelector("[data-copy-status]");
-    try { await navigator.clipboard.writeText(requestText.textContent); copyStatus.textContent = "Request copied."; }
+    try { await navigator.clipboard.writeText(requestText.textContent); copyStatus.textContent = "Request copied."; window.hhbTrack?.("copy_request", { form_name: "batch_request" }); }
     catch { copyStatus.textContent = "Copy was unavailable. Select the request text and copy it manually."; }
   });
 }
