@@ -69,19 +69,34 @@
 .conversion-steps li > span { color: var(--honey-dark); font-size: .78rem; font-weight: 800; }
 .conversion-steps h3 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
 .conversion-split { display: grid; align-items: start; gap: clamp(2rem, 7vw, 7rem); grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); }
-.trial-builder-heading { display: grid; align-items: end; gap: 2rem; margin-bottom: clamp(2rem, 5vw, 4rem); grid-template-columns: minmax(0, 1fr) auto; }
-.trial-builder-heading h2 { max-width: 850px; margin: 0; }
-.trial-builder-promise { display: grid; max-width: 310px; padding: 1rem 1.2rem; background: var(--milk); border: 1px solid var(--line); border-radius: var(--radius-sm); }
-.trial-builder-promise strong { color: var(--forest); }
-.trial-builder-promise span, .product-add-on, .submit-reassurance { color: var(--muted); font-size: .8rem; }
-.trial-request-layout { grid-template-columns: minmax(0, 1.05fr) minmax(390px, .72fr); }
-.trial-request-layout .request-products > h3 { margin-bottom: .5rem; font-size: clamp(2.5rem, 4.5vw, 4.2rem); }
-.trial-request-layout .request-product h4 { margin: 0; color: var(--forest); font-family: var(--font-display); font-size: clamp(1.65rem, 2.5vw, 2.25rem); font-weight: 500; line-height: 1; }
+.trial-builder-section { padding-block: clamp(3rem, 5vw, 5rem); }
+.product-add-on, .submit-reassurance { color: var(--muted); font-size: .8rem; }
+.trial-request-layout { gap: clamp(1.5rem, 2.5vw, 2.5rem); grid-template-columns: minmax(0, 1.05fr) minmax(460px, .78fr); }
+.trial-request-layout .request-products { gap: .75rem; }
+.trial-product-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.trial-product-heading h2 { margin: 0; font-size: clamp(2.5rem, 3.5vw, 3.5rem); }
+.trial-product-heading span { padding: .45rem .7rem; color: var(--forest); background: #dfe9d3; border: 1px solid rgba(24,61,43,.18); border-radius: 999px; font-size: .72rem; font-weight: 750; white-space: nowrap; }
+.trial-request-layout .request-product { gap: .55rem; padding: 1rem 1.25rem; }
+.trial-request-layout .request-product .status { margin-bottom: .55rem; padding-block: .32rem; }
+.trial-request-layout .request-product h3 { margin: 0; color: var(--forest); font-size: clamp(1.65rem, 2.5vw, 2.25rem); }
+.trial-request-layout .pack-control { padding-top: .55rem; }
 .product-add-on { margin: .45rem 0 0; }
-.trial-form-panel > .eyebrow { color: var(--honey); }
-.trial-form-panel > h3 { color: #fff; font-size: clamp(2.5rem, 4.5vw, 4.4rem); }
-.trial-submit { width: 100%; margin-top: 1.25rem; white-space: nowrap; }
+.trial-form-panel { padding: 1.25rem 1.5rem; }
+.trial-form-panel > .eyebrow { margin-bottom: .6rem; color: var(--honey); }
+.trial-form-panel > h2 { margin-bottom: 1rem; color: #fff; font-size: clamp(2.65rem, 3.6vw, 3.8rem); }
+.trial-form-panel .field-grid { gap: .65rem .75rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.trial-form-panel .trial-field-full { grid-column: 1 / -1; }
+.trial-form-panel .field label { margin-bottom: .25rem; font-size: .76rem; }
+.trial-form-panel .field input, .trial-form-panel .field select { min-height: 44px; padding-block: .55rem; }
+.trial-form-panel .field textarea { min-height: 70px; padding-block: .6rem; }
+.trial-form-panel .field-help { margin-top: .25rem; font-size: .7rem; line-height: 1.3; }
+.trial-form-panel .field-error:empty { display: none; }
+.trial-submit { width: 100%; margin-top: .85rem; white-space: nowrap; }
+.trial-submit-short { display: none; }
 .submit-reassurance { margin: .65rem 0 0; color: rgba(255,255,255,.78); text-align: center; }
+.trial-form-panel .form-status { min-height: 0; margin: .45rem 0; }
+.trial-form-panel .form-status:empty { margin: 0; }
+.trial-form-panel .privacy-note { margin: .6rem 0 0; font-size: .72rem; line-height: 1.35; }
 .trial-form-panel .fallback h4 { margin-bottom: .6rem; color: var(--forest); font-family: var(--font-display); font-size: 1.6rem; font-weight: 500; }
 .weekly-invitation { background: var(--paper); }
 .plan-grid { display: grid; align-items: stretch; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
@@ -113,10 +128,10 @@
 .subscription-page .cta-band .button { min-width: 230px; white-space: nowrap; }
 
 @media (max-width: 900px) {
-  .conversion-hero-grid, .conversion-split, .route-layout, .trial-builder-heading, .trial-request-layout { grid-template-columns: 1fr; }
+  .conversion-hero-grid, .conversion-split, .route-layout, .trial-request-layout { grid-template-columns: 1fr; }
   .conversion-art { max-width: 680px; margin-inline: auto; }
-  .trial-builder-promise { max-width: none; }
   .trial-request-layout .form-panel { position: static; }
+  .trial-form-panel .field-grid { grid-template-columns: 1fr 1fr; }
   .plan-grid { grid-template-columns: 1fr; }
   .plan-card, .plan-card-featured { min-height: 0; transform: none; }
   .route-intro { position: static; }
@@ -133,6 +148,25 @@
   .subscription-page .final-cta { padding-top: 4rem; }
   .subscription-page .cta-band .button { width: 100%; min-width: 0; }
   .trial-submit { white-space: normal; }
+  .trial-builder-section { padding-block: 2.5rem; }
+  .trial-request-layout { gap: 1.5rem; }
+  .trial-product-heading { align-items: flex-end; }
+  .trial-product-heading h2 { font-size: 2.6rem; }
+  .trial-request-layout .request-product { padding: 1rem; }
+  .trial-request-layout .quantity-control { grid-template-columns: 42px 42px 42px; }
+  .trial-request-layout .quantity-control button { min-width: 42px; min-height: 42px; }
+  .trial-form-panel { padding: 1.25rem 1rem; }
+  .trial-form-panel > h2 { font-size: 2.8rem; }
+  .trial-form-panel .field-grid { grid-template-columns: 1fr; }
+  .trial-form-panel .trial-field-full { grid-column: auto; }
+  .trial-form-panel > .eyebrow { display: none; }
+  .trial-form-panel > h2 { margin-bottom: .75rem; }
+  .trial-form-panel .field-grid { gap: .5rem; }
+  .trial-form-panel .field textarea { min-height: 58px; }
+  .trial-submit { min-height: 50px; margin-top: .7rem; }
+  .trial-submit-full { display: none; }
+  .trial-submit-short { display: inline; }
+  .trial-form-panel .privacy-note { margin-top: .45rem; }
 }
 
 /* Journal and answer-led editorial pages */
