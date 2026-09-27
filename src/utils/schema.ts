@@ -1,5 +1,6 @@
 import { site } from "../config/site";
 import type { Product } from "../data/products";
+import type { ArticleSummary } from "../data/articles";
 
 const absolute = (path: string) => new URL(path, `${site.url}/`).href;
 
@@ -21,4 +22,20 @@ export function productSchema(product: Product) {
 
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items.map((item, index) => ({ "@type": "ListItem", position: index + 1, name: item.name, item: `${site.url}${item.path}` })) };
+}
+
+export function articleSchema(article: ArticleSummary) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${site.url}${article.path}#article`,
+    headline: article.title,
+    description: article.description,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
+    image: absolute(article.image),
+    mainEntityOfPage: `${site.url}${article.path}`,
+    author: { "@type": "Organization", name: site.name, url: `${site.url}/` },
+    publisher: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, logo: { "@type": "ImageObject", url: absolute("/assets/brand/official-full-logo.png") } }
+  };
 }

@@ -1,0 +1,38 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import DirectAnswer from "../../components/DirectAnswer.astro";
+import { getArticle } from "../../data/articles";
+import { withBase } from "../../config/site";
+const article = getArticle("/journal/how-to-store-fresh-goat-milk");
+---
+<ArticleLayout article={article} h1="How should fresh goat milk be stored?">
+  <p class="article-opening">Keep fresh goat milk cold, refrigerate it promptly, use clean containers and utensils, and follow the storage and use-by guidance supplied with the specific batch.</p>
+  <p>Hello Honey Bunny does not publish one universal shelf-life number because the right guidance depends on how a batch was prepared, packed and supplied.</p>
+
+  <section>
+    <h2>Keep the cold chain intact</h2>
+    <p>Plan collection or delivery so the milk is not left waiting in a warm place. If you are collecting it, bring it home promptly and follow the batch-specific guidance you receive.</p>
+
+    <h2>Refrigerate promptly</h2>
+    <p>Put the milk in the refrigerator as soon as practical after receiving it. Avoid repeatedly leaving the container out and returning it to refrigeration.</p>
+
+    <h2>Use clean containers and utensils</h2>
+    <p>Keep the supplied container closed when it is not being used. Pour with clean hands and utensils, and avoid returning unused milk from a cup or pan to the original container.</p>
+
+    <h2>Follow the batch-specific guidance</h2>
+    <p>Use the storage and use-by information supplied with the confirmed batch. If the dairy gives instructions that are more specific than a general online guide, follow the batch information.</p>
+  </section>
+
+  <DirectAnswer question="What if fresh goat milk has been left unrefrigerated?">
+    <p>If you cannot confirm how long it was warm or whether the cold chain remained intact, do not guess from smell or appearance alone. Contact the supplier for batch-specific guidance and, when safety is uncertain, do not consume it.</p>
+  </DirectAnswer>
+
+  <DirectAnswer question="What should you do if something seems wrong?">
+    <p>Do not taste the milk simply to test whether it is safe. Keep the container and batch information, stop using it and contact the supplier. If someone becomes unwell, seek appropriate medical advice.</p>
+  </DirectAnswer>
+
+  <section>
+    <h2>Ordering a quantity you can store</h2>
+    <p>Before ordering, check that you have enough refrigerator space and choose a quantity you can use within the guidance supplied. Read our <a href={withBase("/journal/how-to-buy-fresh-goat-milk-pune")}>Pune buying checklist</a> or view the current <a href={withBase("/fresh-goat-milk")}>fresh goat milk information</a>.</p>
+  </section>
+</ArticleLayout>

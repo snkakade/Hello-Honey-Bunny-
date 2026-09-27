@@ -32,6 +32,7 @@ export const navItems = [
   { href: "/goat-milk-paneer", label: "Goat Milk Paneer", page: "paneer" },
   { href: "/our-farm", label: "Our Farm", page: "farm" },
   { href: "/for-chefs-and-retailers", label: "For Food Businesses", page: "business" },
+  { href: "/journal", label: "Journal", page: "journal" },
   { href: "/faqs", label: "FAQs", page: "faqs" }
 ] as const;
 

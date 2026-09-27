@@ -71,8 +71,13 @@ if (analytics) {
     const link = event.target.closest("a[href]");
     if (!link) return;
     const href = link.getAttribute("href") || "";
-    const linkLocation = link.closest("header") ? "header" : link.closest("footer") ? "footer" : "content";
+    const linkLocation = link.dataset.analyticsLocation || (link.closest("header") ? "header" : link.closest("footer") ? "footer" : "content");
     const ctaName = (link.dataset.analyticsLabel || link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 100);
+    const editorialEvent = link.dataset.analyticsEvent;
+
+    if (editorialEvent) {
+      track(editorialEvent, { cta_name: ctaName, cta_location: linkLocation, article_slug: link.dataset.articleSlug });
+    }
 
     if (href.includes("wa.me/")) {
       const parameters = { lead_type: "whatsapp_handoff", contact_method: "whatsapp", link_location: linkLocation, cta_name: ctaName };

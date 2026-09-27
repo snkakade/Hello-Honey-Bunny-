@@ -2,7 +2,8 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 
-const canonicalRoutes = ["/", "/fresh-goat-milk", "/goat-milk-paneer", "/products", "/delivery-areas", "/request-a-batch", "/our-farm", "/for-chefs-and-retailers", "/faqs", "/contact", "/privacy"];
+const journalRoutes = ["/journal", "/journal/goat-milk-benefits-nutrition", "/journal/how-to-buy-fresh-goat-milk-pune", "/journal/goat-milk-vs-cow-milk", "/journal/how-to-store-fresh-goat-milk"];
+const canonicalRoutes = ["/", "/fresh-goat-milk", "/goat-milk-paneer", "/products", "/delivery-areas", "/request-a-batch", "/our-farm", "/for-chefs-and-retailers", ...journalRoutes, "/faqs", "/contact", "/privacy"];
 const indexableRoutes = canonicalRoutes;
 const viewports = [[360,800],[390,844],[768,1024],[1024,768],[1440,900]];
 
@@ -17,6 +18,34 @@ test("canonical pages have complete, unique SEO and valid structured data", asyn
     expect(title).toBeTruthy(); expect(description).toBeTruthy(); expect(titles.has(title), `${route} unique title`).toBeFalsy(); expect(descriptions.has(description), `${route} unique description`).toBeFalsy(); titles.add(title); descriptions.add(description);
     const blocks = await page.locator("script[type='application/ld+json']").allTextContents(); blocks.forEach((block) => expect(() => JSON.parse(block)).not.toThrow());
   }
+});
+
+test("protected commercial SEO elements remain unchanged", async ({ page }) => {
+  const protectedPages = [
+    ["/", "Small-Batch Goat Dairy Near Pune | Hello Honey Bunny", "Fresh goat milk and paneer"],
+    ["/fresh-goat-milk", "Fresh Goat Milk Near Pune | Hello Honey Bunny", "Fresh goat milk in limited batches near Pune"],
+    ["/delivery-areas", "Goat Milk Delivery in Pune & Nearby PCMC | Hello Honey Bunny", "Goat milk delivery requests across Pune and nearby PCMC"],
+    ["/our-farm", "About Our Goat Dairy Near Pune | Hello Honey Bunny", "A small goat dairy in Kunjirwadi near Pune"]
+  ];
+  for (const [route, title, h1] of protectedPages) {
+    await page.goto(route);
+    await expect(page).toHaveTitle(title);
+    await expect(page.locator("h1")).toHaveText(h1);
+    await expect(page.locator("link[rel='canonical']")).toHaveAttribute("href", `https://hellohoneybunny.com${route}`);
+  }
+});
+
+test("published journal articles expose visible authorship, sources where required and Article schema", async ({ page }) => {
+  for (const route of journalRoutes.slice(1)) {
+    await page.goto(route);
+    await expect(page.locator(".article-byline")).toContainText("Written by Hello Honey Bunny");
+    const schemas = (await page.locator("script[type='application/ld+json']").allTextContents()).map((item) => JSON.parse(item));
+    expect(schemas.some((item) => item["@type"] === "Article" && item.mainEntityOfPage === `https://hellohoneybunny.com${route}`), route).toBeTruthy();
+    await expect(page.locator("main")).not.toContainText("Reviewed by");
+  }
+  await page.goto("/journal/goat-milk-benefits-nutrition");
+  await expect(page.locator(".article-sources")).toContainText("Sources and further reading");
+  await expect(page.locator("main")).toContainText("does not claim that goat milk increases platelet counts");
 });
 
 test("internal links are canonical, valid and do not use placeholders", async ({ page, request }) => {
