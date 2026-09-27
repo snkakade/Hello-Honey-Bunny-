@@ -1,12 +1,60 @@
 ---
 import { site, withBase } from "../config/site";
-const links = [["Fresh Goat Milk", "/fresh-goat-milk"], ["Weekly Milk Plans", "/goat-milk-subscription"], ["Goat Milk Paneer", "/goat-milk-paneer"], ["Delivery Areas", "/delivery-areas"], ["Request a Batch", "/request-a-batch"], ["Our Farm", "/our-farm"], ["For Food Businesses", "/for-chefs-and-retailers"], ["Journal", "/journal"], ["FAQs", "/faqs"], ["Contact", "/contact"], ["Privacy", "/privacy"]];
+
+const orderLinks = [
+  ["Fresh Goat Milk", "/fresh-goat-milk"],
+  ["Weekly Milk Plans", "/goat-milk-subscription"],
+  ["Goat Milk Paneer", "/goat-milk-paneer"],
+  ["Request a Batch", "/request-a-batch"],
+  ["Delivery Areas", "/delivery-areas"]
+];
+
+const discoverLinks = [
+  ["Our Farm", "/our-farm"],
+  ["For Food Businesses", "/for-chefs-and-retailers"],
+  ["Journal", "/journal"],
+  ["FAQs", "/faqs"],
+  ["Contact", "/contact"]
+];
 ---
+
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><a class="footer-logo" href={withBase("/")} aria-label="Hello Honey Bunny home"><img src={withBase("/assets/brand/official-full-logo.svg")} width="720" height="720" alt="" loading="lazy" /></a><p>{site.description}</p><p>{site.location}</p><p>Delivery requests across Pune, nearby PCMC and listed local areas.</p><a href={`https://wa.me/${site.whatsappNumber}`} target="_blank" rel="noopener">WhatsApp {site.phoneDisplay}</a></div>
-    <nav aria-label="Footer navigation">{links.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}</nav>
-    <div><h2>Elsewhere</h2><a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+    <div class="footer-brand">
+      <a class="footer-logo" href={withBase("/")} aria-label="Hello Honey Bunny home">
+        <img src={withBase("/assets/brand/official-full-logo.svg")} width="720" height="720" alt="" loading="lazy" />
+      </a>
+      <p class="footer-intro">{site.description}</p>
+      <p class="footer-origin"><span aria-hidden="true">●</span> Small-batch dairy near Pune</p>
+    </div>
+
+    <nav class="footer-links" aria-labelledby="footer-order-title">
+      <h2 id="footer-order-title">Order</h2>
+      {orderLinks.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
+    </nav>
+
+    <nav class="footer-links" aria-labelledby="footer-discover-title">
+      <h2 id="footer-discover-title">Discover</h2>
+      {discoverLinks.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
+    </nav>
+
+    <div class="footer-contact">
+      <p class="footer-kicker">Current batch</p>
+      <h2>Looking for fresh goat milk?</h2>
+      <p>Tell us your area and preferred quantity. We will personally confirm availability, price and the practical arrangement.</p>
+      <a class="button button-accent footer-whatsapp" href={`https://wa.me/${site.whatsappNumber}`} target="_blank" rel="noopener" data-analytics-location="footer" data-analytics-label="Check the current batch">Check on WhatsApp <span aria-hidden="true">↗</span></a>
+      <a class="footer-email" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
   </div>
-  <div class="container footer-bottom"><p>© {new Date().getFullYear()} Hello Honey Bunny</p></div>
+
+  <div class="container footer-bottom">
+    <p>© {new Date().getFullYear()} Hello Honey Bunny</p>
+    <address>{site.location}</address>
+    <p class="footer-service">Delivery requests across Pune, nearby PCMC and listed local areas.</p>
+    <div class="footer-meta-links">
+      <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <span class="footer-social-pending" title="Instagram link to be added">Instagram</span>
+      <a href={withBase("/privacy")}>Privacy</a>
+    </div>
+  </div>
 </footer>
