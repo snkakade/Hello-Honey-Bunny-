@@ -67,6 +67,16 @@ test("paid trial page is noindex and consolidates to the existing milk page", as
   await expect(page.locator("meta[name='robots']")).toHaveAttribute("content", "noindex, follow");
   await expect(page.locator("link[rel='canonical']")).toHaveAttribute("href", "https://hellohoneybunny.com/fresh-goat-milk");
   await expect(page.locator("main")).toContainText("No subscription required");
+  await expect(page.locator("[data-product-id]")).toHaveCount(2);
+  await expect(page.locator("[data-size] output").first()).toHaveText("1");
+  await expect(page.locator("#batch-form button[type='submit']")).toContainText("Check price & availability on WhatsApp");
+});
+
+test("subscription hero uses the local delivery artwork", async ({ page }) => {
+  await page.goto("/goat-milk-subscription");
+  const heroImage = page.locator(".subscription-art img");
+  await expect(heroImage).toHaveAttribute("src", "/assets/images/editorial/buy-goat-milk-pune.webp");
+  await expect(heroImage).toHaveAttribute("alt", /delivery journey towards Pune/i);
 });
 
 test("Cloudflare redirect map is permanent and single hop", async () => {

@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import TrialRequestBuilder from "../components/TrialRequestBuilder.astro";
 import milkArt from "../assets/images/illustrated-milk-v3.webp";
 import { whatsappUrl, withBase } from "../config/site";
 
@@ -16,7 +17,7 @@ const trialWhatsapp = whatsappUrl("Hello, I would like to try the current fresh 
           <p class="eyebrow">A simple first order</p>
           <h1>Try the current fresh goat milk batch</h1>
           <p class="lede">Start with 500 ml or 1 litre. We will confirm the current price and available pickup or delivery option on WhatsApp before you decide.</p>
-          <a class="button button-primary button-arrow conversion-primary" href={trialWhatsapp} target="_blank" rel="noopener" data-analytics-location="trial_hero" data-analytics-label="Check the current trial batch">Check the current batch <span aria-hidden="true">↗</span></a>
+          <div class="button-row"><a class="button button-primary button-arrow conversion-primary" href="#trial-request">Start with 500 ml <span aria-hidden="true">↓</span></a><a class="button button-secondary" href={trialWhatsapp} target="_blank" rel="noopener" data-analytics-location="trial_hero" data-analytics-label="Ask about the current trial batch">Ask directly on WhatsApp</a></div>
           <p class="cta-reassurance">No subscription. No automatic payment. No order until you confirm.</p>
           <ul class="conversion-trust" aria-label="Trial batch summary">
             <li><strong>500 ml or 1 L</strong><span>Choose a small first quantity</span></li>
@@ -30,7 +31,8 @@ const trialWhatsapp = whatsappUrl("Hello, I would like to try the current fresh 
         </div>
       </div>
     </section>
-    <section class="section section-cream">
+    <TrialRequestBuilder />
+    <section class="section">
       <div class="container conversion-steps">
         <div class="section-heading"><p class="eyebrow">Three clear steps</p><h2>Ask first. Decide after the details are clear.</h2></div>
         <ol>
@@ -54,4 +56,5 @@ const trialWhatsapp = whatsappUrl("Hello, I would like to try the current fresh 
       </div>
     </section>
   </main>
+  <script>import "../scripts/request-builder.js";</script>
 </BaseLayout>

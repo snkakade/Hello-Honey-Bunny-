@@ -69,6 +69,20 @@
 .conversion-steps li > span { color: var(--honey-dark); font-size: .78rem; font-weight: 800; }
 .conversion-steps h3 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
 .conversion-split { display: grid; align-items: start; gap: clamp(2rem, 7vw, 7rem); grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); }
+.trial-builder-heading { display: grid; align-items: end; gap: 2rem; margin-bottom: clamp(2rem, 5vw, 4rem); grid-template-columns: minmax(0, 1fr) auto; }
+.trial-builder-heading h2 { max-width: 850px; margin: 0; }
+.trial-builder-promise { display: grid; max-width: 310px; padding: 1rem 1.2rem; background: var(--milk); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.trial-builder-promise strong { color: var(--forest); }
+.trial-builder-promise span, .product-add-on, .submit-reassurance { color: var(--muted); font-size: .8rem; }
+.trial-request-layout { grid-template-columns: minmax(0, 1.05fr) minmax(390px, .72fr); }
+.trial-request-layout .request-products > h3 { margin-bottom: .5rem; font-size: clamp(2.5rem, 4.5vw, 4.2rem); }
+.trial-request-layout .request-product h4 { margin: 0; color: var(--forest); font-family: var(--font-display); font-size: clamp(1.65rem, 2.5vw, 2.25rem); font-weight: 500; line-height: 1; }
+.product-add-on { margin: .45rem 0 0; }
+.trial-form-panel > .eyebrow { color: var(--honey); }
+.trial-form-panel > h3 { color: #fff; font-size: clamp(2.5rem, 4.5vw, 4.4rem); }
+.trial-submit { width: 100%; margin-top: 1.25rem; white-space: nowrap; }
+.submit-reassurance { margin: .65rem 0 0; color: rgba(255,255,255,.78); text-align: center; }
+.trial-form-panel .fallback h4 { margin-bottom: .6rem; color: var(--forest); font-family: var(--font-display); font-size: 1.6rem; font-weight: 500; }
 .weekly-invitation { background: var(--paper); }
 .plan-grid { display: grid; align-items: stretch; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
 .plan-card { position: relative; display: flex; min-height: 580px; flex-direction: column; padding: clamp(1.4rem, 3vw, 2.3rem); background: var(--milk); border: 1px solid var(--line); border-radius: var(--radius-md); }
@@ -99,8 +113,10 @@
 .subscription-page .cta-band .button { min-width: 230px; white-space: nowrap; }
 
 @media (max-width: 900px) {
-  .conversion-hero-grid, .conversion-split, .route-layout { grid-template-columns: 1fr; }
+  .conversion-hero-grid, .conversion-split, .route-layout, .trial-builder-heading, .trial-request-layout { grid-template-columns: 1fr; }
   .conversion-art { max-width: 680px; margin-inline: auto; }
+  .trial-builder-promise { max-width: none; }
+  .trial-request-layout .form-panel { position: static; }
   .plan-grid { grid-template-columns: 1fr; }
   .plan-card, .plan-card-featured { min-height: 0; transform: none; }
   .route-intro { position: static; }
@@ -116,6 +132,7 @@
   .subscription-hero .button-row .button { width: 100%; }
   .subscription-page .final-cta { padding-top: 4rem; }
   .subscription-page .cta-band .button { width: 100%; min-width: 0; }
+  .trial-submit { white-space: normal; }
 }
 
 /* Journal and answer-led editorial pages */

@@ -12,6 +12,12 @@ if (root) {
   const offsetToday = new Date(localToday.getTime() - localToday.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
   dateInput.min = offsetToday;
 
+  root.querySelectorAll("[data-size]").forEach((control) => {
+    const initial = Math.max(0, Math.min(maxQuantity, Number(control.dataset.initialQuantity) || 0));
+    quantities.set(`${control.closest("[data-product-id]").dataset.productId}|${control.dataset.size}`, initial);
+    control.querySelector("output").textContent = String(initial);
+  });
+
   const keyFor = (control) => `${control.closest("[data-product-id]").dataset.productId}|${control.closest("[data-size]").dataset.size}`;
   const chosen = () => [...root.querySelectorAll("[data-size]")].map((control) => {
     const product = control.closest("[data-product-id]");

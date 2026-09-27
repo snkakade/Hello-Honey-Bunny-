@@ -1,8 +1,6 @@
 ---
-import { Picture } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import milkArt from "../assets/images/illustrated-milk-wide-v4.png";
 import { breadcrumbSchema } from "../utils/schema";
 import { whatsappUrl, withBase } from "../config/site";
 
@@ -15,7 +13,7 @@ const planUrl = (plan: string, quantity: string) => whatsappUrl(`Hello, I would 
 const subscriptionWhatsapp = whatsappUrl("Hello, I would like to reserve a regular weekly goat milk allocation. Please help me choose a suitable plan and confirm the available delivery route, schedule, four-week cycle price and subscription terms for my area.");
 const crumbs = [{ name: "Home", path: "/" }, { name: "Goat Milk Subscription", path: "/goat-milk-subscription" }];
 ---
-<BaseLayout title="Weekly Goat Milk Subscription Near Pune | Hello Honey Bunny" description="Reserve a planned weekly goat milk allocation in a four-week cycle, with route-based delivery around Pune and nearby areas, subject to farm production and subscription terms." canonicalPath="/goat-milk-subscription" activePage="milk" image={milkArt.src} imageAlt="Illustrated fresh goat milk bottle in a farm landscape" schema={breadcrumbSchema(crumbs)}>
+<BaseLayout title="Weekly Goat Milk Subscription Near Pune | Hello Honey Bunny" description="Reserve a planned weekly goat milk allocation in a four-week cycle, with route-based delivery around Pune and nearby areas, subject to farm production and subscription terms." canonicalPath="/goat-milk-subscription" activePage="milk" image="/assets/images/editorial/buy-goat-milk-pune.webp" imageAlt="Illustrated fresh goat milk delivery journey towards Pune" schema={breadcrumbSchema(crumbs)}>
   <main id="main" class="conversion-page subscription-page">
     <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Goat Milk Subscription" }]} />
     <section class="conversion-hero subscription-hero">
@@ -28,7 +26,7 @@ const crumbs = [{ name: "Home", path: "/" }, { name: "Goat Milk Subscription", p
           <p class="cta-reassurance">Four-week cycle. Pause with advance notice. Final price and route confirmed before you start.</p>
         </div>
         <div class="conversion-art subscription-art">
-          <Picture src={milkArt} formats={["avif"]} fallbackFormat="webp" widths={[640, 960, 1440]} sizes="(max-width: 820px) 100vw, 46vw" alt="Illustrated fresh goat milk bottle with a goat and rolling farmland" fetchpriority="high" loading="eager" decoding="async" />
+          <picture><img src="/assets/images/editorial/buy-goat-milk-pune.webp" width="1448" height="1086" alt="Illustrated fresh goat milk bottles beginning a local delivery journey towards Pune" fetchpriority="high" decoding="async" /></picture>
           <div class="offer-ticket"><span>Four-week cycle</span><strong>Reserved allocation</strong><small>Subject to farm production</small></div>
         </div>
       </div>
