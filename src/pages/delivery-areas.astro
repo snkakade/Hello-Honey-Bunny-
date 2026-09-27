@@ -6,7 +6,7 @@ import { breadcrumbSchema } from "../utils/schema";
 
 const crumbs = [{ name: "Home", path: "/" }, { name: "Delivery Areas", path: "/delivery-areas" }];
 ---
-<BaseLayout title="Goat Milk Delivery in Pune & Nearby PCMC | Hello Honey Bunny" description="See where Hello Honey Bunny currently considers fresh goat milk and goat milk paneer delivery requests across Pune, nearby PCMC and local areas." canonicalPath="/delivery-areas" schema={breadcrumbSchema(crumbs)}>
+<BaseLayout title="Goat Milk Delivery in Pune & Nearby PCMC | Hello Honey Bunny" description="See where Hello Honey Bunny currently considers fresh goat milk and goat milk paneer delivery requests across Pune, nearby PCMC and local areas." canonicalPath="/delivery-areas" image="/assets/images/editorial/pune-delivery-landscape.webp" imageAlt="Illustrated goat milk delivery route from Kunjirwadi towards Pune" schema={breadcrumbSchema(crumbs)}>
   <main id="main">
     <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Delivery Areas" }]} />
     <section class="page-intro">
@@ -15,6 +15,14 @@ const crumbs = [{ name: "Home", path: "/" }, { name: "Delivery Areas", path: "/d
         <h1>Goat milk delivery requests across Pune and nearby PCMC</h1>
         <p class="lede">Hello Honey Bunny is based in Kunjirwadi near Pune. We consider delivery requests for fresh goat milk and goat milk paneer across the areas below, subject to the current batch and practical route availability.</p>
         <div class="button-row"><a class="button button-primary" href={withBase("/request-a-batch")}>Request the current batch</a><a class="button button-secondary" href={withBase("/products")}>View current products</a></div>
+      </div>
+    </section>
+    <section class="delivery-journey" aria-label="From our Kunjirwadi base towards Pune">
+      <div class="container">
+        <figure>
+          <img src="/assets/images/editorial/pune-delivery-landscape.webp" width="1672" height="941" alt="Illustrated local milk delivery leaving a small Kunjirwadi goat farm on a road towards Pune" fetchpriority="high" decoding="async" />
+          <figcaption><span>Kunjirwadi base</span><strong>Routes are confirmed batch by batch</strong><span>Pune &amp; nearby PCMC</span></figcaption>
+        </figure>
       </div>
     </section>
     <section class="section section-cream">

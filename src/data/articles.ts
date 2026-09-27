@@ -23,8 +23,8 @@ export const articles: ArticleSummary[] = [
     dateModified: "2026-09-27",
     displayDate: "27 September 2026",
     readingTime: "8 minute read",
-    image: "/assets/images/editorial/dairy-still-life.webp",
-    imageAlt: "Milk vessels and a bowl arranged in a Hello Honey Bunny dairy still life",
+    image: "/assets/images/editorial/goat-milk-nutrition-guide.webp",
+    imageAlt: "Illustration of goat milk, a drinking glass and a goat in a Deccan farm landscape",
     imageWidth: 1448,
     imageHeight: 1086
   },
@@ -37,10 +37,10 @@ export const articles: ArticleSummary[] = [
     dateModified: "2026-09-27",
     displayDate: "27 September 2026",
     readingTime: "6 minute read",
-    image: "/assets/images/editorial/farm-morning.webp",
-    imageAlt: "Goats at the dairy farm near Kunjirwadi",
-    imageWidth: 1586,
-    imageHeight: 992
+    image: "/assets/images/editorial/buy-goat-milk-pune.webp",
+    imageAlt: "Illustration of fresh milk bottles beginning a local delivery journey towards Pune",
+    imageWidth: 1448,
+    imageHeight: 1086
   },
   {
     path: "/journal/goat-milk-vs-cow-milk",
@@ -51,10 +51,10 @@ export const articles: ArticleSummary[] = [
     dateModified: "2026-09-27",
     displayDate: "27 September 2026",
     readingTime: "7 minute read",
-    image: "/assets/images/editorial/goat-portrait.webp",
-    imageAlt: "Goat portrait from the Hello Honey Bunny editorial collection",
-    imageWidth: 1122,
-    imageHeight: 1402
+    image: "/assets/images/editorial/goat-milk-vs-cow-milk.webp",
+    imageAlt: "Balanced illustration of two milk vessels with a goat and cow in neighbouring fields",
+    imageWidth: 1448,
+    imageHeight: 1086
   },
   {
     path: "/journal/how-to-store-fresh-goat-milk",
@@ -65,10 +65,10 @@ export const articles: ArticleSummary[] = [
     dateModified: "2026-09-27",
     displayDate: "27 September 2026",
     readingTime: "5 minute read",
-    image: "/assets/images/editorial/product-collection-cutout.webp",
-    imageAlt: "Hello Honey Bunny milk and paneer product illustration",
-    imageWidth: 1122,
-    imageHeight: 1402
+    image: "/assets/images/editorial/store-goat-milk-safely.webp",
+    imageAlt: "Illustration of an upright milk bottle stored neatly on a refrigerator shelf",
+    imageWidth: 1448,
+    imageHeight: 1086
   }
 ];
 

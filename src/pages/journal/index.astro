@@ -5,14 +5,19 @@ import ArticleCard from "../../components/ArticleCard.astro";
 import { articles } from "../../data/articles";
 import { breadcrumbSchema } from "../../utils/schema";
 ---
-<BaseLayout title="Goat Milk Journal and Practical Guides | Hello Honey Bunny" description="Evidence-aware goat milk guides covering nutrition, lactose, buying near Pune, everyday differences and safe storage." canonicalPath="/journal" activePage="journal" schema={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }])}>
+<BaseLayout title="Goat Milk Journal and Practical Guides | Hello Honey Bunny" description="Evidence-aware goat milk guides covering nutrition, lactose, buying near Pune, everyday differences and safe storage." canonicalPath="/journal" activePage="journal" image="/assets/images/editorial/goat-milk-journal.webp" imageAlt="Illustrated goat milk journal with a goat, milk and paneer" schema={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }])}>
   <main id="main">
     <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Journal" }]} />
     <section class="page-intro journal-intro">
-      <div class="container">
-        <p class="eyebrow">Plain answers from a small dairy</p>
-        <h1>Goat milk, explained with care.</h1>
-        <p class="lede">Practical guides about buying, using and storing goat milk, plus responsible answers to nutrition and dietary questions. Food information is kept separate from medical advice.</p>
+      <div class="container journal-intro-grid">
+        <div>
+          <p class="eyebrow">Plain answers from a small dairy</p>
+          <h1>Goat milk, explained with care.</h1>
+          <p class="lede">Practical guides about buying, using and storing goat milk, plus responsible answers to nutrition and dietary questions. Food information is kept separate from medical advice.</p>
+        </div>
+        <figure class="journal-intro-art" aria-label="An illustrated study of the journal topics">
+          <img src="/assets/images/editorial/goat-milk-journal.webp" width="1672" height="941" alt="Illustrated open journal beside goat milk, paneer and a goat in a Deccan landscape" fetchpriority="high" decoding="async" />
+        </figure>
       </div>
     </section>
     <section class="section section-cream">
