@@ -1,0 +1,57 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import milkArt from "../assets/images/illustrated-milk-v3.webp";
+import { whatsappUrl, withBase } from "../config/site";
+
+const trialWhatsapp = whatsappUrl("Hello, I would like to try the current fresh goat milk batch. I am considering 500 ml or 1 litre. Please confirm availability, the current price and the available pickup or delivery option for my area.");
+---
+<BaseLayout title="Try the Current Fresh Goat Milk Batch | Hello Honey Bunny" description="Try 500 ml or 1 litre of the current fresh goat milk batch. Price and the available pickup or delivery option are confirmed on WhatsApp. No subscription required." canonicalPath="/fresh-goat-milk" activePage="milk" image={milkArt.src} imageAlt="Illustrated bottle and glass of fresh goat milk" noindex={true}>
+  <main id="main" class="conversion-page trial-page">
+    <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Try the current batch" }]} />
+    <section class="conversion-hero">
+      <div class="container conversion-hero-grid">
+        <div class="conversion-copy">
+          <p class="eyebrow">A simple first order</p>
+          <h1>Try the current fresh goat milk batch</h1>
+          <p class="lede">Start with 500 ml or 1 litre. We will confirm the current price and available pickup or delivery option on WhatsApp before you decide.</p>
+          <a class="button button-primary button-arrow conversion-primary" href={trialWhatsapp} target="_blank" rel="noopener" data-analytics-location="trial_hero" data-analytics-label="Check the current trial batch">Check the current batch <span aria-hidden="true">↗</span></a>
+          <p class="cta-reassurance">No subscription. No automatic payment. No order until you confirm.</p>
+          <ul class="conversion-trust" aria-label="Trial batch summary">
+            <li><strong>500 ml or 1 L</strong><span>Choose a small first quantity</span></li>
+            <li><strong>Price confirmed first</strong><span>Know the current details before deciding</span></li>
+            <li><strong>Handled personally</strong><span>Pickup or delivery depends on your area</span></li>
+          </ul>
+        </div>
+        <div class="conversion-art">
+          <Picture src={milkArt} formats={["avif"]} fallbackFormat="webp" widths={[480, 768, 1100]} sizes="(max-width: 820px) 100vw, 44vw" alt="Illustrated fresh goat milk bottle and glass in a farm landscape" fetchpriority="high" loading="eager" decoding="async" />
+          <div class="offer-ticket" aria-label="Trial offer"><span>Try once</span><strong>500 ml or 1 L</strong><small>No subscription required</small></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-cream">
+      <div class="container conversion-steps">
+        <div class="section-heading"><p class="eyebrow">Three clear steps</p><h2>Ask first. Decide after the details are clear.</h2></div>
+        <ol>
+          <li><span>01</span><div><h3>Tell us your area</h3><p>Share your locality and whether you would like 500 ml or 1 litre.</p></div></li>
+          <li><span>02</span><div><h3>Receive the current answer</h3><p>We confirm batch availability, final price and the practical pickup or delivery option.</p></div></li>
+          <li><span>03</span><div><h3>Choose without commitment</h3><p>Confirm this one order only if the available arrangement works for you.</p></div></li>
+        </ol>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container conversion-split">
+        <div><p class="eyebrow">What this offer is</p><h2>One batch, before any weekly plan.</h2></div>
+        <div><p class="large-copy">The first order is simply a chance to check the product and the practical delivery arrangement.</p><p>If you later want milk regularly, you can explore a <a href={withBase("/goat-milk-subscription")}>reserved weekly allocation</a>. There is no need to decide now.</p><a class="button button-secondary" href={withBase("/fresh-goat-milk")}>Read full milk information</a></div>
+      </div>
+    </section>
+    <section class="section final-cta">
+      <div class="container cta-band">
+        <div><p class="eyebrow">Current batch</p><h2>Ready to check 500 ml or 1 litre?</h2><p>Send your area and preferred quantity. We will reply with the current details.</p></div>
+        <a class="button button-light button-arrow" href={trialWhatsapp} target="_blank" rel="noopener" data-analytics-location="trial_final_cta" data-analytics-label="Try the current goat milk batch">Try the current batch <span aria-hidden="true">↗</span></a>
+        <span class="cta-mark" aria-hidden="true">01</span>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

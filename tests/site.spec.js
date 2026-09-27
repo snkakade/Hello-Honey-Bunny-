@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 
 const journalRoutes = ["/journal", "/journal/goat-milk-benefits-nutrition", "/journal/how-to-buy-fresh-goat-milk-pune", "/journal/goat-milk-vs-cow-milk", "/journal/how-to-store-fresh-goat-milk"];
-const canonicalRoutes = ["/", "/fresh-goat-milk", "/goat-milk-paneer", "/products", "/delivery-areas", "/request-a-batch", "/our-farm", "/for-chefs-and-retailers", ...journalRoutes, "/faqs", "/contact", "/privacy"];
+const canonicalRoutes = ["/", "/fresh-goat-milk", "/goat-milk-subscription", "/goat-milk-paneer", "/products", "/delivery-areas", "/request-a-batch", "/our-farm", "/for-chefs-and-retailers", ...journalRoutes, "/faqs", "/contact", "/privacy"];
 const indexableRoutes = canonicalRoutes;
 const viewports = [[360,800],[390,844],[768,1024],[1024,768],[1440,900]];
 
@@ -58,7 +58,15 @@ test("sitemap and robots expose canonical production URLs only", async ({ reques
   const sitemap = await (await request.get("/sitemap.xml")).text(); const robots = await (await request.get("/robots.txt")).text();
   expect(robots).toContain("https://hellohoneybunny.com/sitemap.xml");
   for (const route of indexableRoutes) expect(sitemap).toContain(`<loc>https://hellohoneybunny.com${route}</loc>`);
-  expect(sitemap).not.toContain(".html"); expect(sitemap).not.toContain("/404");
+  expect(sitemap).not.toContain(".html"); expect(sitemap).not.toContain("/404"); expect(sitemap).not.toContain("/try-goat-milk");
+});
+
+test("paid trial page is noindex and consolidates to the existing milk page", async ({ page }) => {
+  const response = await page.goto("/try-goat-milk"); expect(response.status()).toBe(200);
+  await expect(page.locator("h1")).toHaveText("Try the current fresh goat milk batch");
+  await expect(page.locator("meta[name='robots']")).toHaveAttribute("content", "noindex, follow");
+  await expect(page.locator("link[rel='canonical']")).toHaveAttribute("href", "https://hellohoneybunny.com/fresh-goat-milk");
+  await expect(page.locator("main")).toContainText("No subscription required");
 });
 
 test("Cloudflare redirect map is permanent and single hop", async () => {
