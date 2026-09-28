@@ -46,8 +46,7 @@ const schemas = (Array.isArray(schema) ? schema : [schema]).filter(Boolean);
     <a class="skip-link" href="#main">Skip to content</a>
     <Header activePage={activePage} />
     <slot />
-    <Footer />
-    <Analytics />
+    <Footer><Analytics slot="analytics" /></Footer>
     <script>import "../scripts/navigation.js";</script>
     <script>import "../scripts/motion.js";</script>
   </body>

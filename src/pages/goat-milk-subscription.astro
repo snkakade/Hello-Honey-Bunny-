@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import DeliveryRoutes from "../components/DeliveryRoutes.astro";
 import { breadcrumbSchema } from "../utils/schema";
 import { whatsappUrl, withBase } from "../config/site";
 
 const plans = [
-  { name: "Weekly 2", quantity: "2 litres/week", cycle: "Approximately 8 L per four-week cycle", fit: "A lighter regular quantity for one- or two-person households.", value: "Plan value designed around approximately 3%", featured: false },
-  { name: "Weekly 4", quantity: "4 litres/week", cycle: "Approximately 16 L per four-week cycle", fit: "A practical regular allocation for household use.", value: "Plan value designed around approximately 5%", featured: true },
-  { name: "Weekly 7", quantity: "1 litre/day allocation", cycle: "Approximately 28 L per four-week cycle", fit: "For households with higher, consistent milk consumption.", value: "Plan value capped at approximately 7%", featured: false }
+  { name: "Weekly 2", quantity: "2 litres/week", fit: "A lighter regular quantity for one- or two-person households.", cta: "Check 2 L weekly availability", featured: false },
+  { name: "Weekly 4", quantity: "4 litres/week", fit: "A practical regular quantity for households that use goat milk through the week.", cta: "Check 4 L weekly availability", featured: true },
+  { name: "Weekly 7", quantity: "1 litre/day allocation", fit: "For households that need a consistent daily quantity reserved.", cta: "Check daily availability", featured: false }
 ];
 const planUrl = (plan: string, quantity: string) => whatsappUrl(`Hello, I would like to discuss the ${plan} goat milk plan (${quantity}). Please confirm whether my area fits a current delivery route, the available schedule, four-week cycle price and subscription terms.`);
 const subscriptionWhatsapp = whatsappUrl("Hello, I would like to reserve a regular weekly goat milk allocation. Please help me choose a suitable plan and confirm the available delivery route, schedule, four-week cycle price and subscription terms for my area.");
@@ -21,7 +22,7 @@ const crumbs = [{ name: "Home", path: "/" }, { name: "Goat Milk Subscription", p
         <div class="conversion-copy">
           <p class="eyebrow">A steadier weekly rhythm</p>
           <h1>Fresh goat milk, reserved for you each week</h1>
-          <p class="lede">Choose your regular quantity and preferred delivery days. We reserve your planned quantity from available production and confirm the delivery schedule with you.</p>
+          <p class="lede">Choose your regular quantity and tell us your area. We reserve your planned quantity from available production and match it to the scheduled route days available to you.</p>
           <div class="button-row"><a class="button button-primary button-arrow conversion-primary" href="#plans">Compare weekly plans <span aria-hidden="true">↓</span></a><a class="button button-secondary" href={subscriptionWhatsapp} target="_blank" rel="noopener" data-analytics-location="subscription_hero" data-analytics-label="Check subscription availability">Check your area on WhatsApp</a></div>
           <p class="cta-reassurance">Four-week cycle. Pause with advance notice. Final price and route confirmed before you start.</p>
         </div>
@@ -33,29 +34,20 @@ const crumbs = [{ name: "Home", path: "/" }, { name: "Goat Milk Subscription", p
     </section>
     <section class="section section-cream plan-section" id="plans">
       <div class="container">
-        <div class="section-heading section-heading-display"><p class="eyebrow">Choose a useful quantity</p><h2>Three plans, without artificial tiers.</h2><p>Each plan reserves a planned weekly allocation. The current cycle price, delivery arrangement and precise combination of plan benefits are confirmed personally before prepayment.</p></div>
+        <div class="section-heading section-heading-display"><p class="eyebrow">Choose a useful quantity</p><h2>Which weekly quantity fits your household?</h2><p>Start with the amount you are likely to use. We will confirm your route days, current availability and final four-week price on WhatsApp before you decide.</p></div>
         <div class="plan-grid">
           {plans.map((plan) => <article class:list={["plan-card", { "plan-card-featured": plan.featured }]}>
-            {plan.featured && <p class="plan-label">Practical household plan</p>}
-            <p class="plan-name">{plan.name}</p><h3>{plan.quantity}</h3><p>{plan.fit}</p><p class="plan-cycle">{plan.cycle}</p>
-            <ul><li>Reserved weekly allocation</li><li>Route-linked delivery schedule</li><li>Pause with advance notice</li><li>{plan.value}</li></ul>
-            <a class:list={["button", plan.featured ? "button-primary" : "button-secondary"]} href={planUrl(plan.name, plan.quantity)} target="_blank" rel="noopener" data-analytics-location={`subscription_${plan.name.toLowerCase().replace(" ", "_")}`} data-analytics-label={`Ask about ${plan.name}`}>Ask about {plan.name}</a>
+            {plan.featured && <p class="plan-label">Most practical for households</p>}
+            <p class="plan-name">{plan.name}</p><h3>{plan.quantity}</h3><p class="plan-fit">{plan.fit}</p>
+            <ul><li>Your weekly quantity set aside</li><li>Delivery on your area's scheduled route</li><li>Pause with advance notice</li><li>Final price confirmed before you start</li></ul>
+            <a class:list={["button", "button-arrow", plan.featured ? "button-accent" : "button-primary"]} href={planUrl(plan.name, plan.quantity)} target="_blank" rel="noopener" data-analytics-location={`subscription_${plan.name.toLowerCase().replace(" ", "_")}`} data-analytics-label={plan.cta}>{plan.cta} <span aria-hidden="true">↗</span></a>
+            <small class="plan-action-note">Opens WhatsApp · No payment now</small>
           </article>)}
         </div>
-        <p class="plan-note"><strong>How the plan value works:</strong> it may be reflected through the milk price, route-linked delivery terms or a paneer add-on benefit. The exact mix is confirmed before the four-week cycle begins; it is not a promise of a permanent milk discount.</p>
+        <p class="plan-note"><strong>No commitment before confirmation.</strong> First share your area and preferred quantity. We will reply with the available route days, current cycle price and terms so you can decide clearly.</p>
       </div>
     </section>
-    <section class="section route-section">
-      <div class="container route-layout">
-        <div class="route-intro"><p class="eyebrow">Delivery that remains practical</p><h2>Your schedule follows an available route.</h2><p class="large-copy">Consolidated delivery days keep a regular plan workable for both the household and the farm.</p><p>Tell us your area first. We will match it to a current corridor and offer the available day rather than promising arbitrary Pune-wide delivery every day.</p></div>
-        <ol class="route-list">
-          <li><span>A</span><div><h3>East &amp; South-East</h3><p>Kunjirwadi → Loni Kalbhor → Hadapsar → nearby areas</p></div></li>
-          <li><span>B</span><div><h3>South Pune</h3><p>Kunjirwadi → Katraj → adjoining areas</p></div></li>
-          <li><span>C</span><div><h3>Pune Central</h3><p>Consolidated delivery days, confirmed with the plan</p></div></li>
-          <li><span>D</span><div><h3>PCMC</h3><p>Consolidated runs when subscriber density makes the route practical</p></div></li>
-        </ol>
-      </div>
-    </section>
+    <DeliveryRoutes id="subscription-routes" analyticsPrefix="subscription_route" />
     <section class="section section-forest subscription-terms">
       <div class="container conversion-split">
         <div><p class="eyebrow">An honest agricultural promise</p><h2>Reserved does not mean unlimited.</h2></div>

@@ -55,6 +55,7 @@ const discoverLinks = [
       <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <span class="footer-social-pending" title="Instagram link to be added">Instagram</span>
       <a href={withBase("/privacy")}>Privacy</a>
+      <slot name="analytics" />
     </div>
   </div>
   <div class="container footer-credit">

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import DeliveryRoutes from "../components/DeliveryRoutes.astro";
 import { site, whatsappUrl, withBase } from "../config/site";
 import { breadcrumbSchema } from "../utils/schema";
 
@@ -43,6 +44,7 @@ const unlistedAreaWhatsapp = whatsappUrl("Hello, my area is not currently listed
         </div>
       </div>
     </section>
+    <DeliveryRoutes id="pune-delivery-routes" analyticsPrefix="delivery_area_route" showPlanLink={true} />
     <section class="section">
       <div class="container feature-grid delivery-decision-grid">
         <article class="feature"><h2>How delivery is confirmed</h2><p>Send your area or postcode with the product and indicative quantity you want. We will confirm the current batch, final pricing and whether a practical delivery or pickup arrangement is available.</p><a class="delivery-context-link" href={withBase("/request-a-batch")}>Build a complete batch request <span aria-hidden="true">→</span></a></article>
