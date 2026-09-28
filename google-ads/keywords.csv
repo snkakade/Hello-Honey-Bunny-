@@ -1,0 +1,79 @@
+Campaign,Ad group,Keyword status,Keyword,Match type,Max CPC (INR),Final URL,Labels
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,goat milk pune,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,goat milk pune,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,goat milk in pune,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,goat milk in pune,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,fresh goat milk pune,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,fresh goat milk pune,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,fresh goat milk in pune,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,fresh goat milk in pune,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,buy goat milk pune,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Goat Milk Pune,Paused,buy goat milk pune,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk price in pune,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk price in pune,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk rate in pune,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk rate in pune,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk price near me,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk price near me,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk available near me,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,goat milk available near me,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,buy goat milk near me,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Availability & Price,Paused,buy goat milk near me,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,local goat milk,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,local goat milk,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,local goat milk near me,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,local goat milk near me,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,farm fresh goat milk,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,farm fresh goat milk,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,farm fresh goat milk near me,Exact,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Fresh Goat Milk | Pune | Pilot,Local Goat Milk,Paused,farm fresh goat milk near me,Phrase,35,https://hellohoneybunny.com/try-goat-milk,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,goat milk near me,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,goat milk near me,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,fresh goat milk near me,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,fresh goat milk near me,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,goat milk near by me,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,goat milk near by me,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,local goat milk near me,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,local goat milk near me,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,goat milk available near me,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Near Me,Paused,goat milk available near me,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk delivery pune,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk delivery pune,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk online pune,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk online pune,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk delivery near me,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk delivery near me,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk online near me,Exact,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Delivery Pune,Paused,goat milk online near me,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Katraj PCMC,Paused,goat milk katraj,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Katraj PCMC,Paused,goat milk delivery katraj,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Katraj PCMC,Paused,goat milk pcmc,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Katraj PCMC,Paused,goat milk delivery pcmc,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Katraj PCMC,Paused,goat milk pimpri,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Katraj PCMC,Paused,goat milk pimpri chinchwad,Phrase,40,https://hellohoneybunny.com/delivery-areas,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat milk paneer,Exact,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat milk paneer,Phrase,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat paneer,Exact,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat paneer,Phrase,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat milk paneer pune,Exact,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat milk paneer pune,Phrase,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat paneer pune,Exact,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat paneer pune,Phrase,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat paneer near me,Exact,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Goat Milk Paneer,Paused,goat paneer near me,Phrase,25,https://hellohoneybunny.com/goat-milk-paneer,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat milk supplier pune,Exact,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat milk supplier pune,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat milk suppliers near me,Exact,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat milk suppliers near me,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat dairy supplier pune,Exact,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat dairy supplier pune,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat milk wholesale pune,Exact,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Goat Milk Supplier,Paused,goat milk wholesale pune,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Food Business Supply,Paused,goat milk supplier restaurant,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Food Business Supply,Paused,goat milk for restaurants,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Food Business Supply,Paused,goat milk supplier cafe,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Food Business Supply,Paused,goat milk for cafe,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Food Business Supply,Paused,dairy supplier restaurant pune,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Food Business Supply,Paused,dairy supplier cafe pune,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Food Business Supply,Paused,local dairy supplier pune,Phrase,40,https://hellohoneybunny.com/for-chefs-and-retailers,HHB Pilot; Draft Only
+

@@ -1,0 +1,46 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import DirectAnswer from "../../components/DirectAnswer.astro";
+import { getArticle } from "../../data/articles";
+import { withBase } from "../../config/site";
+const article = getArticle("/journal/how-to-buy-fresh-goat-milk-pune");
+---
+<ArticleLayout article={article} h1="Buying fresh goat milk in Pune: what should you check?">
+  <p class="article-opening">Before ordering fresh goat milk, check where it comes from, whether the current batch is available, how it should be stored and whether pickup or delivery is practical for your area.</p>
+
+  <DirectAnswer question="Where was the milk produced?">
+    <p>Ask the seller to identify the dairy or producer. Hello Honey Bunny is based in Kunjirwadi, Maharashtra 412201, near Pune. Our <a href={withBase("/our-farm")}>farm page</a> explains the small-batch approach and how availability is confirmed.</p>
+  </DirectAnswer>
+
+  <section>
+    <h2>When is the current batch available?</h2>
+    <p>A static product page cannot guarantee that a fresh batch is available at the moment you visit. A responsible seller should distinguish a product category from live stock and confirm availability before accepting an order.</p>
+
+    <h2>How should the milk be stored?</h2>
+    <p>Ask how the cold chain is maintained and what storage guidance applies to the batch. Fresh milk should be collected or received promptly and refrigerated according to the supplied instructions. Read our <a href={withBase("/journal/how-to-store-fresh-goat-milk")}>fresh goat milk storage guide</a>.</p>
+
+    <h2>What quantity do you actually need?</h2>
+    <p>Choose a practical quantity that you can refrigerate and use according to the batch guidance. Hello Honey Bunny customers can ask about indicative 500 ml and 1 litre quantities, subject to availability.</p>
+
+    <h2>Is pickup or delivery available?</h2>
+    <p>Ask before ordering. At Hello Honey Bunny, fulfilment depends on your location, requested quantity, the current batch and the practical route for that day. A listed area is not a permanent promise of a delivery slot.</p>
+  </section>
+
+  <section class="checklist-block">
+    <h2>What should you ask the dairy before ordering?</h2>
+    <ul>
+      <li>Is the current batch available?</li>
+      <li>What pack size and quantity can be supplied?</li>
+      <li>What is the final current price?</li>
+      <li>What storage guidance comes with the batch?</li>
+      <li>Is pickup or delivery practical for my area?</li>
+      <li>When will the arrangement be confirmed?</li>
+    </ul>
+  </section>
+
+  <DirectAnswer question="Where does Hello Honey Bunny supply?">
+    <p>We consider requests across Pune and selected nearby PCMC and local areas from our Kunjirwadi base. See the current <a href={withBase("/delivery-areas")}>delivery-area guidance</a>, then send your area and quantity through the <a href={withBase("/request-a-batch")}>batch request</a>.</p>
+  </DirectAnswer>
+
+  <a class="button button-primary" href={withBase("/fresh-goat-milk")} data-analytics-event="article_cta_click" data-analytics-label="View fresh goat milk information" data-article-slug="how-to-buy-fresh-goat-milk-pune">View fresh goat milk information</a>
+</ArticleLayout>

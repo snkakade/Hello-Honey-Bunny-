@@ -1,0 +1,47 @@
+---
+import { deliveryRoutes } from "../data/deliveryRoutes";
+import { whatsappUrl, withBase } from "../config/site";
+
+interface Props {
+  id?: string;
+  analyticsPrefix?: string;
+  showPlanLink?: boolean;
+}
+
+const { id = "delivery-routes", analyticsPrefix = "delivery", showPlanLink = false } = Astro.props;
+const routeUrl = (route: (typeof deliveryRoutes)[number]) => whatsappUrl(`Hello, I am in ${route.name} (${route.code}) and would like to check the current fresh goat milk delivery route. My locality is __ and I need __ litres. Please confirm the next available route day, final price and any minimum quantity.`);
+---
+
+<section class="section delivery-routes-section" id={id} aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <div class="delivery-routes-heading">
+      <div>
+        <p class="eyebrow">Delivery that remains practical</p>
+        <h2 id={`${id}-title`}>Delivery across Pune, organised by route</h2>
+      </div>
+      <div>
+        <p class="large-copy">Your area is matched to a scheduled service corridor, so you know which days are most likely to work.</p>
+        <p>Current batch availability, the final delivery date and the approximate window are confirmed personally before your order is accepted. Route days may change with production, order density, traffic or operational requirements.</p>
+      </div>
+    </div>
+
+    <div class="delivery-route-grid">
+      {deliveryRoutes.map((route) => (
+        <article class="delivery-route-card">
+          <div class="delivery-route-title"><span>{route.code}</span><h3>{route.name}</h3></div>
+          <p class="delivery-route-areas">{route.areas.join(" · ")}</p>
+          <dl>
+            <div><dt>Scheduled route days</dt><dd>{route.days}</dd></div>
+            <div><dt>Preferred window</dt><dd>{route.window}</dd></div>
+          </dl>
+          <a class="delivery-route-link" href={routeUrl(route)} target="_blank" rel="noopener" data-analytics-location={`${analyticsPrefix}_${route.code.toLowerCase()}`} data-analytics-label={`Check ${route.name} route`}>Check this route on WhatsApp <span aria-hidden="true">↗</span></a>
+        </article>
+      ))}
+    </div>
+
+    <div class="delivery-route-note">
+      <p><strong>Boundary areas:</strong> Wakad and Shivajinagar may be assigned to either neighbouring corridor after the exact address is reviewed. Once confirmed, regular customers keep the same practical route.</p>
+      {showPlanLink && <a class="button button-primary button-arrow" href={withBase("/goat-milk-subscription")}>Compare weekly milk plans <span aria-hidden="true">→</span></a>}
+    </div>
+  </div>
+</section>

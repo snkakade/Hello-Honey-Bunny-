@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import DeliveryRoutes from "../components/DeliveryRoutes.astro";
+import { site, whatsappUrl, withBase } from "../config/site";
+import { breadcrumbSchema } from "../utils/schema";
+
+const crumbs = [{ name: "Home", path: "/" }, { name: "Delivery Areas", path: "/delivery-areas" }];
+const areaCheckWhatsapp = whatsappUrl("Hello, I would like to check whether the current fresh goat milk or paneer batch can be delivered to my area. Please confirm the available route, timing, final price and any minimum quantity.");
+const unlistedAreaWhatsapp = whatsappUrl("Hello, my area is not currently listed on the delivery page. I would like to share my location and required quantity to check whether a practical pickup or delivery arrangement may be possible.");
+---
+<BaseLayout title="Goat Milk Delivery in Pune & Nearby PCMC | Hello Honey Bunny" description="See where Hello Honey Bunny currently considers fresh goat milk and goat milk paneer delivery requests across Pune, nearby PCMC and local areas." canonicalPath="/delivery-areas" image="/assets/images/editorial/pune-delivery-landscape.webp" imageAlt="Illustrated goat milk delivery route from Kunjirwadi towards Pune" schema={breadcrumbSchema(crumbs)}>
+  <main id="main">
+    <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Delivery Areas" }]} />
+    <section class="page-intro">
+      <div class="container">
+        <p class="eyebrow">Current delivery coverage</p>
+        <h1>Goat milk delivery requests across Pune and nearby PCMC</h1>
+        <p class="lede">Hello Honey Bunny is based in Kunjirwadi near Pune. We consider delivery requests for fresh goat milk and goat milk paneer across the areas below, subject to the current batch and practical route availability.</p>
+        <div class="button-row"><a class="button button-primary" href={withBase("/request-a-batch")}>Request the current batch</a><a class="button button-secondary" href={withBase("/products")}>View current products</a></div>
+      </div>
+    </section>
+    <section class="delivery-journey" aria-label="From our Kunjirwadi base towards Pune">
+      <div class="container">
+        <figure>
+          <img src="/assets/images/editorial/pune-delivery-landscape.webp" width="1672" height="941" alt="Illustrated local milk delivery leaving a small Kunjirwadi goat farm on a road towards Pune" fetchpriority="high" decoding="async" />
+          <figcaption><span>Kunjirwadi base</span><strong>Routes are confirmed batch by batch</strong><span>Pune &amp; nearby PCMC</span></figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Areas currently listed</p>
+          <h2>Pune city, nearby PCMC and local areas around our Kunjirwadi base</h2>
+          <p>A listed area means we can consider your request. It does not guarantee a delivery slot, minimum quantity, timing or route for every batch.</p>
+        </div>
+        <ul class="area-list" aria-label="Current delivery areas">
+          {site.deliveryAreas.map((area) => <li>{area}</li>)}
+        </ul>
+        <div class="delivery-area-cta">
+          <div><p class="eyebrow">Your next step</p><h3>See your area above? Check the current route.</h3><p>Share your locality and preferred quantity. We will confirm whether this batch can be arranged before you make an order.</p></div>
+          <div class="delivery-area-actions"><a class="button button-accent" href={areaCheckWhatsapp} target="_blank" rel="noopener" data-analytics-location="delivery_area_list" data-analytics-label="Check current delivery route">Check today’s route <span aria-hidden="true">↗</span></a><a class="delivery-weekly-link" href={withBase("/goat-milk-subscription")}>Need milk weekly? View plans <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </section>
+    <DeliveryRoutes id="pune-delivery-routes" analyticsPrefix="delivery_area_route" showPlanLink={true} />
+    <section class="section">
+      <div class="container feature-grid delivery-decision-grid">
+        <article class="feature"><h2>How delivery is confirmed</h2><p>Send your area or postcode with the product and indicative quantity you want. We will confirm the current batch, final pricing and whether a practical delivery or pickup arrangement is available.</p><a class="delivery-context-link" href={withBase("/request-a-batch")}>Build a complete batch request <span aria-hidden="true">→</span></a></article>
+        <article class="feature"><h2>Outside the listed areas?</h2><p>You can still ask on WhatsApp. We may not be able to serve every location, but your message helps us understand genuine demand without promising coverage before a route is confirmed.</p><a class="delivery-context-link" href={unlistedAreaWhatsapp} target="_blank" rel="noopener" data-analytics-location="delivery_unlisted_area" data-analytics-label="Ask about an unlisted area">Ask about another area <span aria-hidden="true">↗</span></a></article>
+      </div>
+    </section>
+    <section class="section section-cream">
+      <div class="narrow area-guidance">
+        <section><h2>Kunjirwadi and nearby areas</h2><p>Hello Honey Bunny is based in Kunjirwadi, which makes nearby areas the most straightforward locations for arranging collection or local fulfilment.</p><p>Availability still depends on the current dairy batch, so customers should confirm before travelling or arranging collection.</p></section>
+        <section><h2>Goat milk delivery requests across Pune</h2><p>We consider goat milk and paneer delivery requests across Pune based on the quantity required, current batch availability and the delivery route available that day.</p><p>Listing an area does not mean delivery is guaranteed for every batch. Send us your location before ordering and we will confirm what is practical.</p></section>
+        <section><h3>Katraj and south Pune</h3><p>Customers in Katraj and surrounding south Pune areas can ask about the current delivery route before ordering. Availability and delivery timing depend on the batch and the practical route for that day.</p></section>
+        <section><h3>Pimpri-Chinchwad and nearby PCMC areas</h3><p>We also consider requests from selected Pimpri-Chinchwad areas when the batch quantity and delivery route make fulfilment practical. Send your area and required quantity through WhatsApp and we will confirm availability.</p></section>
+        <p>View the current <a href={withBase("/fresh-goat-milk")}>fresh goat milk</a> and <a href={withBase("/goat-milk-paneer")}>goat milk paneer</a> information before you <a href={withBase("/request-a-batch")}>request a batch</a>.</p>
+      </div>
+    </section>
+    <section class="section section-forest">
+      <div class="narrow"><h2>Ready to check your area?</h2><p>Use the request builder to include your location from the start.</p><a class="button button-light" href={withBase("/request-a-batch")}>Build a batch request</a></div>
+    </section>
+  </main>
+</BaseLayout>
