@@ -1,0 +1,6 @@
+Campaign,Campaign type,Campaign status,Daily budget (INR),Bid strategy type,Max CPC bid limit (INR),Networks,Search partners,Display network,Language,Final URL suffix,Labels
+S | Fresh Goat Milk | Pune | Pilot,Search,Paused,250,Maximize clicks,35,Google Search,Off,Off,English,utm_source=google&utm_medium=cpc&utm_campaign=search_fresh_milk_pune&utm_term={keyword}&utm_content={creative},HHB Pilot; Draft Only
+S | Delivery Near Me | Pune-PCMC | Pilot,Search,Paused,150,Maximize clicks,40,Google Search,Off,Off,English,utm_source=google&utm_medium=cpc&utm_campaign=search_delivery_nearme&utm_term={keyword}&utm_content={creative},HHB Pilot; Draft Only
+S | Goat Milk Paneer | Pune | Pilot,Search,Paused,50,Maximize clicks,25,Google Search,Off,Off,English,utm_source=google&utm_medium=cpc&utm_campaign=search_goat_paneer&utm_term={keyword}&utm_content={creative},HHB Pilot; Draft Only
+S | B2B Dairy Supply | Pune | Pilot,Search,Paused,50,Maximize clicks,40,Google Search,Off,Off,English,utm_source=google&utm_medium=cpc&utm_campaign=search_b2b_supply&utm_term={keyword}&utm_content={creative},HHB Pilot; Draft Only
+
