@@ -36,10 +36,21 @@
 .area-list { display: grid; gap: .8rem; margin: 1.5rem 0 0; padding: 0; list-style: none; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .area-list li { display: flex; align-items: center; gap: .65rem; padding: 1rem 1.1rem; background: var(--milk); border: 1px solid var(--line); border-radius: var(--radius-sm); font-weight: 750; }
 .area-list li::before { color: var(--honey-dark); content: "✦"; }
+.delivery-area-cta { display: grid; align-items: center; gap: 2rem; margin-top: 1.25rem; padding: clamp(1.4rem, 3vw, 2rem); color: rgba(255,255,255,.76); background: var(--forest); border-radius: var(--radius-md); grid-template-columns: minmax(0, 1fr) auto; }
+.delivery-area-cta .eyebrow { margin-bottom: .65rem; color: var(--honey); }
+.delivery-area-cta h3 { max-width: 720px; margin-bottom: .6rem; color: #fff; font-size: clamp(2rem, 3vw, 3rem); }
+.delivery-area-cta p:last-child { max-width: 720px; margin: 0; }
+.delivery-area-actions { display: grid; justify-items: stretch; gap: .8rem; min-width: 245px; }
+.delivery-area-actions .button { white-space: nowrap; }
+.delivery-weekly-link { color: rgba(255,255,255,.82); font-size: .8rem; text-align: center; text-decoration-color: rgba(242,169,59,.6); }
+.delivery-weekly-link:hover { color: #fff; }
+.delivery-decision-grid .feature { display: flex; flex-direction: column; }
+.delivery-context-link { width: fit-content; margin-top: auto; padding-top: 1rem; color: var(--forest); font-size: .85rem; font-weight: 800; text-decoration-color: var(--honey-dark); text-underline-offset: .25em; }
+.delivery-context-link:hover { color: var(--honey-dark); }
 .field-help { margin: .4rem 0 0; color: rgba(255,255,255,.78); font-size: .78rem; line-height: 1.45; }
 .field-help a { color: #fff; }
 
-@media (max-width: 820px) { .request-layout, .contact-grid { grid-template-columns: 1fr; } .area-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .form-panel { position: static; } }
+@media (max-width: 820px) { .request-layout, .contact-grid, .delivery-area-cta { grid-template-columns: 1fr; } .area-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .form-panel { position: static; } .delivery-area-actions { min-width: 0; } }
 @media (max-width: 580px) { .area-list { grid-template-columns: 1fr; } }
 @media (max-width: 580px) { .development-list { grid-template-columns: 1fr; } }
 
