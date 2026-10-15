@@ -8,7 +8,7 @@
     "build": "npm run content:check && astro check && astro build && npm run content:check:built",
     "preview": "astro preview",
     "check": "astro check",
-    "test:e2e": "npm run build && playwright test",
+    "test:e2e": "VITE_GA_MEASUREMENT_ID=G-FG3ZSPHSCJ npm run build && playwright test",
     "content:check": "node scripts/check-content.mjs src public",
     "content:check:built": "node scripts/check-content.mjs dist"
   },

@@ -12,6 +12,8 @@
 .form-panel h2, .form-panel .field label, .form-panel .privacy-note, .form-panel .privacy-note a { color: #fff; }
 .form-panel .field-error, .form-panel .form-status.error { color: #ffd2c7; }
 .field-grid { display: grid; gap: 1rem; }
+.marketing-consent { display: flex; align-items: flex-start; gap: .7rem; grid-column: 1 / -1; padding: .9rem; background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: .88rem; line-height: 1.5; }
+.marketing-consent input { flex: 0 0 auto; width: 1.2rem; height: 1.2rem; margin-top: .12rem; accent-color: var(--forest); }
 .field label, .field legend { display: block; margin-bottom: .35rem; color: var(--forest); font-size: .84rem; font-weight: 750; }
 .field input, .field select, .field textarea { width: 100%; min-height: 49px; padding: .72rem .85rem; color: var(--ink); background: rgba(255,250,240,.98); border: 1px solid rgba(24,61,43,.35); border-radius: 11px; transition: border-color 180ms ease, box-shadow 180ms ease; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--honey); box-shadow: 0 0 0 3px rgba(242,169,59,.2); outline: 0; }

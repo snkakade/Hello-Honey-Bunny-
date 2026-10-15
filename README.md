@@ -57,9 +57,9 @@ For Cloudflare Pages use:
 
 ## Google Analytics 4
 
-The production GA4 web stream uses Measurement ID `G-FG3ZSPHSCJ`. `PUBLIC_GA_MEASUREMENT_ID` can override it for a different deployment; the Google tag is omitted entirely if the resulting value is invalid.
+The production GA4 web stream uses Measurement ID `G-FG3ZSPHSCJ`. Set `VITE_GA_MEASUREMENT_ID` in the deployment environment; the Google tag is omitted if it is missing or invalid.
 
-Analytics loads only after the visitor allows it. In addition to standard GA4 page and acquisition data, the site records `whatsapp_click` for direct WhatsApp links and the recommended `generate_lead` event when a valid batch or business enquiry is handed off. Event parameters contain only interaction context; form values and message contents are never sent to Analytics.
+The Google tag starts with Consent Mode v2 storage denied. Optional storage changes only after the visitor chooses. The site records privacy-safe interaction context and never sends form values or message contents. A WhatsApp or email handoff records `form_submit`; `generate_lead` is reserved for a future genuine backend/CRM success signal.
 
 After the first `generate_lead` arrives, mark it as a key event in GA4. For reporting on `lead_type`, `contact_method`, and `link_location`, register those event parameters as event-scoped custom dimensions in GA4.
 

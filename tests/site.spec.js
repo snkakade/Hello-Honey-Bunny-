@@ -99,22 +99,39 @@ test("batch request validates fields and creates the approved WhatsApp message w
   await page.locator("#request-date").fill(""); await page.locator("#batch-form button[type='submit']").click(); await expect(page.locator("[data-fallback]")).toBeVisible(); const message = await page.locator("[data-request-text]").innerText(); expect(message).toContain("Fresh Goat Milk (500 ml) x 1"); expect(message).toContain("Please confirm current batch availability, final pricing"); expect(message).not.toContain("Hello Hello Honey Bunny"); await page.locator("[data-copy-request]").click(); expect(await page.evaluate(() => window.__copied)).toContain("Fresh Goat Milk (500 ml) x 1");
 });
 
-test("Google tag uses consent mode and records every WhatsApp handoff as a lead", async ({ page }) => {
+test("Google tag uses Consent Mode v2 and never treats a handoff as a confirmed lead", async ({ page }) => {
   await page.route(/google(tagmanager|analytics)\.com/, (route) => route.abort());
   await page.goto("/");
   const initialCommands = await page.evaluate(() => window.dataLayer.map((entry) => Array.from(entry)));
   expect(initialCommands).toEqual(expect.arrayContaining([
     expect.arrayContaining(["consent", "default", expect.objectContaining({ analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" })]),
-    expect.arrayContaining(["config", "G-FG3ZSPHSCJ", expect.objectContaining({ send_page_view: true })])
+    expect.arrayContaining(["config", "G-FG3ZSPHSCJ", expect.objectContaining({ send_page_view: false })])
   ]));
   const whatsapp = page.locator("a[href*='wa.me/']").first();
   await whatsapp.evaluate((link) => link.addEventListener("click", (event) => event.preventDefault(), { once: true }));
   await whatsapp.click();
   const eventCommands = await page.evaluate(() => window.dataLayer.map((entry) => Array.from(entry)).filter((entry) => entry[0] === "event"));
   expect(eventCommands).toEqual(expect.arrayContaining([
-    expect.arrayContaining(["event", "whatsapp_click", expect.objectContaining({ contact_method: "whatsapp", link_location: "content" })]),
-    expect.arrayContaining(["event", "generate_lead", expect.objectContaining({ lead_type: "whatsapp_handoff", contact_method: "whatsapp" })])
+    expect.arrayContaining(["event", "whatsapp_click", expect.objectContaining({ destination_hostname: "wa.me", placement: "content" })])
   ]));
+  expect(eventCommands.some((entry) => entry[1] === "generate_lead")).toBeFalsy();
+});
+
+test("cookie controls expose four categories and persist denied or accepted choices", async ({ page }) => {
+  await page.route(/google(tagmanager|analytics)\.com/, (route) => route.abort());
+  await page.goto("/");
+  const banner = page.locator("[data-cookie-banner]");
+  await expect(banner).toBeVisible();
+  await expect(banner.getByRole("button")).toHaveCount(2);
+  await banner.getByRole("button", { name: "Manage Cookies" }).click();
+  await expect(page.locator("[data-cookie-manager]")).toBeVisible();
+  await expect(page.locator("[data-cookie-manager] .cookie-choice")).toHaveCount(4);
+  await page.getByRole("button", { name: "Reject all" }).click();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem("hhb_consent_v2")))).toEqual({ analytics: false, advertising: false, personalization: false });
+  await page.getByRole("button", { name: "Cookie settings" }).click();
+  await page.getByLabel("Analytics").check();
+  await page.getByRole("button", { name: "Save choices" }).click();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem("hhb_consent_v2")))).toEqual({ analytics: true, advertising: false, personalization: false });
 });
 
 test("mobile menu supports keyboard, Escape and focus return", async ({ page }) => {

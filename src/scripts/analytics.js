@@ -1,93 +1,78 @@
 const analytics = window.hhbAnalytics;
 
 if (analytics) {
-  const preferenceKey = analytics.preferenceKey || "hhb_analytics_consent";
-  const banner = document.querySelector("[data-analytics-consent]");
-  const settings = document.querySelector("[data-analytics-settings]");
-  const validPreferences = new Set(["granted", "denied"]);
-  let preference;
-
-  try { preference = localStorage.getItem(preferenceKey); } catch { preference = null; }
-
-  const commonParameters = () => ({
-    event_source: "website",
-    page_path: window.location.pathname,
-    page_title: document.title,
-    transport_type: "beacon"
-  });
-
-  const track = (eventName, parameters = {}) => {
+  const banner = document.querySelector("[data-cookie-banner]");
+  const manager = document.querySelector("[data-cookie-manager]");
+  const startedForms = new WeakSet();
+  const viewedSections = new Set();
+  const scrollMarks = new Set();
+  const safeText = (value = "") => String(value).trim().replace(/\s+/g, " ").replace(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/g, "[email]").replace(/\+?\d[\d\s()-]{7,}\d/g, "[phone]").slice(0, 100);
+  const destination = (url) => { try { const parsed = new URL(url, location.origin); return parsed.origin === location.origin ? parsed.pathname : parsed.hostname; } catch { return "unknown"; } };
+  const track = (name, parameters = {}) => {
     if (typeof window.gtag !== "function") return;
-    const cleanParameters = Object.fromEntries(Object.entries({ ...commonParameters(), ...parameters }).filter(([, value]) => value !== undefined && value !== null && value !== ""));
-    window.gtag("event", eventName, cleanParameters);
+    const clean = Object.fromEntries(Object.entries({ page_path: location.pathname, ...parameters }).filter(([, value]) => value !== undefined && value !== null && value !== ""));
+    window.gtag("event", name, clean);
   };
-
   window.hhbTrack = track;
-  window.hhbTrackLead = (parameters = {}) => track("generate_lead", parameters);
-
-  function loadGoogleTag() {
-    if (document.querySelector("script[data-google-tag]")) return;
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analytics.measurementId)}`;
-    script.dataset.googleTag = "true";
-    document.head.append(script);
-    window.gtag("js", new Date());
-    window.gtag("config", analytics.measurementId, {
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-      send_page_view: true,
-      debug_mode: new URLSearchParams(window.location.search).get("analytics_debug") === "1"
-    });
-  }
-
-  function savePreference(value) {
-    preference = value;
-    try { localStorage.setItem(preferenceKey, value); } catch { /* Continue without persistence. */ }
+  // A future backend/CRM success callback may call this. A handoff alone is not a confirmed lead.
+  window.hhbTrackConfirmedLead = (parameters = {}) => track("generate_lead", parameters);
+  const readChoices = () => { try { return JSON.parse(localStorage.getItem(analytics.preferenceKey) || "null"); } catch { return null; } };
+  function applyChoices(choices, source) {
+    const normalized = { analytics: !!choices.analytics, advertising: !!choices.advertising, personalization: !!choices.personalization };
+    try { localStorage.setItem(analytics.preferenceKey, JSON.stringify(normalized)); } catch { /* Applies for this page even without persistence. */ }
     window.gtag("consent", "update", {
-      analytics_storage: value,
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied"
+      analytics_storage: normalized.analytics ? "granted" : "denied", ad_storage: normalized.advertising ? "granted" : "denied",
+      ad_user_data: normalized.advertising ? "granted" : "denied", ad_personalization: normalized.personalization ? "granted" : "denied"
     });
+    window.gtag("set", "allow_ad_personalization_signals", normalized.personalization);
+    track("consent_update", { element_type: "consent_control", placement: source, analytics_consent: normalized.analytics ? "granted" : "denied", advertising_consent: normalized.advertising ? "granted" : "denied", personalization_consent: normalized.personalization ? "granted" : "denied" });
     banner.hidden = true;
-    settings.hidden = false;
+    if (manager.open) manager.close();
   }
-
-  banner.querySelector("[data-analytics-accept]").addEventListener("click", () => savePreference("granted"));
-  banner.querySelector("[data-analytics-decline]").addEventListener("click", () => savePreference("denied"));
-  settings.addEventListener("click", () => {
-    banner.hidden = false;
-    settings.hidden = true;
+  function openManager() {
+    const choices = readChoices() || {};
+    const fields = manager.querySelector("form").elements;
+    fields.analytics.checked = !!choices.analytics;
+    fields.advertising.checked = !!choices.advertising;
+    fields.personalization.checked = !!choices.personalization;
+    manager.showModal();
+  }
+  banner.querySelector("[data-consent-accept]").addEventListener("click", () => applyChoices({ analytics: true, advertising: true, personalization: true }, "initial_banner"));
+  banner.querySelector("[data-consent-manage]").addEventListener("click", openManager);
+  document.querySelector("[data-consent-settings]").addEventListener("click", openManager);
+  manager.querySelector("[data-consent-reject]").addEventListener("click", () => applyChoices({}, "cookie_manager"));
+  manager.addEventListener("close", () => { if (!readChoices()) banner.hidden = false; });
+  manager.querySelector("form").addEventListener("submit", (event) => {
+    if (event.submitter?.value !== "save") return;
+    event.preventDefault();
+    const fields = manager.querySelector("form").elements;
+    applyChoices({ analytics: fields.analytics.checked, advertising: fields.advertising.checked, personalization: fields.personalization.checked }, "cookie_manager");
   });
+  if (!readChoices()) banner.hidden = false;
 
-  loadGoogleTag();
-
-  if (preference === "granted") settings.hidden = false;
-  else if (preference === "denied") settings.hidden = false;
-  else if (!validPreferences.has(preference)) banner.hidden = false;
-
+  const pageView = () => track("page_view", { element_type: "page" });
+  pageView(); addEventListener("popstate", pageView); document.addEventListener("astro:page-load", pageView);
+  document.addEventListener("focusin", (event) => { const form = event.target.closest("form"); if (form && !startedForms.has(form)) { startedForms.add(form); track("form_start", { element_type: "form", placement: form.id || "unnamed_form" }); } });
   document.addEventListener("click", (event) => {
-    const link = event.target.closest("a[href]");
-    if (!link) return;
-    const href = link.getAttribute("href") || "";
-    const linkLocation = link.dataset.analyticsLocation || (link.closest("header") ? "header" : link.closest("footer") ? "footer" : "content");
-    const ctaName = (link.dataset.analyticsLabel || link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 100);
-    const editorialEvent = link.dataset.analyticsEvent;
-
-    if (editorialEvent) {
-      track(editorialEvent, { cta_name: ctaName, cta_location: linkLocation, article_slug: link.dataset.articleSlug });
-    }
-
-    if (href.includes("wa.me/")) {
-      const parameters = { lead_type: "whatsapp_handoff", contact_method: "whatsapp", link_location: linkLocation, cta_name: ctaName };
-      track("whatsapp_click", parameters);
-      window.hhbTrackLead(parameters);
-    } else if (href.startsWith("mailto:") || href.startsWith("tel:")) {
-      const contactMethod = href.startsWith("mailto:") ? "email" : "phone";
-      const parameters = { lead_type: `${contactMethod}_handoff`, contact_method: contactMethod, link_location: linkLocation, cta_name: ctaName };
-      track("contact_click", parameters);
-      window.hhbTrackLead(parameters);
-    }
+    const target = event.target.closest("a[href],button");
+    if (!target || target.matches("[data-consent-accept],[data-consent-manage],[data-consent-save],[data-consent-reject],[data-consent-settings],.cookie-manager-close")) return;
+    const placement = target.dataset.analyticsLocation || (target.closest("header") ? "header" : target.closest("footer") ? "footer" : target.closest("form") ? "form" : "content");
+    const base = { placement, link_text: safeText(target.dataset.analyticsLabel || target.textContent || target.getAttribute("aria-label")), element_type: target.tagName.toLowerCase() };
+    track("ui_click", base); if (target.matches(".button,[data-analytics-label]")) track("cta_click", base);
+    if (!target.matches("a[href]")) return;
+    const href = target.getAttribute("href") || "";
+    if (href.startsWith("mailto:")) track("email_click", base);
+    else if (href.startsWith("tel:")) track("phone_click", base);
+    else if (/wa\.me\//i.test(href)) track("whatsapp_click", { ...base, destination_hostname: "wa.me" });
+    else if (/linkedin\.com|instagram\.com|facebook\.com|youtube\.com/i.test(href)) track("social_click", { ...base, destination_hostname: destination(href) });
+    else if (/\.(pdf|docx?|xlsx?|csv|zip)(?:$|[?#])/i.test(href)) track("file_download", { ...base, destination_path: destination(href) });
+    else if (/^https?:/i.test(href) && new URL(href).origin !== location.origin) track("outbound_click", { ...base, destination_hostname: destination(href) });
   });
+  addEventListener("scroll", () => { const height = document.documentElement.scrollHeight - innerHeight; const percent = height <= 0 ? 100 : Math.min(100, Math.round((scrollY / height) * 100)); [25, 50, 75, 90, 100].forEach((mark) => { if (percent >= mark && !scrollMarks.has(mark)) { scrollMarks.add(mark); track("scroll_depth", { percent_scrolled: mark, element_type: "page" }); } }); }, { passive: true });
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (!entry.isIntersecting) return; const section = entry.target; const label = section.id || section.getAttribute("aria-label") || section.querySelector("h1,h2")?.textContent; const sectionId = safeText(label).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, ""); if (sectionId && !viewedSections.has(sectionId)) { viewedSections.add(sectionId); track("section_view", { section_id: sectionId, element_type: "section" }); } }), { threshold: 0.5 });
+    document.querySelectorAll("main section").forEach((section) => observer.observe(section));
+  }
+  document.querySelectorAll("video").forEach((video) => { let started = false; const progress = new Set(); video.addEventListener("play", () => { if (!started) { started = true; track("video_start", { element_type: "video", placement: video.id || "content_video" }); } }); video.addEventListener("timeupdate", () => { if (!video.duration) return; const percent = Math.floor((video.currentTime / video.duration) * 100); [25, 50, 75].forEach((mark) => { if (percent >= mark && !progress.has(mark)) { progress.add(mark); track("video_progress", { element_type: "video", percent_scrolled: mark }); } }); }); video.addEventListener("ended", () => track("video_complete", { element_type: "video", placement: video.id || "content_video" })); });
+  [10, 30, 60].forEach((seconds) => setTimeout(() => { if (!document.hidden) track("engaged_view", { engagement_seconds: seconds, element_type: "page" }); }, seconds * 1000));
 }

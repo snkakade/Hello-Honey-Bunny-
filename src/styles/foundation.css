@@ -4,7 +4,7 @@
   --paper: #eadfc8;
   --oat: #d8c8aa;
   --honey: #f2a93b;
-  --honey-dark: #a9571c;
+  --honey-dark: #8f4617;
   --clay: #b85e3d;
   --sage: #758567;
   --moss: #496044;
@@ -75,6 +75,7 @@ h1 em, h2 em { color: var(--honey-dark); font-weight: 400; }
 .large-copy { color: var(--forest); font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1.25; }
 .eyebrow { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; color: var(--honey-dark); font-size: 0.76rem; font-weight: 750; letter-spacing: 0.13em; line-height: 1.25; text-transform: uppercase; }
 .eyebrow::before { width: 26px; height: 1px; background: currentColor; content: ""; }
+.section-forest .eyebrow { color: var(--honey); }
 .section-heading { max-width: 760px; margin-bottom: clamp(2.75rem, 5vw, 5rem); }
 .section-heading-display { max-width: 980px; }
 .section-heading-display > p:last-child { max-width: 650px; margin-left: auto; }
