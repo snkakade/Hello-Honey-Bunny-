@@ -1,0 +1,14 @@
+---
+import { withBase } from "../config/site";
+import type { ArticleSummary } from "../data/articles";
+
+interface Props { article: ArticleSummary }
+const { article } = Astro.props;
+---
+<article class="journal-card">
+  <p class="journal-card-topic">{article.topic}</p>
+  <h2><a href={withBase(article.path)}>{article.title}</a></h2>
+  <p>{article.description}</p>
+  <div class="journal-card-meta"><time datetime={article.datePublished}>{article.displayDate}</time><span>{article.readingTime}</span></div>
+  <a class="text-link link-arrow" href={withBase(article.path)}>Read the guide <span aria-hidden="true">→</span></a>
+</article>

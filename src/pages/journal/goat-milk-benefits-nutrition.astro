@@ -1,0 +1,73 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import DirectAnswer from "../../components/DirectAnswer.astro";
+import Sources from "../../components/Sources.astro";
+import { getArticle } from "../../data/articles";
+import { withBase } from "../../config/site";
+
+const article = getArticle("/journal/goat-milk-benefits-nutrition");
+const sources = [
+  { name: "Eating, Diet, and Nutrition for Lactose Intolerance", publisher: "National Institute of Diabetes and Digestive and Kidney Diseases", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/eating-diet-nutrition" },
+  { name: "Types of formula milk", publisher: "NHS", url: "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/types-of-formula/" },
+  { name: "Cross-reactivity analysis of goat milk proteins with cow milk allergens", publisher: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/36696839/" },
+  { name: "Food Safety and Standards (Advertising and Claims) Regulations", publisher: "FSSAI", url: "https://www.fssai.gov.in/upload/uploadfiles/files/Compendium_Advertising_Claims_Regulations_04_10_2022.pdf" }
+];
+---
+<ArticleLayout article={article} h1="Goat milk benefits and nutrition: what is actually useful to know?">
+  <p class="article-opening">Goat milk is a dairy food that provides protein, fat, carbohydrate, vitamins and minerals. Its composition differs from cow milk in some respects, but those differences should not be confused with claims that goat milk treats illness or suits every dietary condition.</p>
+  <p>This guide separates practical food information from medical claims. It is not individual dietary advice, and it does not replace guidance from a doctor or qualified dietitian.</p>
+
+  <DirectAnswer question="What nutrients are found in goat milk?">
+    <p>Goat milk contains protein, dietary fat and carbohydrate, including lactose. It also contributes minerals such as calcium, phosphorus and potassium, together with vitamins and other micronutrients.</p>
+    <p>The exact composition varies with factors such as breed, feed, season and processing. Hello Honey Bunny has not published nutrition numbers for its own milk because batch-specific laboratory testing would be needed to support those figures.</p>
+  </DirectAnswer>
+
+  <section>
+    <h2>What are the practical benefits of goat milk as a food?</h2>
+    <h3>It provides dairy protein</h3>
+    <p>Protein is one of the nutrients naturally present in milk. That is a nutritional characteristic, not a claim that drinking goat milk produces a particular medical or fitness outcome.</p>
+    <h3>It contributes calcium and phosphorus</h3>
+    <p>These minerals have normal roles in the body. Their presence should not be turned into claims that goat milk prevents or manages a disease.</p>
+    <h3>It contains dietary fat and energy</h3>
+    <p>The amount and character of fat can vary. Whether that is suitable for an individual depends on their overall diet and, where relevant, professional dietary advice.</p>
+    <h3>It works in everyday cooking</h3>
+    <p>Goat milk can be used as a drink or in tea, coffee, sauces, desserts and dairy preparations. It can also be made into products such as <a href={withBase("/goat-milk-paneer")}>goat milk paneer</a>.</p>
+  </section>
+
+  <DirectAnswer question="Is goat milk easier to digest?">
+    <p>It should not be presented as an unconditional yes. Goat milk differs from cow milk in fat and protein characteristics, which has led to research about digestion. That does not mean everyone will digest it better, and it does not make goat milk a remedy for digestive problems.</p>
+    <p>Digestibility, lactose intolerance and milk-protein allergy are different questions. A person may react to lactose, to milk proteins or to another part of their diet, so the terms should not be used interchangeably.</p>
+  </DirectAnswer>
+
+  <DirectAnswer question="Does goat milk contain lactose?">
+    <p><strong>Yes. Goat milk naturally contains lactose.</strong> It should not be described as free of lactose or automatically suitable for someone with lactose intolerance.</p>
+    <p>People with lactose intolerance vary in how much lactose they can tolerate. The NIDDK advises that individual tolerance differs and that dietary choices may need to be adjusted with professional guidance.</p>
+  </DirectAnswer>
+
+  <DirectAnswer question="Is goat milk suitable for someone with cow's-milk allergy?">
+    <p><strong>Goat milk should not automatically be considered a safe substitute for someone with cow's-milk allergy.</strong></p>
+    <p>Research has found cross-reactivity between goat milk proteins and recognised cow milk allergens. Anyone with a diagnosed or suspected milk allergy should seek guidance from an appropriately qualified healthcare professional before trying another animal milk.</p>
+  </DirectAnswer>
+
+  <DirectAnswer question="What about babies and infants?">
+    <p><strong>Ordinary goat milk should not be promoted as a replacement for breast milk or as infant formula.</strong> Regulated goat-milk formula is a separate product made to specific nutritional standards. The NHS also states that goat-milk formula is not suitable for infants with cow's-milk allergy because the proteins are very similar.</p>
+  </DirectAnswer>
+
+  <DirectAnswer question="Does goat milk increase platelet counts?">
+    <p><strong>Hello Honey Bunny does not claim that goat milk increases platelet counts or treats dengue or any other illness.</strong></p>
+    <p>Someone who is unwell or concerned about a blood test should follow advice from their doctor. A food business should not convert a commonly searched health question into a promise of treatment.</p>
+  </DirectAnswer>
+
+  <DirectAnswer question="Can goat milk boost immunity?">
+    <p><strong>Hello Honey Bunny does not claim that goat milk prevents infection or changes immune function.</strong> It is sold as a dairy food, not as a medicine. General nutrient information does not establish a clinical outcome for an individual.</p>
+  </DirectAnswer>
+
+  <section>
+    <h2>Where can I buy fresh goat milk near Pune?</h2>
+    <p>Hello Honey Bunny offers <a href={withBase("/fresh-goat-milk")}>fresh goat milk near Pune</a> in limited batches from Kunjirwadi. Current quantity, pricing and the available pickup or <a href={withBase("/delivery-areas")}>delivery arrangement</a> are confirmed before an order is accepted.</p>
+    <a class="button button-primary" href={withBase("/request-a-batch")} data-analytics-event="article_cta_click" data-analytics-label="Check the current goat milk batch" data-article-slug="goat-milk-benefits-nutrition">Check the current goat milk batch</a>
+  </section>
+
+  <aside class="medical-note"><strong>A note on health questions</strong><p>This page provides general food information. It cannot assess symptoms, diagnose an intolerance or allergy, or recommend a food during illness.</p></aside>
+  <Sources items={sources} />
+</ArticleLayout>

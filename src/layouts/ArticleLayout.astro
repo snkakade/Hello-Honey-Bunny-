@@ -1,0 +1,31 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { articleSchema, breadcrumbSchema } from "../utils/schema";
+import type { ArticleSummary } from "../data/articles";
+
+interface Props { article: ArticleSummary; h1: string }
+const { article, h1 } = Astro.props;
+const crumbs = [{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }, { name: article.title, path: article.path }];
+---
+<BaseLayout title={`${article.title} | Hello Honey Bunny`} description={article.description} canonicalPath={article.path} activePage="journal" image={article.image} imageAlt={article.imageAlt} pageType="article" datePublished={article.datePublished} dateModified={article.dateModified} schema={[articleSchema(article), breadcrumbSchema(crumbs)]}>
+  <main id="main">
+    <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }, { name: article.title }]} />
+    <article class="article-page">
+      <header class="article-header container">
+        <div>
+          <p class="eyebrow">{article.topic}</p>
+          <h1>{h1}</h1>
+          <p class="lede">{article.description}</p>
+          <div class="article-byline">
+            <span>Written by Hello Honey Bunny</span>
+            <time datetime={article.datePublished}>Published {article.displayDate}</time>
+            <span>{article.readingTime}</span>
+          </div>
+        </div>
+        <img src={article.image} width={article.imageWidth} height={article.imageHeight} alt={article.imageAlt} fetchpriority="high" decoding="async" />
+      </header>
+      <div class="article-body narrow"><slot /></div>
+    </article>
+  </main>
+</BaseLayout>

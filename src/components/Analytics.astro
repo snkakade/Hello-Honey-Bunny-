@@ -1,0 +1,56 @@
+---
+import { withBase } from "../config/site";
+const measurementId = (import.meta.env.VITE_GA_MEASUREMENT_ID || "").trim();
+const enabled = /^G-[A-Z0-9]+$/i.test(measurementId);
+---
+{enabled && (
+  <>
+    <script is:inline define:vars={{ measurementId }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+      const preferenceKey = "hhb_consent_v2";
+      let saved = null;
+      try { saved = JSON.parse(localStorage.getItem(preferenceKey) || "null"); } catch { saved = null; }
+      const granted = (key) => saved?.[key] === true ? "granted" : "denied";
+      window.gtag("consent", "default", {
+        analytics_storage: granted("analytics"), ad_storage: granted("advertising"),
+        ad_user_data: granted("advertising"), ad_personalization: granted("personalization"), wait_for_update: 500
+      });
+      window.gtag("set", "ads_data_redaction", true);
+      window.gtag("set", "url_passthrough", true);
+      window.hhbAnalytics = { measurementId, preferenceKey };
+    </script>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} data-google-tag></script>
+    <script is:inline define:vars={{ measurementId }}>
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId, { send_page_view: false, allow_google_signals: true, allow_ad_personalization_signals: false });
+    </script>
+    <script>import "../scripts/analytics.js";</script>
+    <section class="cookie-banner" data-cookie-banner hidden role="region" aria-label="Cookie choices">
+      <p>We use optional cookies to understand visits and improve our marketing.</p>
+      <div class="cookie-banner-actions">
+        <button class="button button-primary" type="button" data-consent-accept>Accept Cookies</button>
+        <button class="button button-secondary" type="button" data-consent-manage>Manage Cookies</button>
+      </div>
+      <a class="cookie-details-link" href={withBase("/privacy")}>See details</a>
+    </section>
+    <dialog class="cookie-manager" data-cookie-manager aria-labelledby="cookie-manager-title">
+      <form method="dialog">
+        <div class="cookie-manager-heading">
+          <div><p class="eyebrow">Your privacy</p><h2 id="cookie-manager-title">Cookie settings</h2></div>
+          <button class="cookie-manager-close" value="cancel" aria-label="Close cookie settings">×</button>
+        </div>
+        <p>Choose which optional measurement categories may be used on this device.</p>
+        <div class="cookie-choice"><span><strong>Essential</strong><small>Required for security and remembering your choices.</small></span><span class="cookie-always">Always enabled</span></div>
+        <label class="cookie-choice"><span><strong>Analytics</strong><small>Helps us understand visits and site use through Google Analytics.</small></span><input type="checkbox" name="analytics"></label>
+        <label class="cookie-choice"><span><strong>Advertising measurement</strong><small>Measures whether advertising leads to useful website actions.</small></span><input type="checkbox" name="advertising"></label>
+        <label class="cookie-choice"><span><strong>Personalized marketing</strong><small>Allows personalized advertising signals when supported.</small></span><input type="checkbox" name="personalization"></label>
+        <div class="cookie-manager-actions">
+          <button class="button button-primary" type="submit" value="save" data-consent-save>Save choices</button>
+          <button class="button button-secondary" type="button" data-consent-reject>Reject all</button>
+        </div>
+      </form>
+    </dialog>
+    <button class="analytics-settings" type="button" data-consent-settings>Cookie settings</button>
+  </>
+)}
