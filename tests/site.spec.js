@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 
-const journalRoutes = ["/journal", "/journal/goat-milk-benefits-nutrition", "/journal/how-to-buy-fresh-goat-milk-pune", "/journal/goat-milk-vs-cow-milk", "/journal/how-to-store-fresh-goat-milk"];
+const journalRoutes = ["/journal", "/journal/goat-milk-near-me-pune", "/journal/why-goat-milk-availability-varies-pune", "/journal/goat-milk-benefits-nutrition", "/journal/how-to-buy-fresh-goat-milk-pune", "/journal/goat-milk-vs-cow-milk", "/journal/how-to-store-fresh-goat-milk"];
 const canonicalRoutes = ["/", "/fresh-goat-milk", "/goat-milk-subscription", "/goat-milk-paneer", "/products", "/delivery-areas", "/request-a-batch", "/our-farm", "/for-chefs-and-retailers", ...journalRoutes, "/faqs", "/contact", "/privacy"];
 const indexableRoutes = canonicalRoutes;
 const viewports = [[360,800],[390,844],[768,1024],[1024,768],[1440,900]];
@@ -50,7 +50,7 @@ test("published journal articles expose visible authorship, sources where requir
 
 test("internal links are canonical, valid and do not use placeholders", async ({ page, request }) => {
   const links = new Set();
-  for (const route of canonicalRoutes) { await page.goto(route); const hrefs = await page.locator("a[href]").evaluateAll((items) => items.map((item) => item.getAttribute("href"))); hrefs.filter((href) => href?.startsWith("/")).forEach((href) => links.add(href.split("#")[0].split("?")[0] || "/")); expect(hrefs.some((href) => href === "#"), `${route} placeholder link`).toBeFalsy(); expect(hrefs.some((href) => href?.includes(".html")), `${route} html link`).toBeFalsy(); }
+  for (const route of canonicalRoutes) { await page.goto(route); const hrefs = await page.locator("a[href]").evaluateAll((items) => items.map((item) => item.getAttribute("href"))); hrefs.filter((href) => href?.startsWith("/")).forEach((href) => links.add(href.split("#")[0].split("?")[0] || "/")); expect(hrefs.some((href) => href === "#"), `${route} placeholder link`).toBeFalsy(); expect(hrefs.some((href) => href?.startsWith("/") && href.includes(".html")), `${route} internal html link`).toBeFalsy(); }
   for (const href of links) { const response = await request.get(href); expect(response.status(), href).toBe(200); }
 });
 

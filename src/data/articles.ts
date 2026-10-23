@@ -1,6 +1,7 @@
 export interface ArticleSummary {
   path: string;
   title: string;
+  seoTitle?: string;
   description: string;
   topic: string;
   datePublished: string;
@@ -14,6 +15,36 @@ export interface ArticleSummary {
 }
 
 export const articles: ArticleSummary[] = [
+  {
+    path: "/journal/goat-milk-near-me-pune",
+    title: "Looking for Goat Milk Near You in Pune? Here's Where to Start",
+    seoTitle: "Goat Milk Near Me in Pune | Check Local Delivery",
+    description: "Searching for goat milk near you in Pune? See areas where Hello Honey Bunny considers fresh goat milk delivery, and how to check availability and pricing.",
+    topic: "Local delivery guide",
+    datePublished: "2026-10-23",
+    dateModified: "2026-10-23",
+    displayDate: "23 October 2026",
+    readingTime: "7 minute read",
+    image: "/assets/images/editorial/pune-delivery-landscape.webp",
+    imageAlt: "Illustrated fresh goat milk delivery route connecting Kunjirwadi with Pune neighbourhoods",
+    imageWidth: 1672,
+    imageHeight: 941
+  },
+  {
+    path: "/journal/why-goat-milk-availability-varies-pune",
+    title: "Why Fresh Goat Milk Isn't Always Available in Pune",
+    seoTitle: "Fresh Goat Milk Availability in Pune | Hello Honey Bunny",
+    description: "Looking for fresh goat milk in Pune? Learn why availability changes, how to check current batches and how delivery requests work around Pune and PCMC.",
+    topic: "Batch availability",
+    datePublished: "2026-10-23",
+    dateModified: "2026-10-23",
+    displayDate: "23 October 2026",
+    readingTime: "6 minute read",
+    image: "/assets/images/editorial/dairy-still-life.webp",
+    imageAlt: "Fresh goat milk arranged in a warm small-batch dairy still life",
+    imageWidth: 1448,
+    imageHeight: 1086
+  },
   {
     path: "/journal/goat-milk-benefits-nutrition",
     title: "Goat Milk Benefits and Nutrition: A Practical Guide",

@@ -8,7 +8,7 @@ interface Props { article: ArticleSummary; h1: string }
 const { article, h1 } = Astro.props;
 const crumbs = [{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }, { name: article.title, path: article.path }];
 ---
-<BaseLayout title={`${article.title} | Hello Honey Bunny`} description={article.description} canonicalPath={article.path} activePage="journal" image={article.image} imageAlt={article.imageAlt} pageType="article" datePublished={article.datePublished} dateModified={article.dateModified} schema={[articleSchema(article), breadcrumbSchema(crumbs)]}>
+<BaseLayout title={article.seoTitle ?? `${article.title} | Hello Honey Bunny`} description={article.description} canonicalPath={article.path} activePage="journal" image={article.image} imageAlt={article.imageAlt} pageType="article" datePublished={article.datePublished} dateModified={article.dateModified} schema={[articleSchema(article), breadcrumbSchema(crumbs)]}>
   <main id="main">
     <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }, { name: article.title }]} />
     <article class="article-page">
