@@ -1,0 +1,87 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import DirectAnswer from "../../components/DirectAnswer.astro";
+import { getArticle } from "../../data/articles";
+import { whatsappUrl, withBase } from "../../config/site";
+
+const article = getArticle("/journal/why-goat-milk-availability-varies-pune");
+const availabilityWhatsapp = whatsappUrl("Hello, I would like to check the current fresh goat milk batch. My area is: ____. I need approximately: ____. My preferred date is: ____. Please confirm availability, final pricing and the available pickup or delivery arrangement.");
+---
+<ArticleLayout article={article} h1="Why fresh goat milk isn't always available in Pune">
+  <p class="article-opening">Finding goat milk should not be complicated. But finding a supplier online and finding milk that is actually available are two different things.</p>
+
+  <p>The reason is often simpler than you might think. Smaller dairies work with limited batches, and the quantity available for individual customers can change.</p>
+  <p>At Hello Honey Bunny, our goat dairy in Kunjirwadi near Pune supplies retail customers and selected wholesale buyers. Rather than displaying stock that may no longer be available, we confirm each request personally.</p>
+
+  <DirectAnswer question="Is fresh goat milk currently available near Pune?">
+    <p>Fresh goat milk can be requested from Hello Honey Bunny near Pune, subject to the current batch. Customers can check their preferred quantity, current price and available pickup or delivery arrangement directly on WhatsApp.</p>
+  </DirectAnswer>
+
+  <section>
+    <h2>Why does goat milk availability change?</h2>
+    <p>Unlike products kept in large, continuous retail inventories, small-batch dairy availability depends on production and the quantities already allocated to customers.</p>
+    <p>A particular batch may also need to serve a mixture of individual households and business customers. That means a supplier might have milk available on one day but not be able to fulfil every request on another.</p>
+    <p>For customers, the most useful question is not simply whether a farm sells goat milk. It is whether the quantity you need is available for your preferred date.</p>
+  </section>
+
+  <section>
+    <h2>Where can you request goat milk around Pune?</h2>
+    <p>Hello Honey Bunny operates from Kunjirwadi, Maharashtra 412201.</p>
+    <p>We currently consider delivery requests across Pune city, Katraj, Hadapsar, Loni Kalbhor, Kunjirwadi, Uruli Kanchan and selected Pimpri-Chinchwad areas.</p>
+    <p>Delivery is arranged according to available batches and practical routes. Being located within a listed area does not automatically guarantee delivery on a particular day.</p>
+    <p>You can see the current areas and route information on our <a href={withBase("/delivery-areas")}>Pune goat milk delivery page</a>.</p>
+  </section>
+
+  <section class="checklist-block">
+    <h2>What should you check before ordering?</h2>
+
+    <h3>Availability and quantity</h3>
+    <p>Start by asking whether the current batch can accommodate the amount you need. Our <a href={withBase("/fresh-goat-milk")}>fresh goat milk product page</a> lists indicative 500 ml and 1 litre pack sizes, with final options confirmed before an order is accepted.</p>
+
+    <h3>Processing and handling</h3>
+    <p>Ask how the milk has been processed and follow the instructions supplied with your batch.</p>
+    <p>Pasteurised milk is the safer choice because pasteurisation reduces harmful microorganisms. Unpasteurised milk carries additional food-safety risks, particularly for children, pregnant people, older adults and people with weakened immune systems. See the <a href="https://www.cdc.gov/food-safety/foods/raw-milk.html" target="_blank" rel="noopener noreferrer">CDC's guidance on raw milk</a>.</p>
+    <p>Keep milk refrigerated and follow the use-by and storage instructions supplied with the product.</p>
+
+    <h3>Final price</h3>
+    <p>If you are comparing goat milk prices in Pune, confirm the current amount payable for your requested quantity and fulfilment arrangement.</p>
+    <p>Hello Honey Bunny confirms final pricing personally rather than publishing a price that may not apply to the requested batch.</p>
+
+    <h3>Delivery or pickup</h3>
+    <p>Share your locality and preferred date. We can then confirm the practical arrangement available for that request.</p>
+  </section>
+
+  <section>
+    <h2>What if you need goat milk regularly?</h2>
+    <p>For households with recurring requirements, a planned weekly arrangement may be more convenient than sending a new enquiry every few days.</p>
+    <p>Our <a href={withBase("/goat-milk-subscription")}>weekly goat milk plans</a> are designed around planned quantities and available delivery routes. Every plan remains subject to confirmed terms and farm production.</p>
+  </section>
+
+  <section>
+    <h2>Common questions</h2>
+
+    <h3>Where can I buy fresh goat milk near Pune?</h3>
+    <p>Hello Honey Bunny is a small goat dairy based in Kunjirwadi near Pune. Fresh goat milk can be requested subject to the current batch, with quantity, final pricing and fulfilment confirmed on WhatsApp.</p>
+
+    <h3>Is goat milk delivery available in Katraj?</h3>
+    <p>Customers in Katraj and nearby south Pune areas can enquire about the available route. Delivery is subject to batch availability and route confirmation.</p>
+
+    <h3>Does Hello Honey Bunny serve PCMC?</h3>
+    <p>Requests are considered from selected Pimpri-Chinchwad locations. Send your area and quantity to check whether the current route can accommodate the request.</p>
+
+    <h3>Can I reserve goat milk every week?</h3>
+    <p>You can enquire about a regular weekly arrangement. The available quantity, schedule and terms must be confirmed before starting.</p>
+
+    <h3>Is goat milk suitable for someone with a medical condition?</h3>
+    <p>Goat milk is a food, not a treatment for dengue, low platelet counts or other medical conditions. It contains dairy proteins and lactose. Anyone with a relevant medical concern should follow advice from their qualified healthcare professional.</p>
+  </section>
+
+  <DirectAnswer question="Looking for the current batch?">
+    <p>Tell us your area, preferred quantity and date. We will confirm what is available and the practical ordering arrangement.</p>
+    <div class="button-row">
+      <a class="button button-primary" href={withBase("/request-a-batch")} data-analytics-event="article_cta_click" data-analytics-label="Check fresh goat milk availability" data-article-slug="why-goat-milk-availability-varies-pune">Check fresh goat milk availability</a>
+      <a class="button button-secondary" href={availabilityWhatsapp} target="_blank" rel="noopener" data-analytics-label="Contact Hello Honey Bunny on WhatsApp">Contact us on WhatsApp</a>
+    </div>
+    <p><small>Hello Honey Bunny is based in Kunjirwadi near Pune. All product and delivery arrangements remain subject to confirmation.</small></p>
+  </DirectAnswer>
+</ArticleLayout>

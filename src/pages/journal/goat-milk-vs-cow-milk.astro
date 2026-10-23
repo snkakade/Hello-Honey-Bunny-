@@ -1,0 +1,48 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import DirectAnswer from "../../components/DirectAnswer.astro";
+import Sources from "../../components/Sources.astro";
+import { getArticle } from "../../data/articles";
+import { withBase } from "../../config/site";
+const article = getArticle("/journal/goat-milk-vs-cow-milk");
+const sources = [
+  { name: "Eating, Diet, and Nutrition for Lactose Intolerance", publisher: "National Institute of Diabetes and Digestive and Kidney Diseases", url: "https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/eating-diet-nutrition" },
+  { name: "Goat Milk Allergy and a Potential Role for Goat Milk in Cow's Milk Allergy", publisher: "PubMed Central", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11314217/" },
+  { name: "Types of formula milk", publisher: "NHS", url: "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/types-of-formula/" }
+];
+---
+<ArticleLayout article={article} h1="Goat milk vs cow milk: what is the difference?">
+  <p class="article-opening">Goat milk and cow milk are both dairy foods containing protein, fat, carbohydrate, vitamins and minerals. They differ in composition, flavour and food behaviour, but neither is universally better for every person.</p>
+
+  <section>
+    <h2>Nutritional composition</h2>
+    <p>Both milks contain a mixture of macronutrients and micronutrients. Exact figures vary by animal, breed, feed, season and processing. Generic food-composition tables should not be presented as laboratory results for a particular farm's milk.</p>
+
+    <h2>Protein</h2>
+    <p>Both contain milk proteins, although the proportions of individual proteins can differ. Those differences do not make goat milk automatically suitable for a person with cow's-milk allergy.</p>
+
+    <h2>Fat</h2>
+    <p>The fat globule and fatty-acid profiles differ between the milks. These characteristics can affect texture and how the milk behaves during processing, but they do not prove that every person will digest one milk more comfortably.</p>
+
+    <h2>Lactose</h2>
+    <p><strong>Both goat milk and cow milk contain lactose.</strong> Anyone managing lactose intolerance should consider their individual tolerance and professional dietary guidance rather than assuming a change of animal source removes lactose.</p>
+
+    <h2>Taste</h2>
+    <p>Taste depends on freshness, handling, feed, season and personal preference. Some people notice a different flavour in goat milk; others find fresh, well-handled milk mild. Taste preference is not a health claim.</p>
+
+    <h2>Cooking</h2>
+    <p>Both milks can be used in drinks, sauces, desserts and dairy preparations. Goat milk can also be made into products such as <a href={withBase("/goat-milk-paneer")}>goat milk paneer</a>. Recipe results can vary with the milk's composition and the cooking method.</p>
+  </section>
+
+  <DirectAnswer question="Is milk allergy the same as lactose intolerance?">
+    <p><strong>No. Milk allergy involves an immune reaction to milk proteins. Lactose intolerance involves difficulty digesting lactose, the sugar in milk.</strong></p>
+    <p>Goat milk proteins can cross-react with cow milk allergens. Someone with a diagnosed or suspected milk allergy should not use goat milk as a substitute without appropriate medical advice.</p>
+  </DirectAnswer>
+
+  <DirectAnswer question="Which milk should you choose?">
+    <p>The better choice depends on taste, dietary requirements, availability and professional dietary advice where a medical condition is involved. Goat milk should be chosen as a food preference, not on the basis of an unsupported promise that it treats a health condition.</p>
+  </DirectAnswer>
+
+  <p>For local product information, see <a href={withBase("/fresh-goat-milk")}>fresh goat milk near Pune</a>, the <a href={withBase("/delivery-areas")}>delivery areas</a> and the current <a href={withBase("/request-a-batch")}>batch request</a>.</p>
+  <Sources items={sources} />
+</ArticleLayout>

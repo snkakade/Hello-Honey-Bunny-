@@ -1,0 +1,11 @@
+---
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+<section class="direct-answer">
+  <h2>{question}</h2>
+  <div class="direct-answer-copy"><slot /></div>
+</section>

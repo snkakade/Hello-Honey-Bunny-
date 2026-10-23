@@ -1,28 +1,15 @@
 ---
-import { navItems } from "../config/site.js";
-
-interface Props {
-  activePage?: string;
-}
-
+import { navItems, withBase } from "../config/site";
+interface Props { activePage?: string }
 const { activePage = "" } = Astro.props;
 ---
-
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="./" aria-label="Hello Honey Bunny home">
-      <img src="assets/images/logo.png" alt="" width="88" height="72">
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-      <span></span>
-    </button>
+    <a class="wordmark" href={withBase("/")} aria-label="Hello Honey Bunny home"><img src={withBase("/assets/brand/official-logo-mark.png")} width="3000" height="3000" alt="" /></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span>Open menu</span></button>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-      {navItems.map((item) => (
-        <a href={item.href} aria-current={activePage === item.page ? "page" : undefined}>{item.label}</a>
-      ))}
-      <a class="button button-primary" href="shop.html" aria-current={activePage === "shop" ? "page" : undefined}>
-        Order on WhatsApp
-      </a>
+      {navItems.map((item) => <a href={withBase(item.href)} aria-current={activePage === item.page ? "page" : undefined}>{item.label}</a>)}
+      <a class="button button-primary nav-cta" href={withBase("/request-a-batch")} aria-current={activePage === "request" ? "page" : undefined}>Check Current Batch</a>
     </nav>
   </div>
 </header>

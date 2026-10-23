@@ -1,0 +1,21 @@
+---
+interface Source {
+  name: string;
+  url: string;
+  publisher: string;
+}
+
+interface Props {
+  items: Source[];
+}
+
+const { items } = Astro.props;
+---
+<section class="article-sources" aria-labelledby="sources-title">
+  <h2 id="sources-title">Sources and further reading</h2>
+  <ol>
+    {items.map((item) => (
+      <li><a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a><span>{item.publisher}</span></li>
+    ))}
+  </ol>
+</section>

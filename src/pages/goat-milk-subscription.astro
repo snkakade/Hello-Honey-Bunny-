@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import DeliveryRoutes from "../components/DeliveryRoutes.astro";
+import { breadcrumbSchema } from "../utils/schema";
+import { whatsappUrl, withBase } from "../config/site";
+
+const plans = [
+  { name: "Weekly 2", quantity: "2 litres/week", fit: "A lighter regular quantity for one- or two-person households.", cta: "Check 2 L weekly availability", featured: false },
+  { name: "Weekly 4", quantity: "4 litres/week", fit: "A practical regular quantity for households that use goat milk through the week.", cta: "Check 4 L weekly availability", featured: true },
+  { name: "Weekly 7", quantity: "1 litre/day allocation", fit: "For households that need a consistent daily quantity reserved.", cta: "Check daily availability", featured: false }
+];
+const planUrl = (plan: string, quantity: string) => whatsappUrl(`Hello, I would like to discuss the ${plan} goat milk plan (${quantity}). Please confirm whether my area fits a current delivery route, the available schedule, four-week cycle price and subscription terms.`);
+const subscriptionWhatsapp = whatsappUrl("Hello, I would like to reserve a regular weekly goat milk allocation. Please help me choose a suitable plan and confirm the available delivery route, schedule, four-week cycle price and subscription terms for my area.");
+const crumbs = [{ name: "Home", path: "/" }, { name: "Goat Milk Subscription", path: "/goat-milk-subscription" }];
+---
+<BaseLayout title="Weekly Goat Milk Subscription Near Pune | Hello Honey Bunny" description="Reserve a planned weekly goat milk allocation in a four-week cycle, with route-based delivery around Pune and nearby areas, subject to farm production and subscription terms." canonicalPath="/goat-milk-subscription" activePage="milk" image="/assets/images/editorial/buy-goat-milk-pune.webp" imageAlt="Illustrated fresh goat milk delivery journey towards Pune" schema={breadcrumbSchema(crumbs)}>
+  <main id="main" class="conversion-page subscription-page">
+    <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Goat Milk Subscription" }]} />
+    <section class="conversion-hero subscription-hero">
+      <div class="container conversion-hero-grid">
+        <div class="conversion-copy">
+          <p class="eyebrow">A steadier weekly rhythm</p>
+          <h1>Fresh goat milk, reserved for you each week</h1>
+          <p class="lede">Choose your regular quantity and tell us your area. We reserve your planned quantity from available production and match it to the scheduled route days available to you.</p>
+          <div class="button-row"><a class="button button-primary button-arrow conversion-primary" href="#plans">Compare weekly plans <span aria-hidden="true">↓</span></a><a class="button button-secondary" href={subscriptionWhatsapp} target="_blank" rel="noopener" data-analytics-location="subscription_hero" data-analytics-label="Check subscription availability">Check your area on WhatsApp</a></div>
+          <p class="cta-reassurance">Four-week cycle. Pause with advance notice. Final price and route confirmed before you start.</p>
+        </div>
+        <div class="conversion-art subscription-art">
+          <picture><img src="/assets/images/editorial/buy-goat-milk-pune.webp" width="1448" height="1086" alt="Illustrated fresh goat milk bottles beginning a local delivery journey towards Pune" fetchpriority="high" decoding="async" /></picture>
+          <div class="offer-ticket"><span>Four-week cycle</span><strong>Reserved allocation</strong><small>Subject to farm production</small></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-cream plan-section" id="plans">
+      <div class="container">
+        <div class="section-heading section-heading-display"><p class="eyebrow">Choose a useful quantity</p><h2>Which weekly quantity fits your household?</h2><p>Start with the amount you are likely to use. We will confirm your route days, current availability and final four-week price on WhatsApp before you decide.</p></div>
+        <div class="plan-grid">
+          {plans.map((plan) => <article class:list={["plan-card", { "plan-card-featured": plan.featured }]}>
+            {plan.featured && <p class="plan-label">Most practical for households</p>}
+            <p class="plan-name">{plan.name}</p><h3>{plan.quantity}</h3><p class="plan-fit">{plan.fit}</p>
+            <ul><li>Your weekly quantity set aside</li><li>Delivery on your area's scheduled route</li><li>Pause with advance notice</li><li>Final price confirmed before you start</li></ul>
+            <a class:list={["button", "button-arrow", plan.featured ? "button-accent" : "button-primary"]} href={planUrl(plan.name, plan.quantity)} target="_blank" rel="noopener" data-analytics-location={`subscription_${plan.name.toLowerCase().replace(" ", "_")}`} data-analytics-label={plan.cta}>{plan.cta} <span aria-hidden="true">↗</span></a>
+            <small class="plan-action-note">Opens WhatsApp · No payment now</small>
+          </article>)}
+        </div>
+        <p class="plan-note"><strong>No commitment before confirmation.</strong> First share your area and preferred quantity. We will reply with the available route days, current cycle price and terms so you can decide clearly.</p>
+      </div>
+    </section>
+    <DeliveryRoutes id="subscription-routes" analyticsPrefix="subscription_route" />
+    <section class="section section-forest subscription-terms">
+      <div class="container conversion-split">
+        <div><p class="eyebrow">An honest agricultural promise</p><h2>Reserved does not mean unlimited.</h2></div>
+        <div><p class="large-copy">Reserved weekly allocation, subject to the farm's production and the subscription terms.</p><p>Milk production can vary. If production affects a planned allocation, we will communicate the available quantity and arrangement directly. Plans do not promise fixed delivery irrespective of farm conditions.</p><p>One-off orders remain available through the <a href={withBase("/fresh-goat-milk")}>current fresh goat milk batch</a>.</p></div>
+      </div>
+    </section>
+    <section class="section final-cta">
+      <div class="container cta-band">
+        <div><p class="eyebrow">Find your weekly fit</p><h2>Tell us your quantity and area.</h2><p>We will confirm the suitable plan, current route, cycle price and terms before you commit.</p></div>
+        <a class="button button-light button-arrow" href={subscriptionWhatsapp} target="_blank" rel="noopener" data-analytics-location="subscription_final_cta" data-analytics-label="Reserve a weekly allocation">Discuss a weekly plan <span aria-hidden="true">↗</span></a>
+        <span class="cta-mark" aria-hidden="true">4W</span>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

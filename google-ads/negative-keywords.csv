@@ -1,0 +1,75 @@
+Negative keyword list,Level,Campaign,Keyword,Match type,Purpose
+NEG | HHB | Safety + Irrelevant,Shared negative list,,dengue,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,platelet,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,platelets,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,patient,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,cancer,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,fever,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,cure,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,treatment,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,medicine,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,immunity,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,asthma,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,eczema,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,diabetes,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,weight loss,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,lactose free,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,lactose intolerance,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,milk allergy,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,allergic,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,baby,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,babies,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,infant,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,formula,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,raw,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,raw milk,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,organic,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,a2,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,dog,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,dogs,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,cat,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,cats,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,pet,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,pets,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,puppy,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,kitten,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,frozen,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat farming,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,dairy farming,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat farm training,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat training,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat feed,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat breed,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goats for sale,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat for sale,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,milking machine,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,livestock,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,job,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,jobs,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,career,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,course,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,training,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,free,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat cheese,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,chevre,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat curd,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat butter,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat ghee,Phrase,Shared
+NEG | HHB | Safety + Irrelevant,Shared negative list,,goat whey,Phrase,Shared
+,Campaign,S | Fresh Goat Milk | Pune | Pilot,delivery,Phrase,Campaign routing
+,Campaign,S | Fresh Goat Milk | Pune | Pilot,online,Phrase,Campaign routing
+,Campaign,S | Fresh Goat Milk | Pune | Pilot,paneer,Phrase,Campaign routing
+,Campaign,S | Fresh Goat Milk | Pune | Pilot,supplier,Phrase,Campaign routing
+,Campaign,S | Fresh Goat Milk | Pune | Pilot,wholesale,Phrase,Campaign routing
+,Campaign,S | Fresh Goat Milk | Pune | Pilot,restaurant,Phrase,Campaign routing
+,Campaign,S | Fresh Goat Milk | Pune | Pilot,cafe,Phrase,Campaign routing
+,Campaign,S | Delivery Near Me | Pune-PCMC | Pilot,paneer,Phrase,Campaign routing
+,Campaign,S | Delivery Near Me | Pune-PCMC | Pilot,supplier,Phrase,Campaign routing
+,Campaign,S | Delivery Near Me | Pune-PCMC | Pilot,wholesale,Phrase,Campaign routing
+,Campaign,S | Delivery Near Me | Pune-PCMC | Pilot,restaurant,Phrase,Campaign routing
+,Campaign,S | Delivery Near Me | Pune-PCMC | Pilot,cafe,Phrase,Campaign routing
+,Campaign,S | Goat Milk Paneer | Pune | Pilot,supplier,Phrase,Campaign routing
+,Campaign,S | Goat Milk Paneer | Pune | Pilot,wholesale,Phrase,Campaign routing
+,Campaign,S | Goat Milk Paneer | Pune | Pilot,restaurant,Phrase,Campaign routing
+,Campaign,S | Goat Milk Paneer | Pune | Pilot,cafe,Phrase,Campaign routing
+

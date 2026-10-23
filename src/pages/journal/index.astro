@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { articles } from "../../data/articles";
+import { breadcrumbSchema } from "../../utils/schema";
+---
+<BaseLayout title="Goat Milk Journal and Practical Guides | Hello Honey Bunny" description="Evidence-aware goat milk guides covering nutrition, lactose, buying near Pune, everyday differences and safe storage." canonicalPath="/journal" activePage="journal" image="/assets/images/editorial/goat-milk-journal.webp" imageAlt="Illustrated goat milk journal with a goat, milk and paneer" schema={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }])}>
+  <main id="main">
+    <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Journal" }]} />
+    <section class="page-intro journal-intro">
+      <div class="container journal-intro-grid">
+        <div>
+          <p class="eyebrow">Plain answers from a small dairy</p>
+          <h1>Goat milk, explained with care.</h1>
+          <p class="lede">Practical guides about buying, using and storing goat milk, plus responsible answers to nutrition and dietary questions. Food information is kept separate from medical advice.</p>
+        </div>
+        <figure class="journal-intro-art" aria-label="An illustrated study of the journal topics">
+          <img src="/assets/images/editorial/goat-milk-journal.webp" width="1672" height="941" alt="Illustrated open journal beside goat milk, paneer and a goat in a Deccan landscape" fetchpriority="high" decoding="async" />
+        </figure>
+      </div>
+    </section>
+    <section class="section section-cream">
+      <div class="container journal-grid">
+        {articles.map((article) => <ArticleCard article={article} />)}
+      </div>
+    </section>
+    <section class="section journal-principles">
+      <div class="narrow">
+        <p class="eyebrow">How we write</p>
+        <h2>Useful answers without exaggerated claims.</h2>
+        <p>When a question touches health, allergy, intolerance or illness, we answer the factual part directly, identify what goat milk cannot be claimed to do, and link to an appropriate medical or regulatory source.</p>
+        <p>For product availability, pricing and delivery, the current farm batch remains the source of truth. See our <a href="/fresh-goat-milk">fresh goat milk information</a> or <a href="/request-a-batch">request the current batch</a>.</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

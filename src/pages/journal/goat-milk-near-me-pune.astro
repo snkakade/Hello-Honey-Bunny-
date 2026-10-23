@@ -1,0 +1,111 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import DirectAnswer from "../../components/DirectAnswer.astro";
+import { getArticle } from "../../data/articles";
+import { whatsappUrl, withBase } from "../../config/site";
+
+const article = getArticle("/journal/goat-milk-near-me-pune");
+const availabilityWhatsapp = whatsappUrl("Hello, I would like to check fresh goat milk availability. My locality or PIN code is: ____. I need approximately: ____. My preferred date is: ____. Please confirm the current batch, final price and available pickup or delivery arrangement.");
+---
+<ArticleLayout article={article} h1="Looking for goat milk near you in Pune? Here's where to start.">
+  <p class="article-opening">You search for goat milk near you, find a few farms and dairy listings, and then comes the question that really matters: can you actually get fresh goat milk delivered to your area?</p>
+
+  <p>A dairy does not always need to be around the corner to serve your neighbourhood. What matters is whether it has milk available and a practical delivery route to your location.</p>
+  <p>Hello Honey Bunny is a small goat dairy based in Kunjirwadi, near Pune. We supply fresh goat milk to individual customers and arrange deliveries across selected Pune and Pimpri-Chinchwad areas, depending on the current batch and available route.</p>
+
+  <DirectAnswer question="Can I request fresh goat milk near Pune?">
+    <p>Yes. Hello Honey Bunny accepts retail enquiries from Pune city, Katraj, Hadapsar, Loni Kalbhor, Kunjirwadi, Uruli Kanchan and selected PCMC areas. Send your locality and required quantity on WhatsApp to check current availability, final pricing and delivery options.</p>
+  </DirectAnswer>
+
+  <section>
+    <h2>What does “goat milk near me” really mean?</h2>
+    <p>When you are buying fresh food, the closest business on a map is not necessarily the most convenient one.</p>
+    <p>A nearby dairy might not have milk available that day. Another farm may be slightly farther away but already have a delivery route covering your area.</p>
+    <p>That is why we recommend checking three things before choosing a supplier:</p>
+    <ul>
+      <li><strong>Current availability:</strong> Is fresh goat milk available in the quantity you need?</li>
+      <li><strong>Your location:</strong> Can the dairy accommodate your neighbourhood on its current delivery route?</li>
+      <li><strong>The final arrangement:</strong> What is the confirmed price, processing option and delivery or pickup plan?</li>
+    </ul>
+    <p>These details are more useful than relying on distance alone.</p>
+  </section>
+
+  <section>
+    <h2>Which parts of Pune can request goat milk delivery?</h2>
+    <p>Our dairy operates from Kunjirwadi, but customers do not necessarily need to travel to the farm to enquire about fresh goat milk. We consider requests across several delivery corridors.</p>
+
+    <h3>Kunjirwadi, Loni Kalbhor and Hadapsar</h3>
+    <p>These locations fall within the eastern and south-eastern areas covered by our delivery planning. Customers around Uruli Kanchan, Loni Kalbhor, Manjari and Hadapsar can share their locality and preferred quantity to check the available route.</p>
+
+    <h3>Katraj and south Pune</h3>
+    <p>We also consider requests from Katraj and surrounding areas, including Bibwewadi, Kondhwa, Undri and nearby south Pune neighbourhoods. Delivery timing depends on the current batch and route confirmation.</p>
+
+    <h3>Central and west Pune</h3>
+    <p>Requests may also be accommodated across areas such as Kothrud, Shivajinagar, Baner, Balewadi and other listed Pune localities. Rather than promising delivery on every day of the week, we confirm the practical option for each enquiry.</p>
+
+    <h3>Pimpri-Chinchwad and PCMC</h3>
+    <p>If you are searching for goat milk near Wakad, Pimple Saudagar, Pimpri, Chinchwad or other listed PCMC areas, you can enquire about the current delivery corridor. Availability and fulfilment depend on the quantity requested and the route operating for the relevant batch.</p>
+    <p>For the most up-to-date area information, visit our <a href={withBase("/delivery-areas")}>goat milk delivery page</a>.</p>
+  </section>
+
+  <section class="checklist-block">
+    <h2>How do you check if fresh goat milk is available?</h2>
+    <p>You do not need to make a long enquiry. Simply share:</p>
+    <ol>
+      <li><strong>Your locality or PIN code</strong>, so we can check the appropriate route.</li>
+      <li><strong>The quantity you need</strong>, such as an indicative 500 ml or 1 litre requirement.</li>
+      <li><strong>Your preferred date</strong>, so we understand when you need it.</li>
+      <li><strong>Any product or processing preference</strong>, so the available options can be confirmed.</li>
+    </ol>
+    <p>We will check the request and confirm the current quantity, final price and practical fulfilment arrangement.</p>
+    <p>If you are ready to enquire, use our <a href={withBase("/request-a-batch")}>fresh goat milk request page</a>.</p>
+  </section>
+
+  <section>
+    <h2>What about the price of goat milk in Pune?</h2>
+    <p>Goat milk prices can vary between suppliers. When comparing options, make sure you are comparing the final amount payable for the quantity and fulfilment arrangement you actually need.</p>
+    <p>At Hello Honey Bunny, the final price is confirmed personally before an order is accepted. You can explore our <a href={withBase("/fresh-goat-milk")}>fresh goat milk product information</a> before sending a request.</p>
+
+    <h2>Buying once or planning a regular supply?</h2>
+    <p>If you are trying goat milk for the first time, a one-off batch request may be the more practical starting point.</p>
+    <p>If you expect to need milk regularly, you can enquire about our <a href={withBase("/goat-milk-subscription")}>weekly goat milk plans</a>. Regular arrangements depend on production, available allocation and agreed delivery routes. A subscription enquiry does not automatically guarantee unlimited milk or delivery on every requested day.</p>
+  </section>
+
+  <section>
+    <h2>A note on milk safety</h2>
+    <p>Before purchasing milk, ask about processing, refrigeration and the use-by instructions supplied with the product.</p>
+    <p>Pasteurisation significantly reduces the risk of harmful microorganisms in milk. Unpasteurised milk can contain pathogens that cause serious illness, particularly in vulnerable individuals.</p>
+    <p>Goat milk also contains lactose and milk proteins. It should not be treated as a cure for lactose intolerance, dengue, low platelet counts or any other medical condition. For medical dietary questions, consult a qualified healthcare professional.</p>
+  </section>
+
+  <section>
+    <h2>Frequently asked questions</h2>
+
+    <h3>Where can I buy goat milk near me in Pune?</h3>
+    <p>Hello Honey Bunny is based in Kunjirwadi near Pune and accepts fresh goat milk requests from listed Pune and nearby PCMC areas. Contact the dairy to confirm availability and delivery for your location.</p>
+
+    <h3>Can I order goat milk in Katraj?</h3>
+    <p>Katraj and surrounding south Pune areas are included in our delivery-request coverage. Final availability and route timing are confirmed individually.</p>
+
+    <h3>Do you deliver goat milk to Wakad or Pimpri-Chinchwad?</h3>
+    <p>Requests from listed PCMC areas, including Wakad and Pimpri-Chinchwad, can be considered according to the current batch and available delivery route.</p>
+
+    <h3>Is bakri milk the same as goat milk?</h3>
+    <p>Yes. <em>Bakri ka doodh</em> is a common Hindi expression for goat milk. If you are searching for bakri milk near Pune, you can use the same product and delivery enquiry process.</p>
+
+    <h3>Can I get fresh goat milk every week?</h3>
+    <p>You can enquire about a weekly allocation. The quantity, price, schedule and applicable terms must be confirmed before starting.</p>
+
+    <h3>How do I know if milk is available today?</h3>
+    <p>The quickest way is to send your quantity and locality through WhatsApp. We will confirm the current batch rather than presenting an unverified live-stock figure.</p>
+  </section>
+
+  <DirectAnswer question="Fresh goat milk, with the details confirmed personally">
+    <p>Whether you are near Kunjirwadi, in Pune city, around Katraj or in a listed PCMC neighbourhood, the starting point is the same. Tell us where you are and how much milk you need. We will confirm what is practical.</p>
+    <div class="button-row">
+      <a class="button button-primary" href={withBase("/request-a-batch")} data-analytics-event="article_cta_click" data-analytics-label="Check current goat milk availability" data-article-slug="goat-milk-near-me-pune">Check current goat milk availability</a>
+      <a class="button button-secondary" href={availabilityWhatsapp} target="_blank" rel="noopener" data-analytics-label="Ask on WhatsApp">Ask on WhatsApp</a>
+    </div>
+    <p><small>Hello Honey Bunny is based in Kunjirwadi, Maharashtra 412201. All quantities, prices, delivery arrangements and product availability are subject to confirmation.</small></p>
+  </DirectAnswer>
+</ArticleLayout>
